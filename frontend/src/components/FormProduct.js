@@ -3,20 +3,22 @@ import axios from 'axios'
 
 class FormProduct extends Component{
     state={
-        data:[]
+        users:[]
     }
   async componentDidMount(){
     const res=await axios.get('http://localhost:3000/users');
     this.setState({
-        data:res.data
+        users:res.data
     })
 }
-
+Register=(e)=>{
+e.preventDefault() ;//evita que al presionar el boton el formulario se limpie
+}
   
     render(){
         return(
-<div className="container">
-<form>
+<div className="container p-4">
+<form onSubmit={this.Register}>
     <div className="form-group ">
     <label for="Id">Id Company</label>
 <input type="number" className="form-control" id="Id" placeholder="Enter Id Company"></input>
@@ -42,13 +44,14 @@ class FormProduct extends Component{
     <label for="status">Image</label>
     
 <select className="form-control form-control-md">
-    {}
+{this.state.users.map(user=>
+    <option>{user.username}</option>)}
   <option>Large select</option>
   <option>No disponible</option>
 </select>
     </div>
     
-    
+    <button type="submit" className="btn btn-primary">Registrar</button>
 </form>
 
 </div>
