@@ -5,18 +5,18 @@ class Resultado extends Component {
 
     mostrarImagenes = () => {
 
-        const imagenes = this.props.imagenes;
-        if (imagenes.length === 0) return null;
+        const products = this.props.products;
+        if (products.length === 0) return null;
 
-        console.log(imagenes);
+        console.log(products);
 
         return (
             <React.Fragment>
                 <div className="col-12 p-5 row">
-                    {imagenes.map(imagen => (
+                    {products.map(product => (
                         <Imagen
-                        key={imagen.id}
-                        imagen={imagen}
+                        key={product.id}
+                        productImage={product.image}
                         />
                     ))}
 
