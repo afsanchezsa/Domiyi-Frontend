@@ -1,7 +1,8 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import Search from './components/Search';
-import Resultado from './components/Resultado';
+
+import Search from './Search';
+import Resultado from './Resultado';
+import axios from 'axios';
 
 
 
@@ -11,39 +12,42 @@ import Resultado from './components/Resultado';
 class ListProduct extends React.Component {
 
     state = {
-        termino: '',
-        imagenes: []
+       
+        products: []
     }
 
-    consultarApi = () => {
-        const busq = this.state.termino;
-        const url = `https://pixabay.com/api/?key=1732750-d45b5378879d1e877cd1d35a6&q=${busq}`;
-        console.log(url);
-
-        fetch(url)
+    async componentDidMount() {
+        //const busq = this.state.termino;
+         const res=await axios.get(`http://localhost:3000/products`);
+        //console.log(url);
+        this.setState({
+            products:res.data
+        });
+        /*fetch(url)
             .then(respuesta => respuesta.json())
-            .then(resultado => this.setState({ imagenes: resultado.hits }))
-
+            .then(resultado => this.setState({ imagenes: resultado.image }))
+            */
     }
 
-    dataSearch = (termino) => {
+    /*dataSearch = (termino) => {
         this.setState({
             termino
         }, () => {
             this.consultarApi();
         })
 
-    }
+    }*/
+    //<Search dataSearch={this.dataSearch} />
     render() {
         return (
             <div className="app container">
                 <div className="jumbotron">
 
                     <p className="lead text-center">Productos</p>
-                    <Search dataSearch={this.dataSearch} />
+                    
                 </div>
                 < Resultado
-                    imagenes={this.state.imagenes}
+                    products={this.state.products}
                 />
             </div>
 
