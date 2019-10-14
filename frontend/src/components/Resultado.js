@@ -16,7 +16,7 @@ class Resultado extends Component {
                     {products.map(product => (
                         <Imagen
                         key={product.id}
-                        productImage={product.image}
+                        product={product}
                         />
                     ))}
 
