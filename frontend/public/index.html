@@ -32,7 +32,7 @@
                     <a class="nav-link" href="#" onclick="sendToFormUser()">Comida</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Alojamiento</a>
+                    <a class="nav-link" href="#" onclick="sendToFormCompany()">Alojamiento</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Bares y Licores</a>
@@ -106,6 +106,15 @@
         src.App.render();
     }
 </script>
+<script>
+    function sendToFormCompany() {
+        var url = "http://localhost:3001/CompanyRegister";
+        window.location = url;
+        src.App.render();
+    }
+</script>
+
+
 </body>
 
 </html>
