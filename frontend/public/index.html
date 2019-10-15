@@ -4,117 +4,138 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./public.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <title>Domiyi</title>
 </head>
 
 <body>
 
-<header>
+    <header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="https://i.pinimg.com/originals/5b/e5/fb/5be5fbcb55c0d12f61f03fd603c2ddd2.png" width="30"
-                 height="30"
-                 class="d-inline-block align-top" alt="">
-            Domiyi
-        </a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <img src="domiyi.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="sendToFormProduct()">Destacados</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="sendToFormUser()">Comida</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="sendToFormCompany()">Alojamiento</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Bares y Licores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Deportes y Entretenimiento</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Servicios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Salud</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Educacion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Otros</a>
-                </li>
-            </ul>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Destacados <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Comida</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Alojamiento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bares y Licores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Deportes y Entretenimiento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Salud</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Educacion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Otros</a>
+                    </li>
 
-            <div>
-                <image src="https://cdn.icon-icons.com/icons2/1674/PNG/512/person_110935.png" width=30px
-                       height=30px></image>
+                    <div>
+                        <image src="https://cdn.icon-icons.com/icons2/1674/PNG/512/person_110935.png" width=30px height=30px></image>
+
+                    </div>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Iniciar Sesión</a>
+                                <a class="dropdown-item" href="#">Cerrar Sesión</a>
+                                <a class="dropdown-item" href="#">Configuración</a>
+                            </div>
+                        </li>
+
+                    </ul>
 
             </div>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Iniciar Sesión</a>
-                        <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                        <a class="dropdown-item" href="#">Configuración</a>
-                    </div>
-                </li>
+        </nav>
+    </header>
 
-            </ul>
+    <div id="root"></div>
 
+    <!----------- Footer ------------>
+    <footer class="footer-bs">
+        <div class="row">
+            <div class="col-md-3 footer-brand animated fadeInLeft">
+                <h2>Domiyi</h2>
+                <img src="./domiyi.png" width="30" height="30" class="d-inline-block align-top" alt=""> Domiyi
 
+            </div>
+            <div class="col-md-4 footer-nav animated fadeInUp">
+                <h4>Links Destacados</h4>
+                <div class="col-md-6">
+                    <ul class="pages">
+                        <li><a href="#">Destacados</a></li>
+                        <li><a href="#">Comida</a></li>
+                        <li><a href="#">Alojamiento</a></li>
+                        <li><a href="#">Bares y Licores</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list">
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Contáctenos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 footer-social animated fadeInDown">
+                <h4>Redes Sociales</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">RSS</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-ns animated fadeInRight">
+                <h4>Suscribase</h4>
+                <p>Conozca nuestras promociones en su correo electrónico
+                    <p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="E-mail...">
+                            <span class="input-group-btn">
+                          <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </p>
+            </div>
         </div>
-
-        </li>
-    </nav>
-</header>
-
-<div id="root"></div>
-<footer class="page-footer font-small special-color-dark pt-4">
-    foot
-</footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-<script>
-    function sendToFormProduct() {
-        var url = "http://localhost:3001/ProductRegister";
-        window.location = url;
-        src.App.render();
-    }
-</script>
-<script>
-    function sendToFormUser() {
-        var url = "http://localhost:3001/UserRegister";
-        window.location = url;
-        src.App.render();
-    }
-</script>
-<script>
-    function sendToFormCompany() {
-        var url = "http://localhost:3001/CompanyRegister";
-        window.location = url;
-        src.App.render();
-    }
-</script>
+    </footer>
+    <section style="text-align:center; margin:10px auto;">
+        <p>Domiyi 2019</a>
+        </p>
+    </section>
 
 
+
+    <!-- end s-footer -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
