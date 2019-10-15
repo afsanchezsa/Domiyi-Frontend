@@ -4,7 +4,7 @@ import axios from 'axios'
 
 class FormProduct extends Component {
     state = {
-        users: [],
+        
         id: "",
         idCompany: "",
         idStatus:"",
@@ -16,12 +16,12 @@ class FormProduct extends Component {
 
     }
 
-    async componentDidMount() {
+   /* async componentDidMount() {
         const res = await axios.get('http://localhost:3000/users');
         this.setState({
             users: res.data
         })
-    }
+    }*/
 
     onChangeId = (e) => {//las funciones  onchange obligatoriamente tienen que ser flecha pues no vincula el this a si misma
         this.setState({
