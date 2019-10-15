@@ -6,77 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+          <link rel="stylesheet" href="./public.css">
+          
     <title>Domiyi</title>
 </head>
 
 <body>
 
 <header>
-<!--
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="https://i.pinimg.com/originals/5b/e5/fb/5be5fbcb55c0d12f61f03fd603c2ddd2.png" width="30"
-                 height="30"
-                 class="d-inline-block align-top" alt="">
-            Domiyi
-        </a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="sendToFormProduct()">Destacados</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="sendToFormUser()">Comida</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="sendToFormCompany()">Alojamiento</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Bares y Licores</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Deportes y Entretenimiento</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Servicios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Salud</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Educacion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Otros</a>
-                </li>
-            </ul>
-
-            <div>
-                <image src="https://cdn.icon-icons.com/icons2/1674/PNG/512/person_110935.png" width=30px
-                       height=30px></image>
-
-            </div>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Iniciar Sesión</a>
-                        <a class="dropdown-item" href="#">Cerrar Sesión</a>
-                        <a class="dropdown-item" href="#">Configuración</a>
-                    </div>
-                </li>
-
-            </ul>
-
-
-        </div>
-
-        </li>
-    </nav>-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -110,9 +48,61 @@
 </header>
 
 <div id="root"></div>
-<footer class="page-footer font-small special-color-dark pt-4">
-    foot
+<footer class="footer-bs">
+    <div class="row">
+        <div class="col-md-3 footer-brand animated fadeInLeft">
+            <h2>Domiyi</h2>
+            <img src="./domiyi.png" width="30" height="30" class="d-inline-block align-top" alt=""> Domiyi
+
+        </div>
+        <div class="col-md-4 footer-nav animated fadeInUp">
+            <h4>Links Destacados</h4>
+            <div class="col-md-6">
+                <ul class="pages">
+                    <li><a href="#">Destacados</a></li>
+                    <li><a href="#">Comida</a></li>
+                    <li><a href="#">Alojamiento</a></li>
+                    <li><a href="#">Bares y Licores</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list">
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Contáctenos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2 footer-social animated fadeInDown">
+            <h4>Redes Sociales</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">RSS</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3 footer-ns animated fadeInRight">
+            <h4>Suscribase</h4>
+            <p>Conozca nuestras promociones en su correo electrónico
+                <p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="E-mail...">
+                        <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </p>
+        </div>
+    </div>
 </footer>
+<section style="text-align:center; margin:10px auto;">
+    <p>Domiyi 2019</a>
+    </p>
+</section>
+
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
