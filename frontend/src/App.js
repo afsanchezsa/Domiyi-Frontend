@@ -18,7 +18,7 @@ class App extends React.Component {
             return (<FormCompany/>)
         }
         else{
-            window.location == "http://localhost:3001"
+            
             return (<ListProduct/>)
         }
     }
