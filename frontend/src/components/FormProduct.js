@@ -7,12 +7,12 @@ class FormProduct extends Component {
         users: [],
         id: "",
         idCompany: "",
+        idStatus:"",
         name: "",
         description: "",
         price: "",
         image: "",
-        updated: "",
-        status: ""
+        category:""
 
     }
 
@@ -35,6 +35,11 @@ class FormProduct extends Component {
         });
 //console.log(this.state.idCompany+' '+this.state.id);
     }
+    onChangeIdStatus=(e)=>{
+        this.setState({
+            idStatus:e.target.value
+        });
+    }
     onChangeName = (e) => {
         this.setState({
             name: e.target.value
@@ -50,24 +55,25 @@ class FormProduct extends Component {
             price: e.target.value
         });
     }
-    onChangeStatus = (e) => {
+    onChangeCategory = (e) => {
         this.setState({
-            status: e.target.value
+            category:e.target.value
         });
         //console.log(this.state.status);
     }
     Register = async (e) => {
+        e.preventDefault();
         const res = await axios.post('http://localhost:3000/product/register', {
             id: this.state.id,
             idCompany: this.state.idCompany,
+            idStatus:this.state.idStatus,
             name: this.state.name,
             description: this.state.description,
             price: this.state.price,
             image: "imagencilla",
-            updated: "01-01-2019",
-            status: this.state.status
+            category: this.state.category
         });
-        e.preventDefault();
+        
         alert(res);
 //evita que al presionar el boton el formulario se limpie
     }
@@ -76,15 +82,16 @@ class FormProduct extends Component {
         return (
             <div className="container p-4">
                 <form onSubmit={this.Register}>
-                    <div className="form-group ">
-                        <label for="Id">Id</label>
-                        <input type="number" className="form-control" id="Id" placeholder="Enter Id "
-                               onChange={this.onChangeId}></input>
-                    </div>
+                    
                     <div className="form-group ">
                         <label for="IdCompany">Id Company</label>
                         <input type="number" className="form-control" id="IdCompany" placeholder="Enter Id Company"
                                onChange={this.onChangeIdCompany}></input>
+                    </div>
+                    <div className="form-group ">
+                        <label for="IdStatus">Id Status</label>
+                        <input type="number" className="form-control" id="IdStatus" placeholder="Enter Id Status"
+                               onChange={this.onChangeIdStatus}></input>
                     </div>
                     <div className="form-group">
                         <label for="name">Name</label>
@@ -105,17 +112,12 @@ class FormProduct extends Component {
                         <label for="Image">Image</label>
                         <input type="file" className="form-control-file" id="Image"></input>
                     </div>
-
                     <div className="form-group">
-                        <label for="status">Status</label>
-
-                        <select className="form-control form-control-md" onChange={this.onChangeStatus}>
-                            {this.state.users.map(user =>
-                                <option>{user.username}</option>)}
-                            <option>Large select</option>
-                            <option>No disponible</option>
-                        </select>
+                        <label for="Category">Category</label>
+                        <input type="number" className="form-control" id="category" placeholder="Category"
+                               onChange={this.onChangeCategory}></input>
                     </div>
+                    
 
                     <button type="submit" className="btn btn-primary" onSubmit={this.Register}>Registrar</button>
                 </form>
