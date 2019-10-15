@@ -11,7 +11,7 @@ const Imagen = (props) => {
                 <div className="card-body">
                     <p className="card-text">{props.product.name}</p>
                     <p className="card-text">{props.product.description}</p>
-                    <a href="#" targer="_blank" className="btn btn-primary btn-block">Ver Imagen</a>
+                    <a href="#" targer="_blank" className="btn btn-primary btn-block">Comprar</a>
                 </div>
             </div>
         </div>
