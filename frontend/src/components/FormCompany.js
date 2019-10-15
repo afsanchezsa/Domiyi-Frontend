@@ -9,11 +9,11 @@ class FormCompany extends Component {
         name: "",
         image: "",
         idAdmin: "",
-        category: "",
+        category: "",//this state define the json object wich will be send to the backend
         deliveryCost: "",
         officceHours: "",
     }
-
+//on change events is for track the values on the inputs fields
     onChangeId = (e) => {//las funciones  onchange obligatoriamente tienen que ser flecha pues no vincula el this a si misma
         this.setState({
             id: e.target.value
@@ -57,7 +57,7 @@ class FormCompany extends Component {
             officceHours: e.target.value
         });
     }
-    Register = async (e) => {
+    Register = async (e) => {//with axios send the request to the route with the body 
         const res = await axios.post('http://localhost:3000/company/register', {
             id: this.state.id,
             idStatus: this.state.idStatus,

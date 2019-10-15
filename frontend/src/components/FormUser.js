@@ -4,7 +4,7 @@ import axios from 'axios'
 
 class FormUser extends Component {
     state = {
-        id: "",
+        id: "",//this will be send to the backend
         email: "",
         password: "",
         name: "",
@@ -39,7 +39,7 @@ class FormUser extends Component {
             type: e.target.value
         });
     }
-    Register = async (e) => {
+    Register = async (e) => {//is an async function wich wait a response 
         const res = await axios.post('http://localhost:3000/users/register', {
             id: this.state.id,
             email: this.state.email,

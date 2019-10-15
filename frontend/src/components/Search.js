@@ -9,7 +9,7 @@ class Search extends Component {
         /**se obtiene el valor de la barra de bsuqueda */
         this.props.dataSearch(this.searchRef.current.value);
     }
-
+//this will let us search in next
     render() {
         return (
             <form onSubmit={this.getDatas}>
