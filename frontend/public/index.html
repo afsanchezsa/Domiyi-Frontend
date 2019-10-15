@@ -29,7 +29,7 @@
                     <a class="nav-link" href="#" onclick="sendToFormProduct()">Destacados</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Comida</a>
+                    <a class="nav-link" href="#" onclick="sendToFormUser()">Comida</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Alojamiento</a>
@@ -95,6 +95,13 @@
 <script>
     function sendToFormProduct() {
         var url = "http://localhost:3001/ProductRegister";
+        window.location = url;
+        src.App.render();
+    }
+</script>
+<script>
+    function sendToFormUser() {
+        var url = "http://localhost:3001/UserRegister";
         window.location = url;
         src.App.render();
     }
