@@ -69,7 +69,7 @@ class FormCompany extends Component {
             officceHours: this.state.officceHours
         });
         e.preventDefault();
-        alert(res);
+        alert("registro exitoso");
 //evita que al presionar el boton el formulario se limpie
     }
 

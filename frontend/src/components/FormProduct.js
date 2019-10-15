@@ -74,7 +74,7 @@ class FormProduct extends Component {
             category: this.state.category
         });
         
-        alert(res);
+        alert("registro exitoso");
 //evita que al presionar el boton el formulario se limpie
     }
 

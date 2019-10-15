@@ -48,7 +48,7 @@ class FormUser extends Component {
             type: this.state.type
         });
         e.preventDefault();
-        alert(res);
+        alert("registro exitoso");
 //evita que al presionar el boton el formulario se limpie
     }
 
