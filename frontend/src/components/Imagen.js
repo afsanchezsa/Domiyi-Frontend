@@ -10,7 +10,7 @@ const Imagen = (props) => {
                 <img src={urlImage} alt = "sin Imagen" className="card-img-top"/>
                 <div className="card-body">
                     <p className="card-text">{props.product.name}</p>
-                    <p className="card-text">{props.productc.description}</p>
+                    <p className="card-text">{props.product.description}</p>
                     <a href="#" targer="_blank" className="btn btn-primary btn-block">Ver Imagen</a>
                 </div>
             </div> 
