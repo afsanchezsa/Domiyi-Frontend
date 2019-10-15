@@ -70,7 +70,7 @@ class FormProduct extends Component {
             name: this.state.name,
             description: this.state.description,
             price: this.state.price,
-            image: "imagencilla",
+            image: "No disponible",
             category: this.state.category
         });
         
