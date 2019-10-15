@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import React, {Component} from 'react';
-
+//this shows a card with every product
 
 const Imagen = (props) => {
     const urlImage = props.product.image;

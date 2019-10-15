@@ -8,7 +8,7 @@ class FormProduct extends Component {
         id: "",
         idCompany: "",
         idStatus:"",
-        name: "",
+        name: "",//the json object 
         description: "",
         price: "",
         image: "",
@@ -70,7 +70,7 @@ class FormProduct extends Component {
             name: this.state.name,
             description: this.state.description,
             price: this.state.price,
-            image: "No disponible",
+            image: "No disponible",//no available until this functionality be implemented
             category: this.state.category
         });
         

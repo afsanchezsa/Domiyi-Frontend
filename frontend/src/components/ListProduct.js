@@ -36,7 +36,7 @@ class ListProduct extends React.Component {
         })
 
     }*/
-
+//render all products 
     //<Search dataSearch={this.dataSearch} />
     render() {
         return (

@@ -6,11 +6,11 @@ class Resultado extends Component {
     mostrarImagenes = () => {
 
         const products = this.props.products;
-        if (products.length === 0) return null;
+        if (products.length === 0) return null;//if there are not products is null
 
         console.log(products);
 
-        return (
+        return (//shows results of Images in the screem
             <React.Fragment>
                 <div className="col-12 p-5 row">
                     {products.map(product => (
