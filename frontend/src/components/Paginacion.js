@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-conts Paginacion = props => {
-    
-    
+conts
+Paginacion = props => {
+
+
 }
 
 export default Paginacion;
