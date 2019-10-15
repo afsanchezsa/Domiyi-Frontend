@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Imagen from './Imagen';
 
 class Resultado extends Component {
@@ -15,8 +15,8 @@ class Resultado extends Component {
                 <div className="col-12 p-5 row">
                     {products.map(product => (
                         <Imagen
-                        key={product.id}
-                        product={product}
+                            key={product.id}
+                            product={product}
                         />
                     ))}
 

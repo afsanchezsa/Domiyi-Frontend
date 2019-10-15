@@ -5,23 +5,22 @@ import Resultado from './Resultado';
 import axios from 'axios';
 
 
-
 //import './App.css';
 
 
 class ListProduct extends React.Component {
 
     state = {
-       
+
         products: []
     }
 
     async componentDidMount() {
         //const busq = this.state.termino;
-         const res=await axios.get(`http://localhost:3000/products`);
+        const res = await axios.get(`http://localhost:3000/products`);
         //console.log(url);
         this.setState({
-            products:res.data
+            products: res.data
         });
         /*fetch(url)
             .then(respuesta => respuesta.json())
@@ -37,6 +36,7 @@ class ListProduct extends React.Component {
         })
 
     }*/
+
     //<Search dataSearch={this.dataSearch} />
     render() {
         return (
@@ -44,7 +44,7 @@ class ListProduct extends React.Component {
                 <div className="jumbotron">
 
                     <p className="lead text-center">Productos</p>
-                    
+
                 </div>
                 < Resultado
                     products={this.state.products}
@@ -55,4 +55,5 @@ class ListProduct extends React.Component {
     }
 
 }
+
 export default ListProduct;
