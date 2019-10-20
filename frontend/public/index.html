@@ -22,7 +22,7 @@
         
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
          
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#" onclick="sendHome()">
             <img src="https://i.pinimg.com/originals/5b/e5/fb/5be5fbcb55c0d12f61f03fd603c2ddd2.png" width="30"
                  height="30"
                  class="d-inline-block align-top" alt="">
@@ -112,6 +112,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script>
+    function sendHome() {
+        var url = "http://localhost:3001";
+        window.location = url;
+        src.App.render();
+    }
+</script>
 <script>
     function sendToFormProduct() {
         var url = "http://localhost:3001/ProductRegister";
