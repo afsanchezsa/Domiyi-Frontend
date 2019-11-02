@@ -3,7 +3,7 @@ import React from 'react';
 import Search from './Search';
 import Resultado from './Resultado';
 import axios from 'axios';
-
+import ls from 'local-storage'
 
 //import './App.css';
 
@@ -17,6 +17,7 @@ class ListProduct extends React.Component {
 
     async componentDidMount() {
         //const busq = this.state.termino;
+        alert(ls.get('token'));
         const res = await axios.get(`http://localhost:3000/products`);
         //console.log(url);
         this.setState({

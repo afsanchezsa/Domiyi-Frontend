@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-
+import ls from 'local-storage'
 
 class FormLogin extends Component {
     state = {
@@ -8,7 +8,17 @@ class FormLogin extends Component {
        password:""
 
     }
-
+    componentDidMount() {
+        fetch(URL)
+        .then(response => response.json())
+        .then(json => this.setState({
+          articles: json.results,
+          readNow: ls.get('readNow') || [],
+          readLater: ls.get('readLater') || [],
+          likedSections: ls.get('likedSections') || []
+        }));
+        
+      }
     onChangeUsername = (e) => {
         this.setState({
             username: e.target.value
@@ -30,8 +40,8 @@ class FormLogin extends Component {
            password:this.state.password
         });
         console.log(res.data);
-        localStorage.set('token',res.data.token);
-        
+        ls.set('token',res.data.token);
+        alert(ls.get('token'));
         
 //evita que al presionar el boton el formulario se limpie
     }
