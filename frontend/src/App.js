@@ -22,6 +22,7 @@ class App extends React.Component {//We render a component  depending of the act
         }
         else{
             //by default we render the list of products
+            
             return (<ListProduct/>)
         }
     }

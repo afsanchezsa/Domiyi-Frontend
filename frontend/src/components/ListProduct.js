@@ -17,12 +17,26 @@ class ListProduct extends React.Component {
 
     async componentDidMount() {
         //const busq = this.state.termino;
-        alert(ls.get('token'));
-        const res = await axios.get(`http://localhost:3000/products`);
-        //console.log(url);
-        this.setState({
-            products: res.data
-        });
+        //alert(ls.get('token'));
+        var res;
+            try{
+                 res = await axios.get(`http://localhost:3000/products`);
+                 this.setState({
+                    products: res.data
+                });
+                } catch(e){
+                if(e.response.status==401){
+                    
+                }
+                }
+            
+
+                //console.log(url);
+        
+        
+            
+        
+        
         /*fetch(url)
             .then(respuesta => respuesta.json())
             .then(resultado => this.setState({ imagenes: resultado.image }))
