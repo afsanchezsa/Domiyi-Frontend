@@ -5,6 +5,7 @@ import FormUser from './components/FormUser'
 //import './App.css';
 import ListProduct from './components/ListProduct'
 import FormCompany from './components/FormCompany'
+import FormLogin from './components/FormLogin';
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     render() {
@@ -16,6 +17,8 @@ class App extends React.Component {//We render a component  depending of the act
         }
         else if(window.location == "http://localhost:3001/CompanyRegister"){
             return (<FormCompany/>)//this let the user register a company
+        }else if(window.location=="http://localhost:3001/login"){
+            return (<FormLogin/>)
         }
         else{
             //by default we render the list of products
