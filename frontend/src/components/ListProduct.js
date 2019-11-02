@@ -9,7 +9,11 @@ import ls from 'local-storage'
 
 
 class ListProduct extends React.Component {
-
+    constructor(props){
+        super(props);
+        
+    }
+    
     state = {
 
         products: []
@@ -20,13 +24,18 @@ class ListProduct extends React.Component {
         //alert(ls.get('token'));
         var res;
             try{
-                 res = await axios.get(`http://localhost:3000/products`);
+                 res = await axios.get(`http://localhost:3000/products`,{
+                     headers:{
+                         authorization:ls.get('token')
+                     }
+                 });
                  this.setState({
                     products: res.data
                 });
                 } catch(e){
                 if(e.response.status==401){
                     
+                this.props.Login();
                 }
                 }
             

@@ -63,6 +63,9 @@ class FormLogin extends Component {
                     </div>
                     
                     <button type="submit" className="btn btn-primary" onSubmit={this.Login}>Iniciar Sesion</button>
+                <div>
+                    <a href="http://localhost:3001/UserRegister">No tienes una cuenta ? Registrate</a>
+                </div>
                 </form>
 
             </div>
