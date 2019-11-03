@@ -34,15 +34,23 @@ class FormLogin extends Component {
     
   
     Login = async (e) => {//with axios send the request to the route with the body 
-        e.preventDefault();
+        try{
+            e.preventDefault();
         const res = await axios.post('http://localhost:3000/login', {
            username:this.state.username,
            password:this.state.password
         });
+        
         console.log(res.data);
         ls.set('token',res.data.token);
         alert(ls.get('token'));
         
+        }catch(e){
+            if(e.response.status==401){
+                alert("contraseña incorrecta");
+            }
+            
+        }
 //evita que al presionar el boton el formulario se limpie
     }
 
