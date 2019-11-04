@@ -10,12 +10,12 @@ import AddProduct from "./components/AddProduct";
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     state = {
         url:'http://localhost:3001',
-        id:0
+        product:{}
     }
-    goToAddProduct = (id) =>{
+    goToAddProduct = (product) =>{
         this.setState({
             url:'http://localhost:3001/addProduct',
-            id:id
+            product:product
         })
         //alert(id);
 
@@ -32,7 +32,7 @@ class App extends React.Component {//We render a component  depending of the act
             return (<FormCompany/>)//this let the user register a company
         }
         else if(this.state.url == "http://localhost:3001/addProduct"){
-            return (<AddProduct idProduct={this.state.id}/>)//this let the user register a company
+            return (<AddProduct product={this.state.product}/>)//this let the user register a company
         }
         else if(this.state.url == "http://localhost:3001"){
             //by default we render the list of products

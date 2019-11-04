@@ -11,7 +11,7 @@ class Imagen extends React.Component {
     onclick = () =>{
 
         //alert(this.props.product.id);
-        this.props.goToAddProduct(this.props.product);
+        this.props.goToAddProduct(this.props.product.id);
 //        alert("Hola Estoy aca")
     }
 

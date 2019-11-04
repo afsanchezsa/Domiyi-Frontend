@@ -3,18 +3,10 @@ import React, {Component} from 'react';
 
 //this shows a card with every product
 
-class Imagen extends React.Component {
+class ShoppingProduct extends React.Component {
     constructor(props) {
         super(props);
     }
-
-    onclick = () =>{
-
-        //alert(this.props.product.id);
-        this.props.goToAddProduct(this.props.product);
-//        alert("Hola Estoy aca")
-    }
-
 
     render() {
         return (
@@ -24,7 +16,6 @@ class Imagen extends React.Component {
                     <div className="card-body">
                         <p className="card-text">{this.props.product.name}</p>
                         <p className="card-text">{this.props.product.description}</p>
-                        <a targer="_blank" className="btn btn-primary btn-block" onClick={this.onclick}>Comprar</a>
                     </div>
                 </div>
             </div>
@@ -32,4 +23,4 @@ class Imagen extends React.Component {
     }
 }
 
-export default Imagen;
+export default ShoppingProduct;
