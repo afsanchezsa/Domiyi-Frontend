@@ -18,14 +18,10 @@ class App extends React.Component {//We render a component  depending of the act
             url: 'http://localhost:3001/addProduct',
             product: product
         })
-
         //alert(id);
-
-
     }
 
     render() {
-
         return (
             <Router>
                 <Navbar/>
