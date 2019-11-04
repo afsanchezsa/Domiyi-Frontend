@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-          <link rel="stylesheet" href="./public.css">
-          
+    <link rel="stylesheet" href="./public.css">
+
     <title>Domiyi</title>
 </head>
 
@@ -15,36 +15,6 @@
 
 <header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-         
-          <a class="navbar-brand" href="#">
-            <img src="https://i.pinimg.com/originals/5b/e5/fb/5be5fbcb55c0d12f61f03fd603c2ddd2.png" width="30"
-                 height="30"
-                 class="d-inline-block align-top" alt="">
-            Domiyi
-        </a>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#" onclick="sendToFormProduct()">Registro Producto <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" onclick="sendToFormUser()">Registro Usuario</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="sendToFormCompany()">Registro Compañia</a>
-              </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
 </header>
 
 <div id="root"></div>
@@ -84,15 +54,16 @@
         <div class="col-md-3 footer-ns animated fadeInRight">
             <h4>Suscribase</h4>
             <p>Conozca nuestras promociones en su correo electrónico
-                <p>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="E-mail...">
-                        <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+            <p>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="E-mail...">
+                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><span
+                              class="glyphicon glyphicon-envelope"></span></button>
                         </span>
-                    </div>
-                    <!-- /input-group -->
-                </p>
+            </div>
+            <!-- /input-group -->
+            </p>
         </div>
     </div>
 </footer>
@@ -100,7 +71,6 @@
     <p>Domiyi 2019</a>
     </p>
 </section>
-
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -112,31 +82,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script>
-    function sendToFormProduct() {
-        var url = "http://localhost:3001/ProductRegister";
-        window.location = url;
-        src.App.render();
-    }
-</script>
-<script>
-    function sendToFormUser() {
-        var url = "http://localhost:3001/UserRegister";
-        window.location = url;
-        src.App.render();
-    }
-</script>
-<script>
-    function sendToFormCompany() {
-        var url = "http://localhost:3001/CompanyRegister";
-        window.location = url;
-        src.App.render();
-    }
-</script>
-
 
 </body>
-
 </html>
 <!--
   -->
