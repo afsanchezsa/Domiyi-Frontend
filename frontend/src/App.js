@@ -5,21 +5,38 @@ import FormUser from './components/FormUser'
 //import './App.css';
 import ListProduct from './components/ListProduct'
 import FormCompany from './components/FormCompany'
+import AddProduct from "./components/AddProduct";
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
+    state = {
+        url:'http://localhost:3001',
+        id:0
+    }
+    goToAddProduct = (id) =>{
+        this.setState({
+            url:'http://localhost:3001/addProduct',
+            id:id
+        })
+        //alert(id);
+
+
+    }
     render() {
-        if(window.location == "http://localhost:3001/ProductRegister"){
+        if(this.state.url == "http://localhost:3001/ProductRegister"){
             return (<FormProduct/>)//this let the user register a product
         }
-        else if(window.location == "http://localhost:3001/UserRegister"){
+        else if(this.state.url == "http://localhost:3001/UserRegister"){
             return (<FormUser/>)//this let the user register a user
         }
-        else if(window.location == "http://localhost:3001/CompanyRegister"){
+        else if(this.state.url == "http://localhost:3001/CompanyRegister"){
             return (<FormCompany/>)//this let the user register a company
         }
-        else{
+        else if(this.state.url == "http://localhost:3001/addProduct"){
+            return (<AddProduct idProduct={this.state.id}/>)//this let the user register a company
+        }
+        else if(this.state.url == "http://localhost:3001"){
             //by default we render the list of products
-            return (<ListProduct/>)
+            return (<ListProduct goToAddProduct = {this.goToAddProduct}/>)
         }
     }
 }
