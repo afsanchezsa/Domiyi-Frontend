@@ -87,12 +87,12 @@ class FormProduct extends Component {
         const res = await axios.post('http://localhost:3000/product/register', {
             id: this.state.id,
             idCompany: this.state.idCompany,
-            idStatus:this.state.idStatus,
             name: this.state.name,
             description: this.state.description,
             price: this.state.price,
             image: "No disponible",//no available until this functionality be implemented
-            category: this.state.category
+            idStatus:this.state.idStatus,
+            idCategory: this.state.category
         });
         
         alert("registro exitoso");
