@@ -1,5 +1,5 @@
 import React from 'react';
-import Imagen from './Imagen'
+import ShoppingProduct from './ShoppingProduct'
 import Search from './Search';
 
 import axios from 'axios';
@@ -17,9 +17,6 @@ class AddProduct extends React.Component {
         product: []
     }
 
-
-
-
     render() {
         return (
             <div className="app container">
@@ -29,7 +26,7 @@ class AddProduct extends React.Component {
                     <p className="lead text-center">Producto</p>
 
                 </div>
-                < Imagen
+                < ShoppingProduct
                     product={this.props.product}
                 />
 
