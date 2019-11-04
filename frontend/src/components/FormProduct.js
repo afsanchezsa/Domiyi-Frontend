@@ -23,6 +23,7 @@ class FormProduct extends Component {
             states: st.data
         });
         const categories=await axios.get(`http://localhost:3000/categories`);
+        
         this.setState({
             categories:categories.data
         });
@@ -67,10 +68,19 @@ class FormProduct extends Component {
         });
     }
     onChangeCategory = (e) => {
-        this.setState({
-            category:e.target.value
-        });
-        //console.log(this.state.status);
+        var i;
+        var selected=e.target.value;
+        for(i=0;i<this.state.categories;i++){
+            if(this.state.categories[i].category==selected){
+                this.setState({
+                    category:this.state.categories[i].id
+                    
+                });
+                break;
+            }
+        }
+        
+        
     }
     Register = async (e) => {
         e.preventDefault();
@@ -129,8 +139,8 @@ class FormProduct extends Component {
                     </div>
                     <div className="form-group">
                         <label for="Category">Category</label>
-                        <select className="form-control">
-                        <option value="" disabled selected>-- Seleccione una categoria --</option>
+                        <select className="form-control"  onChange={this.onChangeCategory} >
+                        <option value="" disabled selected >-- Seleccione una categoria --</option>
                             {this.state.categories.map(ct=>
                                 <option key={ct.id} value={ct.category}>{ct.category}</option>
                             )}
