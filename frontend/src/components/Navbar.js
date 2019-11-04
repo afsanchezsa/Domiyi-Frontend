@@ -1,54 +1,44 @@
-// eslint-disable-next-line
-import React, {Component} from 'react';
-import Imagen from "./Imagen";
+import React from 'react'
+import {Link} from 'react-router-dom';
 
-//this shows a card with every product
-class Navbar extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+const Navbar = () => {
+    return (
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button className="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a className="navbar-brand" href="#">
+                    <img src="https://i.pinimg.com/originals/5b/e5/fb/5be5fbcb55c0d12f61f03fd603c2ddd2.png" width="30"
+                         height="30" className="d-inline-block align-top" alt="">
 
-    onclick = () => {
+                    </img>
+                </a>
+                <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/Products'>Productos</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/CompanyRegister'>Registro Compañia</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/UserRegister'>Registro Usuario</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/ProductRegister'>Registro Producto</Link>
 
-        //alert(this.props.product.id);
-        this.props.goToAddProduct(this.props.product);
-//        alert("Hola Estoy aca")
-    }
+                    </li>
+                </ul>
+                <form className="form-inline my-2 my-lg-0">
+                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </input>
+                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 
-    render() {
-        return (
-            <div>
-                <Navbar bg="light" expand="lg">
-                    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Link</Nav.Link>
-                            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
-                        </Nav>
-                        <Form inline>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button variant="outline-success">Search</Button>
-                        </Form>
-                    </Navbar.Collapse>
-                </Navbar>
+                </form>
             </div>
-        );
-    }
-
+        </nav>
+    )
 }
-
 export default Navbar;
-
-/*
-
-
-
- */
