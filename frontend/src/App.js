@@ -6,6 +6,7 @@ import FormUser from './components/FormUser'
 import ListProduct from './components/ListProduct'
 import FormCompany from './components/FormCompany'
 
+
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     render() {
         if(window.location == "http://localhost:3001/ProductRegister"){

@@ -70,8 +70,8 @@ class FormProduct extends Component {
     onChangeCategory = (e) => {
         var i;
         var selected=e.target.value;
-        for(i=0;i<this.state.categories;i++){
-            if(this.state.categories[i].category==selected){
+        for(i=0;i<this.state.categories.length;i++){
+            if(this.state.categories[i].category===selected){
                 this.setState({
                     category:this.state.categories[i].id
                     
@@ -114,7 +114,8 @@ class FormProduct extends Component {
                         <select className="form-control">
                         <option value="" disabled selected>-- Seleccione un estado --</option>
                             {this.state.states.map(st=>
-                                <option key={st.id} value={st.status}>{st.status}</option>
+                                <option key={st.id} value={st.status}>{st.status}
+                                </option>
                             )}
                         </select>
                     </div>

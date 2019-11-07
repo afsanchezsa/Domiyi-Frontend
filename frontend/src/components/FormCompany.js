@@ -4,47 +4,45 @@ import axios from 'axios'
 
 class FormCompany extends Component {
     state = {
-        id: "",
-        idStatus: "",
-        name: "",
-        image: "",
+        states:[],
+        idStatus:"",
         idAdmin: "",
-        category: "",//this state define the json object wich will be send to the backend
-        deliveryCost: "",
-        officceHours: "",
+        name: "",//the json object,
+        image: "",
+        deliveryCost:""
+
     }
-//on change events is for track the values on the inputs fields
-    onChangeId = (e) => {//las funciones  onchange obligatoriamente tienen que ser flecha pues no vincula el this a si misma
+    async componentDidMount(){
+        const st = await axios.get(`http://localhost:3000/companiesStatus`);
+        //console.log(url);
         this.setState({
-            id: e.target.value
+            states: st.data
         });
-//console.log(this.state.id);
     }
+
     onChangeIdStatus = (e) => {
+        var i;
+        var selected=e.target.value;
+        for(i=0;i<this.state.states.length;i++){
+            if(this.state.states[i].status==selected){
+                this.setState({
+                    status:this.state.states[i].id
+
+                });
+                break;
+            }
+        }
+
+
+    }
+    onChangeIdAdmin=(e)=>{
         this.setState({
-            idStatus: e.target.value
+            idAdmin:e.target.value
         });
-//console.log(this.state.idCompany+' '+this.state.id);
     }
     onChangeName = (e) => {
         this.setState({
             name: e.target.value
-        });
-    }
-    onChangeImage = (e) => {
-        this.setState({
-            image: e.target.value
-        });
-//console.log(this.state.idCompany+' '+this.state.id);
-    }
-    onChangeIdAdmin = (e) => {
-        this.setState({
-            idAdmin: e.target.value
-        });
-    }
-    onChangeCategory = (e) => {
-        this.setState({
-            category: e.target.value
         });
     }
     onChangeDeliveryCost = (e) => {
@@ -52,23 +50,16 @@ class FormCompany extends Component {
             deliveryCost: e.target.value
         });
     }
-    onChangeOfficceHours = (e) => {
-        this.setState({
-            officceHours: e.target.value
-        });
-    }
-    Register = async (e) => {//with axios send the request to the route with the body 
-        const res = await axios.post('http://localhost:3000/company/register', {
-            id: this.state.id,
-            idStatus: this.state.idStatus,
-            name: this.state.name,
-            image: this.state.image,
-            idAdmin: this.state.idAdmin,
-            category: this.state.category,
-            deliveryCost: this.state.deliveryCost,
-            officceHours: this.state.officceHours
-        });
+    Register = async (e) => {
         e.preventDefault();
+        const res = await axios.post('http://localhost:3000/company/register', {
+            idStatus:this.state.status,
+            idAdmin: this.state.idAdmin,
+            name: this.state.name,
+            image: "No disponible",//no available until this functionality be implemented
+            deliveryCost: this.state.deliveryCost
+        });
+
         alert("registro exitoso");
 //evita que al presionar el boton el formulario se limpie
     }
@@ -77,46 +68,31 @@ class FormCompany extends Component {
         return (
             <div className="container p-4">
                 <form onSubmit={this.Register}>
-                    <div className="form-group ">
-                        <label for="Id">Id</label>
-                        <input type="number" className="form-control" id="Id" placeholder="Enter Id "
-                               onChange={this.onChangeId}></input>
-                    </div>
-                    <div className="form-group ">
-                        <label for="IdStatus">IdStatus</label>
-                        <input type="number" className="form-control" id="idStatus" placeholder="Enter id status"
-                               onChange={this.onChangeIdStatus}></input>
+
+                    <div className="form-group">
+                        <label htmlFor="Status">Status</label>
+                        <select className="form-control" onChange={this.onChangeIdStatus}>
+                            <option value="" disabled selected>-- Seleccione un status --</option>
+                            {this.state.states.map(st =>
+                                <option key={st.id} value={st.status}>{st.status}</option>
+                            )}
+                        </select>
                     </div>
                     <div className="form-group">
-                        <label for="Name">Name</label>
-                        <input type="text" className="form-control" id="name" placeholder="Type the company's name"
+                        <label for="name">Name</label>
+                        <input type="text" className="form-control" id="name" placeholder="Name of Company"
                                onChange={this.onChangeName}></input>
                     </div>
                     <div className="form-group">
                         <label for="Image">Image</label>
-                        <input type="text" className="form-control" id="image" placeholder="Type image's link"
-                               onChange={this.onChangeImage}></input>
+                        <input type="file" className="form-control-file" id="Image"></input>
                     </div>
                     <div className="form-group">
-                        <label for="IdAdmin">IdAdmin</label>
-                        <input type="number" className="form-control" id="idAdmin" placeholder="Type id's admin"
-                               onChange={this.onChangeIdAdmin}></input>
-                    </div>
-                    <div className="form-group">
-                        <label for="Category">Category</label>
-                        <input type="number" className="form-control" id="category" placeholder="Type the category"
-                               onChange={this.onChangeCategory}></input>
-                    </div>
-                    <div className="form-group">
-                        <label for="DeliveryCost">DeliveryCost</label>
-                        <input type="number" className="form-control" id="deliveryCost" placeholder="Type the delivery cost"
+                        <label htmlFor="name">DeliveryCost</label>
+                        <input type="text" className="form-control" id="name" placeholder="Delivery Cost of Company"
                                onChange={this.onChangeDeliveryCost}></input>
                     </div>
-                    <div className="form-group">
-                        <label for="OfficceHours">OfficceHours</label>
-                        <input type="text" className="form-control" id="officceHours" placeholder="Type the officce hours"
-                               onChange={this.onChangeOfficceHours}></input>
-                    </div>
+
                     <button type="submit" className="btn btn-primary" onSubmit={this.Register}>Registrar</button>
                 </form>
 
