@@ -66,6 +66,7 @@ class FormProduct extends Component {
             }
         }
         
+        
     }
     onChangeName = (e) => {
         this.setState({
@@ -122,7 +123,7 @@ class FormProduct extends Component {
                     
                     <div className="form-group ">
                         <label for="IdStatus">Status</label>
-                        <select className="form-control">
+                        <select className="form-control" onChange={this.onChangeIdStatus}>
                         <option value="" disabled selected>-- Seleccione un estado --</option>
                             {this.state.states.map(st=>
                                 <option key={st.id} value={st.status}>{st.status}
