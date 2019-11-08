@@ -3,6 +3,10 @@ import axios from 'axios'
 import ls from 'local-storage'
 
 class FormCompany extends Component {
+    constructor(props){
+        super(props);
+        //alert(this.props.numero);
+    }
     state = {
         id: "",
         idStatus: "",

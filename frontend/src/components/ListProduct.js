@@ -11,14 +11,14 @@ import ls from 'local-storage'
 class ListProduct extends React.Component {
     constructor(props){
         super(props);
-        
+
     }
-    
+
+
     state = {
 
         products: []
     }
-
     async componentDidMount() {
         //const busq = this.state.termino;
         //alert(ls.get('token'));
@@ -73,9 +73,9 @@ class ListProduct extends React.Component {
                 </div>
                 < Resultado
                     products={this.state.products}
+                    goToAddProduct={this.props.goToAddProduct}
                 />
             </div>
-
         );
     }
 
