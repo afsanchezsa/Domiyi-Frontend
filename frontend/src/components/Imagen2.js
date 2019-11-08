@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+
 //this shows a card with every product
 
 class Imagen extends React.Component {
@@ -8,10 +8,10 @@ class Imagen extends React.Component {
         super(props);
     }
 
-    onclick = () => {
+    onclick = () =>{
 
         //alert(this.props.product.id);
-        this.props.goToAddProduct(this.props.product);
+        this.props.goToAddProduct(this.props.product.id);
 //        alert("Hola Estoy aca")
     }
 
@@ -24,8 +24,7 @@ class Imagen extends React.Component {
                     <div className="card-body">
                         <p className="card-text">{this.props.product.name}</p>
                         <p className="card-text">{this.props.product.description}</p>
-                        <Link className="btn btn-primary btn-block" onClick={this.onclick}
-                              to='/addProduct'>Comprar</Link>
+                        <a targer="_blank" className="btn btn-primary btn-block" onClick={this.onclick}>Comprar</a>
                     </div>
                 </div>
             </div>
@@ -34,5 +33,3 @@ class Imagen extends React.Component {
 }
 
 export default Imagen;
-
-//<a targer="_blank" className="btn btn-primary btn-block" onClick={this.onclick}>Comprar</a>
