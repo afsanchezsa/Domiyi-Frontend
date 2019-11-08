@@ -97,7 +97,6 @@ class FormUser extends Component {
                 </form>
 
             </div>
-
         );
     }
 }

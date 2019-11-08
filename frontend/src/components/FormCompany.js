@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-
+import ls from 'local-storage'
 
 class FormCompany extends Component {
+    constructor(props){
+        super(props);
+        //alert(this.props.numero);
+    }
     state = {
         states:[],
         idStatus:"",
@@ -12,9 +16,10 @@ class FormCompany extends Component {
         deliveryCost:""
 
     }
+
     async componentDidMount(){
         const st = await axios.get(`http://localhost:3000/companiesStatus`);
-        //console.log(url);
+   
         this.setState({
             states: st.data
         });

@@ -3,25 +3,49 @@ import React from 'react';
 import Search from './Search';
 import Resultado from './Resultado';
 import axios from 'axios';
-
+import ls from 'local-storage'
 
 //import './App.css';
 
 
 class ListProduct extends React.Component {
+    constructor(props){
+        super(props);
+
+    }
+
 
     state = {
 
         products: []
     }
-
     async componentDidMount() {
         //const busq = this.state.termino;
-        const res = await axios.get(`http://localhost:3000/products`);
-        //console.log(url);
-        this.setState({
-            products: res.data
-        });
+        //alert(ls.get('token'));
+        var res;
+            try{
+                 res = await axios.get(`http://localhost:3000/products`,{
+                     headers:{
+                         authorization:ls.get('token')
+                     }
+                 });
+                 this.setState({
+                    products: res.data
+                });
+                } catch(e){
+                if(e.response.status==401){
+                    
+                this.props.Login();
+                }
+                }
+            
+
+                //console.log(url);
+        
+        
+            
+        
+        
         /*fetch(url)
             .then(respuesta => respuesta.json())
             .then(resultado => this.setState({ imagenes: resultado.image }))
@@ -49,9 +73,9 @@ class ListProduct extends React.Component {
                 </div>
                 < Resultado
                     products={this.state.products}
+                    goToAddProduct={this.props.goToAddProduct}
                 />
             </div>
-
         );
     }
 
