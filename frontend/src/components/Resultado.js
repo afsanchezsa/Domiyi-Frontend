@@ -3,6 +3,13 @@ import Imagen from './Imagen';
 
 class Resultado extends Component {
 
+    constructor(props){
+        super(props);
+    }
+    onclick = (id) =>{
+        this.props.goToAddProduct(id)
+    }
+
     mostrarImagenes = () => {
 
         const products = this.props.products;
@@ -17,6 +24,7 @@ class Resultado extends Component {
                         <Imagen
                             key={product.id}
                             product={product}
+                            goToAddProduct = {this.props.goToAddProduct}
                         />
                     ))}
 

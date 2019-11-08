@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-
+import ls from 'local-storage'
 
 class FormProduct extends Component {
     state = {
-        
+        states:[],
+        categories:[],
         id: "",
         idCompany: "",
         idStatus:"",
@@ -16,12 +17,25 @@ class FormProduct extends Component {
 
     }
 
+    async componentDidMount(){
+        const st = await axios.get(`http://localhost:3000/productsStatus`);
+        //console.log(url);
+        this.setState({
+            states: st.data
+        });
+        const categories=await axios.get(`http://localhost:3000/categories`);
+        
+        this.setState({
+            categories:categories.data
+        });
+    }
    /* async componentDidMount() {
         const res = await axios.get('http://localhost:3000/users');
         this.setState({
             users: res.data
         })
     }*/
+
 
     onChangeId = (e) => {//las funciones  onchange obligatoriamente tienen que ser flecha pues no vincula el this a si misma
         this.setState({
@@ -56,22 +70,31 @@ class FormProduct extends Component {
         });
     }
     onChangeCategory = (e) => {
-        this.setState({
-            category:e.target.value
-        });
-        //console.log(this.state.status);
+        var i;
+        var selected=e.target.value;
+        for(i=0;i<this.state.categories.length;i++){
+            if(this.state.categories[i].category===selected){
+                this.setState({
+                    category:this.state.categories[i].id
+                    
+                });
+                break;
+            }
+        }
+        
+        
     }
     Register = async (e) => {
         e.preventDefault();
         const res = await axios.post('http://localhost:3000/product/register', {
             id: this.state.id,
             idCompany: this.state.idCompany,
-            idStatus:this.state.idStatus,
             name: this.state.name,
             description: this.state.description,
             price: this.state.price,
             image: "No disponible",//no available until this functionality be implemented
-            category: this.state.category
+            idStatus:this.state.idStatus,
+            idCategory: this.state.category
         });
         
         alert("registro exitoso");
@@ -84,14 +107,19 @@ class FormProduct extends Component {
                 <form onSubmit={this.Register}>
                     
                     <div className="form-group ">
-                        <label for="IdCompany">Id Company</label>
-                        <input type="number" className="form-control" id="IdCompany" placeholder="Enter Id Company"
+                        <label for="IdCompany"> Company</label>
+                        <input type="text" className="form-control" id="IdCompany" placeholder="Enter Id Company"
                                onChange={this.onChangeIdCompany}></input>
                     </div>
                     <div className="form-group ">
-                        <label for="IdStatus">Id Status</label>
-                        <input type="number" className="form-control" id="IdStatus" placeholder="Enter Id Status"
-                               onChange={this.onChangeIdStatus}></input>
+                        <label for="IdStatus">Status</label>
+                        <select className="form-control">
+                        <option value="" disabled selected>-- Seleccione un estado --</option>
+                            {this.state.states.map(st=>
+                                <option key={st.id} value={st.status}>{st.status}
+                                </option>
+                            )}
+                        </select>
                     </div>
                     <div className="form-group">
                         <label for="name">Name</label>
@@ -114,8 +142,12 @@ class FormProduct extends Component {
                     </div>
                     <div className="form-group">
                         <label for="Category">Category</label>
-                        <input type="number" className="form-control" id="category" placeholder="Category"
-                               onChange={this.onChangeCategory}></input>
+                        <select className="form-control"  onChange={this.onChangeCategory} >
+                        <option value="" disabled selected >-- Seleccione una categoria --</option>
+                            {this.state.categories.map(ct=>
+                                <option key={ct.id} value={ct.category}>{ct.category}</option>
+                            )}
+                        </select>
                     </div>
                     
 
