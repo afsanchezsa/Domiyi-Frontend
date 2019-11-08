@@ -3,11 +3,15 @@ import axios from 'axios'
 import ls from 'local-storage'
 
 class FormProduct extends Component {
+    constructor(props){
+        super(props);
+    }
+    
     state = {
         states:[],
         categories:[],
         id: "",
-        idCompany: "",
+        idCompany: 1,
         idStatus:"",
         name: "",//the json object 
         description: "",
@@ -50,9 +54,18 @@ class FormProduct extends Component {
 //console.log(this.state.idCompany+' '+this.state.id);
     }
     onChangeIdStatus=(e)=>{
-        this.setState({
-            idStatus:e.target.value
-        });
+        var i;
+        var selected=e.target.value;
+        for(i=0;i<this.state.states.length;i++){
+            if(this.state.states[i].status===selected){
+                this.setState({
+                    idStatus:this.state.states[i].id
+                    
+                });
+                break;
+            }
+        }
+        
     }
     onChangeName = (e) => {
         this.setState({
@@ -106,11 +119,7 @@ class FormProduct extends Component {
             <div className="container p-4">
                 <form onSubmit={this.Register}>
                     
-                    <div className="form-group ">
-                        <label for="IdCompany"> Company</label>
-                        <input type="text" className="form-control" id="IdCompany" placeholder="Enter Id Company"
-                               onChange={this.onChangeIdCompany}></input>
-                    </div>
+                    
                     <div className="form-group ">
                         <label for="IdStatus">Status</label>
                         <select className="form-control">
