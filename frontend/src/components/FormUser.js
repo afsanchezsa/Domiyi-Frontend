@@ -5,49 +5,55 @@ import axios from 'axios'
 class FormUser extends Component {
     state = {
         id: "",//this will be send to the backend
+        name: "",
+        username: "",
         email: "",
         password: "",
-        name: "",
-        type: ""
+        phone: "",
+        address: ""
     }
 
-    onChangeId = (e) => {//las funciones  onchange obligatoriamente tienen que ser flecha pues no vincula el this a si misma
+    onChangeName = (e) => {
         this.setState({
-            id: e.target.value
+            name: e.target.value
         });
-//console.log(this.state.id);
     }
-    onChangeEmail = (e) => {
+    onChangeUserName = (e) => {
         this.setState({
-            email: e.target.value
+            username: e.target.value
         });
-//console.log(this.state.idCompany+' '+this.state.id);
+    }
+    onChangeEmail=(e)=>{
+        this.setState({
+            email:e.target.value
+        });
     }
     onChangePassword = (e) => {
         this.setState({
             password: e.target.value
         });
     }
-    onChangeName = (e) => {
+    onChangePhone = (e) => {
         this.setState({
-            name: e.target.value
-        });
-//console.log(this.state.idCompany+' '+this.state.id);
-    }
-    onChangeType = (e) => {
-        this.setState({
-            type: e.target.value
+            phone: e.target.value
         });
     }
-    Register = async (e) => {//is an async function wich wait a response 
+    onChangeAddress = (e) => {
+        this.setState({
+            address: e.target.value
+        });
+    }
+    Register = async (e) => {
+        e.preventDefault();
         const res = await axios.post('http://localhost:3000/users/register', {
-            id: this.state.id,
+            name: this.state.name,
+            username:this.state.username,
             email: this.state.email,
             password: this.state.password,
-            name: this.state.name,
-            type: this.state.type
+            phone: this.state.phone,
+            address:this.state.address
         });
-        e.preventDefault();
+
         alert("registro exitoso");
 //evita que al presionar el boton el formulario se limpie
     }
@@ -56,31 +62,37 @@ class FormUser extends Component {
         return (
             <div className="container p-4">
                 <form onSubmit={this.Register}>
-                    <div className="form-group ">
-                        <label for="Id">Id</label>
-                        <input type="number" className="form-control" id="Id" placeholder="Enter Id "
-                               onChange={this.onChangeId}></input>
-                    </div>
-                    <div className="form-group ">
-                        <label for="Email">Email</label>
-                        <input type="text" className="form-control" id="email" placeholder="Enter email"
-                               onChange={this.onChangeEmail}></input>
-                    </div>
                     <div className="form-group">
-                        <label for="Password">Password</label>
-                        <input type="text" className="form-control" id="password" placeholder="Type your password"
-                               onChange={this.onChangePassword}></input>
-                    </div>
-                    <div className="form-group">
-                        <label for="Name">Name</label>
-                        <input type="text" className="form-control" id="name" placeholder="Type your name"
+                        <label for="name">Name</label>
+                        <input type="text" className="form-control" id="name" placeholder="Name of user"
                                onChange={this.onChangeName}></input>
                     </div>
                     <div className="form-group">
-                        <label for="Type">Type</label>
-                        <input type="text" className="form-control" id="type" placeholder="Type of user"
-                               onChange={this.onChangeType}></input>
+                        <label htmlFor="username">Username</label>
+                        <input type="text" className="form-control" id="username" placeholder="Username of user"
+                               onChange={this.onChangeUserName}></input>
                     </div>
+                    <div className="form-group">
+                        <label htmlFor="name">Email</label>
+                        <input type="text" className="form-control" id="email" placeholder="Email of user"
+                               onChange={this.onChangeEmail}></input>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="name">Password</label>
+                        <input type="text" className="form-control" id="password" placeholder="Password of Company"
+                               onChange={this.onChangePassword}></input>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="name">Phone</label>
+                        <input type="text" className="form-control" id="phone" placeholder="Phone of user"
+                               onChange={this.onChangePhone}></input>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="name">Address</label>
+                        <input type="text" className="form-control" id="address" placeholder="Address of user"
+                               onChange={this.onChangeAddress}></input>
+                    </div>
+
                     <button type="submit" className="btn btn-primary" onSubmit={this.Register}>Registrar</button>
                 </form>
 

@@ -7,7 +7,9 @@ import FormUser from './components/FormUser'
 import ListProduct from './components/ListProduct'
 import FormCompany from './components/FormCompany'
 
+
 import AddProduct from "./components/AddProduct";
+
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     state = {
