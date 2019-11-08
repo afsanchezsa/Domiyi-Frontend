@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 //this shows a card with every product
 
+
 class Imagen extends React.Component {
     constructor(props) {
         super(props);
@@ -27,6 +28,7 @@ class Imagen extends React.Component {
                         <Link className="btn btn-primary btn-block" onClick={this.onclick}
                               to='/addProduct'>Comprar</Link>
                     </div>
+
                 </div>
             </div>
         );
