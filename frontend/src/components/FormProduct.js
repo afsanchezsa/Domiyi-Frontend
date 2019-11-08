@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-
+import ls from 'local-storage'
 
 class FormProduct extends Component {
     state = {
@@ -16,6 +16,7 @@ class FormProduct extends Component {
         category:""
 
     }
+
     async componentDidMount(){
         const st = await axios.get(`http://localhost:3000/productsStatus`);
         //console.log(url);
@@ -34,6 +35,7 @@ class FormProduct extends Component {
             users: res.data
         })
     }*/
+
 
     onChangeId = (e) => {//las funciones  onchange obligatoriamente tienen que ser flecha pues no vincula el this a si misma
         this.setState({

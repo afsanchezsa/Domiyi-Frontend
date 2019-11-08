@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-
+import ls from 'local-storage'
 
 class FormCompany extends Component {
     constructor(props){
@@ -17,6 +17,24 @@ class FormCompany extends Component {
         deliveryCost: "",
         officceHours: "",
     }
+    async componentDidMount() {
+        var res;
+        try{
+             res = await axios.get(`http://localhost:3000/products`,{
+                 headers:{
+                     authorization:ls.get('token')
+                 }
+             });
+             this.setState({
+                products: res.data
+            });
+            } catch(e){
+            if(e.response.status==401){
+                
+            this.props.Login();
+            }
+            }
+        }
 //on change events is for track the values on the inputs fields
     onChangeId = (e) => {//las funciones  onchange obligatoriamente tienen que ser flecha pues no vincula el this a si misma
         this.setState({
