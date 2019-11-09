@@ -30,6 +30,10 @@ const Navbar = () => {
                         <Link className="nav-link" to='/ProductRegister'>Registro Producto</Link>
 
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/Category'>Categoria</Link>
+
+                    </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -25,6 +25,7 @@ class FormCompany extends Component {
         });
     }
 
+
     onChangeIdStatus = (e) => {
         var i;
         var selected=e.target.value;
