@@ -6,7 +6,7 @@ import FormUser from './components/FormUser'
 //import './App.css';
 import ListProduct from './components/ListProduct'
 import FormCompany from './components/FormCompany'
-
+import Cart from './components/Cart'
 
 import AddProduct from "./components/AddProduct";
 
@@ -28,6 +28,7 @@ class App extends React.Component {//We render a component  depending of the act
         return (
             <Router>
                 <Navbar/>
+                <Route path="/Cart" render={(props) => <Cart {...props} idOrder={3}/>}/>
                 <Route path="/CompanyRegister" render={(props) => <FormCompany {...props} numero={1}/>}/>
                 <Route path="/addProduct" render={(props) => <AddProduct {...props} product = {this.state.product}/>}/>
                 <Route path="/UserRegister" component={FormUser}/>
