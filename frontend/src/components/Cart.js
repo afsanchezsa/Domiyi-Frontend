@@ -15,58 +15,37 @@ class Cart extends Component {
     state = {
         idOrder: "",
         products: [],
-        details: [],
+        orderDetails: [],
         idsProductOffer: [],
         idsProducts: []
-
-
     }
 
-    componentDidMount() {
-        const idsProductOffer = axios.post(`http://localhost:3000/detail/idsbyIdOrder`, {
-            idOrder: 1
-        }).then(() => {
-            console.log(idsProductOffer);
-            this.setState({
-                idsProductOffer: idsProductOffer
-            });
-        }).then(() => {
-            console.log(this.state.idsProductOffer);
-            const idsproducts = axios.post('http://localhost:3000/productOffer/IdsProductById', {
-                ids: this.state.idsProductOffer
-            });
-            this.setState({
-                idsProducts: idsproducts
+    async componentDidMount() {
 
+        var res;
+        try {
+            res = await axios.post(`http://localhost:3000/detail/byIdOrder`, {
+                idOrder: this.props.idOrder
             });
-        }).then(() => {
-            var i;
-            var dict = [];
-            for (i = 0; i < this.state.idsProducts.length; i++) {
-                var pr = axios.post('http://localhost:3000/products/id',
-                    {
-                        id: this.state.idsProducts[i].idProduct
-                    }).then(() => {
-                    dict.push(pr);
-                })
+            this.setState({
+                orderDetails: res.data
+            });
+        } catch (e) {
+            if (e.response.status == 401) {
+
+                this.props.Login();
             }
-            this.setState({
-                products: dict
-            });
-
-        }).catch(e => {
-            console.log(e);
-        });
+        }
     }
 
     render() {
         return (
             <div className="container p-4">
-                {this.state.products.map(dt =>
+                {this.state.orderDetails.map(dt =>
                     <div>
                         <Imagen
-                            key={dt.idProduct}
-                            product={this.state.products.get(dt.idProduct)}
+                            key={dt.id}
+                            product={this.state.orderDetails.get(dt.idProduct)}
                             goToAddProduct={() => {
                             }}
                         />
@@ -124,6 +103,47 @@ export default Cart;
     }
 
  */
+/*
+
+esto lo q iba en cart
+
+        /*
+        const idsProductOffer = axios.post(`http://localhost:3000/detail/idsbyIdOrder`, {
+            idOrder: 1
+        }).then(() => {
+            console.log(idsProductOffer);
+            this.setState({
+                idsProductOffer: idsProductOffer
+            });
+        }).then(() => {
+            console.log(this.state.idsProductOffer);
+            const idsproducts = axios.post('http://localhost:3000/productOffer/IdsProductById', {
+                ids: this.state.idsProductOffer
+            });
+            this.setState({
+                idsProducts: idsproducts
+
+            });
+        }).then(() => {
+            var i;
+            var dict = [];
+            for (i = 0; i < this.state.idsProducts.length; i++) {
+                var pr = axios.post('http://localhost:3000/products/id',
+                    {
+                        id: this.state.idsProducts[i].idProduct
+                    }).then(() => {
+                    dict.push(pr);
+                })
+            }
+            this.setState({
+                products: dict
+            });
+
+        }).catch(e => {
+            console.log(e);
+        });
+
+         */
 
 
 

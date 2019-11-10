@@ -16,6 +16,7 @@ class ShoppingProduct extends React.Component {
         quantity: "",
         observation:"",
         unitPrice: this.props.product.price,
+        idsDetailscreated:[]
     }
     onChangeQuantity = (e) => {
         this.setState({
@@ -28,18 +29,28 @@ class ShoppingProduct extends React.Component {
         });
     }
 
-    Register = async (e) => {
+    Register =async (e)=>  {
         e.preventDefault();
-        const res = await axios.post('http://localhost:3000/detail/register', {
-            idOrder: this.state.idOrder,
-            idProductOffer : this.state.idProductOffer,
-            quantity : this.state.quantity,
-            observation : this.state.observation,
-            unitPrice : this.state.unitPrice
-        });
+try{
+    const res = await axios.post('http://localhost:3000/detail/register', {
+        idOrder: this.state.idOrder,
+        idProductOffer : this.state.idProductOffer,
+        quantity : this.state.quantity,
+        observation : this.state.observation,
+        unitPrice : this.state.unitPrice
+    });
+    //var ids;
+    //ids=this.state.idsDetailscreated;
+    //ids.push(res.data.id);
+    this.props.addDetail(res.data.id);
+       //console.log(this.state.idsDetailscreated);
 
-        alert("registro exitoso");
-//evita que al presionar el boton el formulario se limpie
+    alert("registro exitoso");
+
+}catch(e){
+console.log(e);
+}
+    //evita que al presionar el boton el formulario se limpie
     }
 //<Link className="nav-link" to='/Products'>Productos</Link>
     onclick (){
@@ -67,9 +78,11 @@ class ShoppingProduct extends React.Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="name">Añadir Detalles</label>
-                                <input type="text" className="form-control" id="name" placeholder="Name of Company"
+                                <input type="text" className="form-control" id="name" placeholder="Details"
                                        onChange={this.onChangeObservation}></input>
-                                <button type="submit" className="btn btn-primary" to='/Products'  onSubmit={this.Register} onClick={this.onclick}>Añadir a carrito</button>
+
+                                <button type="submit" className="btn btn-primary btn-block" to='/Products'  onSubmit={this.Register} onClick={this.onclick}>Añadir a carrito</button>
+                                <Link type="submit" className="btn btn-primary btn-block" to='/Products' >Volver a Productos </Link>
                             </div>
 
                         </form>
@@ -83,7 +96,7 @@ class ShoppingProduct extends React.Component {
 
 export default ShoppingProduct;
 /*
-<Link type="submit" className="btn btn-primary btn-block" to='/Products' onSubmit={this.Register}>Añadir al carrito </Link>
+
 
 
 
