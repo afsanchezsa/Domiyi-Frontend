@@ -9,14 +9,15 @@ class ShoppingProduct extends React.Component {
     constructor(props) {
         super(props);
     }
+
     state = {
-        states:[],
+        states: [],
         idOrder: 1,//this.props.idOrder
         idProductOffer: 1,//the json object,
         quantity: "",
-        observation:"",
+        observation: "",
         unitPrice: this.props.product.price,
-        idsDetailscreated:[]
+        idsDetailscreated: []
     }
     onChangeQuantity = (e) => {
         this.setState({
@@ -29,35 +30,37 @@ class ShoppingProduct extends React.Component {
         });
     }
 
-    Register =async (e)=>  {
+    Register = async (e) => {
         e.preventDefault();
-try{
-    const res = await axios.post('http://localhost:3000/detail/register', {
-        idOrder: this.state.idOrder,
-        idProductOffer : this.state.idProductOffer,
-        quantity : this.state.quantity,
-        observation : this.state.observation,
-        unitPrice : this.state.unitPrice
-    });
-    //var ids;
-    //ids=this.state.idsDetailscreated;
-    //ids.push(res.data.id);
-    this.props.addDetail(res.data.id);
-       //console.log(this.state.idsDetailscreated);
+        try {
+            const res = await axios.post('http://localhost:3000/detail/register', {
+                idOrder: this.state.idOrder,
+                idProductOffer: this.state.idProductOffer,
+                quantity: this.state.quantity,
+                observation: this.state.observation,
+                unitPrice: this.state.unitPrice
+            });
+            //var ids;
+            //ids=this.state.idsDetailscreated;
+            //ids.push(res.data.id);
+            this.props.addDetail(res.data.id);
+            //console.log(this.state.idsDetailscreated);
 
-    alert("registro exitoso");
+            alert("registro exitoso");
 
-}catch(e){
-console.log(e);
-}
-    //evita que al presionar el boton el formulario se limpie
+        } catch (e) {
+            console.log(e);
+        }
+        //evita que al presionar el boton el formulario se limpie
     }
+
 //<Link className="nav-link" to='/Products'>Productos</Link>
-    onclick (){
-        return(
-            <Link className="" to ='/Products'></Link>
+    onclick() {
+        return (
+            <Link className="" to='/Products'></Link>
         )
     }
+
     render() {
         return (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -81,8 +84,11 @@ console.log(e);
                                 <input type="text" className="form-control" id="name" placeholder="Details"
                                        onChange={this.onChangeObservation}></input>
 
-                                <button type="submit" className="btn btn-primary btn-block" to='/Products'  onSubmit={this.Register} onClick={this.onclick}>Añadir a carrito</button>
-                                <Link type="submit" className="btn btn-primary btn-block" to='/Products' >Volver a Productos </Link>
+                                <button type="submit" className="btn btn-primary btn-block" to='/Products'
+                                        onSubmit={this.Register} onClick={this.onclick}>Añadir a carrito
+                                </button>
+                                <Link type="submit" className="btn btn-primary btn-block" to='/Products'>Volver a
+                                    Productos </Link>
                             </div>
 
                         </form>

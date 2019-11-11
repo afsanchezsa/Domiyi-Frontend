@@ -54,7 +54,7 @@ class Cart extends Component {
                 </div>
                 <div>
                     < ResultDetail
-                        details = {this.state.orderDetails}
+                        details={this.state.orderDetails}
                     />
                 </div>
                 <Link className="btn btn-primary btn-block" to='/Products'>Finalizar compra</Link>
@@ -63,6 +63,7 @@ class Cart extends Component {
     }
 
 }
+
 /*
                {this.state.orderDetails.map(dt =>
                     <div>

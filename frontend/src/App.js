@@ -37,7 +37,7 @@ class App extends React.Component {//We render a component  depending of the act
                 address: "Avenida siempre vivas 123"
             });
             this.setState({
-                idOrder:res.data.id
+                idOrder: res.data.id
             })
 
         }
@@ -50,7 +50,7 @@ class App extends React.Component {//We render a component  depending of the act
             }
         );
         console.log(this.state.idsDetails);
-        console.log("idorder"+this.state.idOrder);
+        console.log("idorder" + this.state.idOrder);
     }
     goToAddProduct = (product) => {
         this.setState({
@@ -59,18 +59,21 @@ class App extends React.Component {//We render a component  depending of the act
         })
         //alert(id);
     }
+
     render() {
         return (
             <Router>
                 <Navbar/>
                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder}/>}/>
                 <Route path="/CompanyRegister" render={(props) => <FormCompany {...props} numero={1}/>}/>
-                <Route path="/addProduct" render={(props) => <AddProduct {...props} product={this.state.product} idOrder={this.state.idOrder}
+                <Route path="/addProduct" render={(props) => <AddProduct {...props} product={this.state.product}
+                                                                         idOrder={this.state.idOrder}
                                                                          addDetail={this.addDetail}/>}/>
                 <Route path="/UserRegister" component={FormUser}/>
                 <Route path="/ProductRegister" component={FormProduct}/>
                 <Route path="/Products"
-                       render={(props) => <ListProduct {...props} goToAddProduct={this.goToAddProduct} idOrder={this.state.idOrder}/>}/>
+                       render={(props) => <ListProduct {...props} goToAddProduct={this.goToAddProduct}
+                                                       idOrder={this.state.idOrder}/>}/>
             </Router>
         )
 
