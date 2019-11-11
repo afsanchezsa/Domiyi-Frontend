@@ -38,8 +38,6 @@ class FormCompany extends Component {
                 break;
             }
         }
-
-
     }
     onChangeIdAdmin=(e)=>{
         this.setState({

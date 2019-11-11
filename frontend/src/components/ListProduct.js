@@ -38,8 +38,6 @@ class ListProduct extends React.Component {
                 this.props.Login();
                 }
                 }
-            
-
                 //console.log(url);
         
         

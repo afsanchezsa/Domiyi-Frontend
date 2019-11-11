@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import ls from 'local-storage'
+import './category.css';
 
 //import './App.css';
 
 
 class Category extends React.Component {
-    constructor(props) {
+ /*   constructor(props) {
         super(props);
 
     }
@@ -14,6 +15,7 @@ class Category extends React.Component {
     state = {
         id: [],
         categories: [],
+        linkimg: [],
         category: ""
     };
 
@@ -42,39 +44,107 @@ class Category extends React.Component {
         for (i = 0; i < this.state.categories.length; i++) {
             if (this.state.categories[i].status == selected) {
                 this.setState({
-                    status: this.state.categories[i].id
+                    category: this.state.categories[i].id
                 });
                 break;
             }
         }
-    }
+    };
 
     handleClick = async (id, e) =>{
         alert("my id is: "+id);
-    }
-
-/*    enviarId = async (e) => {
-
         e.preventDefault();
-        const res = await axios.post('http://localhost:3000/companyrequestbyid', {
-            id: this.state.id
-        });
-        alert("Se envio ID");
+        const res = await axios.post('http://localhost:3000/products/idCompanybycategory',{
+        idCategory: this.state.id
+    });
 
-        //evita que al presionar el boton el formulario se limpie
-    }*/
+
+    };
 
     render() {
         return (
             <div className="container">
                 {this.state.categories.map(ct =>
                     <li className='list-group-item' key={ct.id} value={ct.category}>
+                        <div className="imgSize" >
+                            <img src={ct.linkimg}/>
+                        </div>
+
                         <button onClick={(e) => this.handleClick(ct.id,e)}>
                             {ct.category}
                         </button>
-                    </li>
+ </li>
                 )}
             </div>
+        );
+    }*/
+
+    constructor(props){
+        super(props);
+        //alert(this.props.numero);
+    }
+
+    state = {
+        id: [],
+        categories: [],
+        linkimg: [],
+        category: ""
+    };
+
+    async componentDidMount(){
+        const ct = await axios.get(`http://localhost:3000/categories`);
+
+        this.setState({
+            categories: ct.data
+        });
+    }
+
+    onChangeCategories = (e) => {
+        var i;
+        var selected = e.target.value;
+        for (i = 0; i < this.state.categories.length; i++) {
+            if (this.state.categories[i].category === selected) {
+                this.setState({
+                    category: this.state.categories[i].id
+                });
+                break;
+            }
+        }
+    };
+
+    Register = async (e) => {
+
+        e.preventDefault();
+        const res = await axios.get('http://localhost:3000/idCompanybycategory', {
+            id:this.state.id
+        });
+
+        alert("registro exitoso");
+
+//evita que al presionar el boton el formulario se limpie
+    }
+
+    render() {
+        return (
+            <div className="container p-4">
+                <form onSubmit={this.Register}>
+
+                    <div className="form-group">
+                        <label htmlFor="Status">Categoria</label>
+                        <select className="form-control" onChange={this.onChangeCategories}>
+                            <option value="" disabled selected>-- Seleccione una categoria --</option>
+                            {this.state.categories.map(ct =>
+                                <option key={ct.id} value={ct.category}>{ct.category}</option>
+                            )}
+                        </select>
+                    </div>
+                    <button type="submit" className="btn btn-primary" onSubmit={this.Register}>Registrar</button>
+                </form>
+
+                <h1>HOLA</h1>
+
+            </div>
+
         );
     }
 
