@@ -11,7 +11,7 @@ class Cart extends Component {
     constructor(props) {
         super(props);
         this.setState({
-            idOrder: 1//this.props.idOrder
+            idOrder: this.props.idOrder
         });
     }
 
@@ -25,21 +25,41 @@ class Cart extends Component {
 
 
     async componentDidMount() {
-
+/*
+p.then(function(value) {
+   // cumplimiento
+  }, function(reason) {
+  // rechazo
+});
+ */
         var res;
-        try {
+        var res2;
+        try{
             res = await axios.post(`http://localhost:3000/detail/byIdOrder`, {
-                idOrder: 1//this.props.idOrder
+                idOrder: this.props.idOrder
             });
             this.setState({
                 orderDetails: res.data
 
             });
+        }catch (e) {
+            if (e.response.status == 401) {
+                this.props.Login();
+            }
+        }
+        try{
+            res2 = await axios.post(`http://localhost:3000/detail/updateIdOrder`, {
+                arrayIds : this.props.idsDetails,
+                idOrder: this.props.idOrder
+            });
+
         } catch (e) {
             if (e.response.status == 401) {
                 this.props.Login();
             }
         }
+
+
         console.log(this.state.orderDetails);
         console.log(this.props.idOrder);
     }
