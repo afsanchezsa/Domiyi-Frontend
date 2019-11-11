@@ -17,7 +17,7 @@ class ImageDetail extends React.Component {
                     <div className="card-body">
                         <p className="card-text">{this.props.detail.name}</p>
                         <p className="card-text">{this.props.detail.observation}</p>
-                        <p className="card-text">{this.props.detail.quantity}</p>
+                        <p className="card-text">Cantidad: {this.props.detail.quantity}</p>
                     </div>
 
                 </div>
