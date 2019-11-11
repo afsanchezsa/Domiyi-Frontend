@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
-import axios from 'axios'
-import ls from 'local-storage'
-import Imagen from './Imagen'
-import Resultado from "./Resultado";
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+//import ls from 'local-storage'
+//import Imagen from './Imagen'
+//import ImageDetail from "./ImageDetail";
+
+import ResultDetail from "./ResultDetail";
 
 class Cart extends Component {
     constructor(props) {
         super(props);
         this.setState({
-            idOrder: this.props.idOrder
+            idOrder: 1//this.props.idOrder
         });
     }
 
@@ -20,44 +23,66 @@ class Cart extends Component {
         idsProducts: []
     }
 
+
     async componentDidMount() {
 
         var res;
         try {
             res = await axios.post(`http://localhost:3000/detail/byIdOrder`, {
-                idOrder: this.props.idOrder
+                idOrder: 1//this.props.idOrder
             });
             this.setState({
                 orderDetails: res.data
+
             });
         } catch (e) {
             if (e.response.status == 401) {
-
                 this.props.Login();
             }
         }
+        console.log(this.state.orderDetails);
+        console.log(this.props.idOrder);
     }
 
     render() {
         return (
-            <div className="container p-4">
-                {this.state.orderDetails.map(dt =>
-                    <div>
-                        <Imagen
-                            key={dt.id}
-                            product={this.state.orderDetails.get(dt.idProduct)}
-                            goToAddProduct={() => {
-                            }}
-                        />
-                        <p>{dt.quantity}</p>
-                    </div>
-                )}
-            </div>
+            <div className="app container">
+                <div className="jumbotron">
 
+                    <p className="lead text-center">Productos a Comprar</p>
+
+                </div>
+                <div>
+                    < ResultDetail
+                        details = {this.state.orderDetails}
+                    />
+                </div>
+                <Link className="btn btn-primary btn-block" to='/Products'>Finalizar compra</Link>
+            </div>
         );
     }
-}
 
+}
+/*
+               {this.state.orderDetails.map(dt =>
+                    <div>
+                        < ResultDetail
+                            key={dt.id}
+                            details = {this.state.orderDetails}
+                        />
+                    </div>
+                )}
+ */
+/*
+            <div className="app container">
+
+                <div className="jumbotron">
+
+                    <p className="lead text-center">Hola</p>
+
+                </div>
+            </div>
+ */
 export default Cart;
 
 /*
@@ -146,6 +171,14 @@ esto lo q iba en cart
          */
 
 
+/*      inicialmente asi
+                        <ImageDetail
+                            key={dt.id}
+                            detail = {this.state.orderDetails.get(dt.id)}
+                            addDetail={() => {
+                            }}
+                        />
+ */
 
 
 

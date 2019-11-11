@@ -74,6 +74,7 @@ class ListProduct extends React.Component {
                 < Resultado
                     products={this.state.products}
                     goToAddProduct={this.props.goToAddProduct}
+                    idOrder={this.props.idOrder}
                 />
             </div>
         );

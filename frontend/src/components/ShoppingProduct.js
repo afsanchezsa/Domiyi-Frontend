@@ -11,7 +11,7 @@ class ShoppingProduct extends React.Component {
     }
     state = {
         states:[],
-        idOrder: 1,
+        idOrder: 1,//this.props.idOrder
         idProductOffer: 1,//the json object,
         quantity: "",
         observation:"",

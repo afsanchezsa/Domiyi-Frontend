@@ -19,13 +19,7 @@ class App extends React.Component {//We render a component  depending of the act
         product: {},
         idsDetails: []
     }
-    goToAddProduct = (product) => {
-        this.setState({
-            url: 'http://localhost:3001/addProduct',
-            product: product
-        })
-        //alert(id);
-    }
+
     /*
         const res = await axios.post('http://localhost:3000/detail/register', {
         idOrder: this.state.idOrder,
@@ -37,7 +31,6 @@ class App extends React.Component {//We render a component  depending of the act
      */
     addDetail = async (id) => {
         if (this.state.idOrder == null) {
-
             const res = await axios.post('http://localhost:3000/order/register', {
                 idCompany: 1,
                 idUser: 1,
@@ -59,19 +52,25 @@ class App extends React.Component {//We render a component  depending of the act
         console.log(this.state.idsDetails);
         console.log("idorder"+this.state.idOrder);
     }
-
+    goToAddProduct = (product) => {
+        this.setState({
+            url: 'http://localhost:3001/addProduct',
+            product: product,
+        })
+        //alert(id);
+    }
     render() {
         return (
             <Router>
                 <Navbar/>
                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder}/>}/>
                 <Route path="/CompanyRegister" render={(props) => <FormCompany {...props} numero={1}/>}/>
-                <Route path="/addProduct" render={(props) => <AddProduct {...props} product={this.state.product}
+                <Route path="/addProduct" render={(props) => <AddProduct {...props} product={this.state.product} idOrder={this.state.idOrder}
                                                                          addDetail={this.addDetail}/>}/>
                 <Route path="/UserRegister" component={FormUser}/>
                 <Route path="/ProductRegister" component={FormProduct}/>
                 <Route path="/Products"
-                       render={(props) => <ListProduct {...props} goToAddProduct={this.goToAddProduct}/>}/>
+                       render={(props) => <ListProduct {...props} goToAddProduct={this.goToAddProduct} idOrder={this.state.idOrder}/>}/>
             </Router>
         )
 
