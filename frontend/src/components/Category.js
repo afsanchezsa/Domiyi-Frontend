@@ -85,9 +85,9 @@ class Category extends React.Component {
     }
 
     state = {
-        id: [],
+        id: "",
         categories: [],
-        linkimg: [],
+        linkimg: "",
         category: ""
     };
 
@@ -113,22 +113,22 @@ class Category extends React.Component {
     };
 
     Register = async (e) => {
-
+        console.log(this.state.category)
         e.preventDefault();
-        const res = await axios.get('http://localhost:3000/idCompanybycategory', {
-            id:this.state.id
+        const res = await axios.post('http://localhost:3000/products/idCompanybycategory', {
+            idCategory: this.state.category
         });
-
-        alert("registro exitoso");
+        console.log(res.data)
 
 //evita que al presionar el boton el formulario se limpie
     }
+
+
 
     render() {
         return (
             <div className="container p-4">
                 <form onSubmit={this.Register}>
-
                     <div className="form-group">
                         <label htmlFor="Status">Categoria</label>
                         <select className="form-control" onChange={this.onChangeCategories}>
@@ -138,15 +138,10 @@ class Category extends React.Component {
                             )}
                         </select>
                     </div>
-                    <button type="submit" className="btn btn-primary" onSubmit={this.Register}>Registrar</button>
+                    <button type="submit" className="btn btn-primary" onSubmit={this.Register}>Seleccionar</button>
                 </form>
-
-                <h1>HOLA</h1>
-
             </div>
-
         );
     }
-
 }
 export default Category;
