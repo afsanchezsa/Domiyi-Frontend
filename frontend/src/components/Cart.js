@@ -25,16 +25,25 @@ class Cart extends Component {
 
 
     async componentDidMount() {
-/*
-p.then(function(value) {
-   // cumplimiento
-  }, function(reason) {
-  // rechazo
-});
- */
+        /*
+        p.then(function(value) {
+           // cumplimiento
+          }, function(reason) {
+          // rechazo
+        });
+         */
         var res;
-        var res2;
-        try{
+        var res2 = null;
+        console.log("rec" + this.props.idOrder);
+
+
+        try {
+            res2 = await axios.post(`http://localhost:3000/detail/updateIdOrder`, {
+                arrayIds: this.props.idsDetails,
+                idOrder: this.props.idOrder
+            });
+
+            console.log("res2");
             res = await axios.post(`http://localhost:3000/detail/byIdOrder`, {
                 idOrder: this.props.idOrder
             });
@@ -42,27 +51,45 @@ p.then(function(value) {
                 orderDetails: res.data
 
             });
-        }catch (e) {
-            if (e.response.status == 401) {
-                this.props.Login();
-            }
-        }
-        try{
-            res2 = await axios.post(`http://localhost:3000/detail/updateIdOrder`, {
-                arrayIds : this.props.idsDetails,
-                idOrder: this.props.idOrder
-            });
-
         } catch (e) {
             if (e.response.status == 401) {
-                this.props.Login();
+                // this.props.Login();
+                console.log("hubo error ")
             }
         }
 
 
-        console.log(this.state.orderDetails);
-        console.log(this.props.idOrder);
+        /*      axios.post(`http://localhost:3000/detail/updateIdOrder`, {
+                  arrayIds: this.props.idsDetails,
+                  idOrder: 19//this.props.idOrder
+              }).then(()=>{
+                  return axios.post(`http://localhost:3000/detail/byIdOrder`, {
+                      idOrder:this.props.idOrder
+                  });
+
+              }).then(res=>{
+                  console.log("data:"+res.data);
+                  this.setState({
+                      orderDetails: res.data
+
+                  });
+              }).catch(e=>{
+                  console.log(e);
+              })
+
+
+      */
+//        console.log(this.state.orderDetails);
+        //      console.log(this.props.idOrder);
     }
+
+    init = () => {
+        return axios.post(`http://localhost:3000/detail/updateIdOrder`, {
+            arrayIds: this.props.idsDetails,
+            idOrder: this.props.idOrder
+        });
+    }
+
 
     render() {
         return (
