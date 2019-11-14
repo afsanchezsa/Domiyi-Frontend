@@ -1,2 +1,2 @@
-const ServerHost='bqgr2cirsykagvh6xt6c-mysql.services.clever-cloud.com'
+const ServerHost='https://domiyibackend.herokuapp.com/'
 export default ServerHost;
