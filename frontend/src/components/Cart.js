@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import ls from 'local-storage'
 import Imagen from './Imagen'
-import Host from '../../resources/ServerUtilities'
+import Host from '../Utilities/ServerUtilities'
 class Cart extends Component {
     constructor(props){
         super(props);

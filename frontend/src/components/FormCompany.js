@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import ls from 'local-storage'
-import Host from '../../resources/ServerUtilities'
+import Host from '../Utilities/ServerUtilities'
 class FormCompany extends Component {
     constructor(props){
         super(props);
@@ -10,7 +10,7 @@ class FormCompany extends Component {
     state = {
         states:[],
         idStatus:"",
-        idAdmin: "",
+        idAdmin: 1,
         name: "",//the json object,
         image: "",
         deliveryCost:""

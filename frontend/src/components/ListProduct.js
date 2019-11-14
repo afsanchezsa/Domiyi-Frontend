@@ -4,7 +4,7 @@ import Search from './Search';
 import Resultado from './Resultado';
 import axios from 'axios';
 import ls from 'local-storage'
-import Host from '../../resources/ServerUtilities'
+import Host from '../Utilities/ServerUtilities'
 //import './App.css';
 
 
@@ -33,10 +33,11 @@ class ListProduct extends React.Component {
                     products: res.data
                 });
                 } catch(e){
-                if(e.response.status==401){
+                /*if(e.response.status==401){
                     
                 this.props.Login();
-                }
+                }*/
+                alert(e);
                 }
             
 

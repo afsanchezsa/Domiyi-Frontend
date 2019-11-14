@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-import Host from '../../resources/ServerUtilities'
+import Host from '../Utilities/ServerUtilities'
 
 class FormUser extends Component {
     state = {
