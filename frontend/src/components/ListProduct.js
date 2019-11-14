@@ -37,7 +37,7 @@ class ListProduct extends React.Component {
                     
                 this.props.Login();
                 }*/
-                alert(e);
+                alert(e.message);
                 }
             
 
