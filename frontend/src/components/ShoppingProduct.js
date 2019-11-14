@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
-
+import Host from '../Utilities/ServerUtilities'
 //this shows a card with every product
 
 class ShoppingProduct extends React.Component {
@@ -33,7 +33,7 @@ class ShoppingProduct extends React.Component {
     Register = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:3000/detail/register', {
+            const res = await axios.post(Host+'/detail/register', {
                 idOrder: this.state.idOrder,
                 idProductOffer: this.state.idProductOffer,
                 quantity: this.state.quantity,
