@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import ls from 'local-storage'
-
+import Host from '../../resources/ServerUtilities'
 class FormCompany extends Component {
     constructor(props){
         super(props);
@@ -18,7 +18,7 @@ class FormCompany extends Component {
     }
 
     async componentDidMount(){
-        const st = await axios.get(`http://localhost:3000/companiesStatus`);
+        const st = await axios.get('http://'+Host+'/companiesStatus');
    
         this.setState({
             states: st.data
@@ -57,7 +57,7 @@ class FormCompany extends Component {
     }
     Register = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://localhost:3000/company/register', {
+        const res = await axios.post('http://'+Host+'/company/register', {
             idStatus:this.state.status,
             idAdmin: this.state.idAdmin,
             name: this.state.name,

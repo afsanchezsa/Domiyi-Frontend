@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import ls from 'local-storage'
-
+import Host from '../../resources/ServerUtilities'
 class FormProduct extends Component {
     constructor(props){
         super(props);
@@ -22,12 +22,12 @@ class FormProduct extends Component {
     }
 
     async componentDidMount(){
-        const st = await axios.get(`http://localhost:3000/productsStatus`);
+        const st = await axios.get('http://'+Host+'/productsStatus');
         //console.log(url);
         this.setState({
             states: st.data
         });
-        const categories=await axios.get(`http://localhost:3000/categories`);
+        const categories=await axios.get('http://'+Host+'/categories');
         
         this.setState({
             categories:categories.data
@@ -100,7 +100,7 @@ class FormProduct extends Component {
     }
     Register = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://localhost:3000/product/register', {
+        const res = await axios.post('http://'+Host+'/product/register', {
             id: this.state.id,
             idCompany: this.state.idCompany,
             name: this.state.name,
