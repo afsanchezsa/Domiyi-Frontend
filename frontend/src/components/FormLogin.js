@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import ls from 'local-storage'
-
+import Host from '../Utilities/ServerUtilities'
 class FormLogin extends Component {
     state = {
        username:"",
@@ -36,7 +36,7 @@ class FormLogin extends Component {
     Login = async (e) => {//with axios send the request to the route with the body 
         try{
             e.preventDefault();
-        const res = await axios.post('http://localhost:3000/login', {
+        const res = await axios.post(Host+'/login', {
            username:this.state.username,
            password:this.state.password
         });

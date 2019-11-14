@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
+
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-//import ls from 'local-storage'
-//import Imagen from './Imagen'
+import ls from 'local-storage'
+import Imagen from './Imagen'
 //import ImageDetail from "./ImageDetail";
 
 import ResultDetail from "./ResultDetail";
+import Host from '../Utilities/ServerUtilities'
 
 class Cart extends Component {
     constructor(props) {
@@ -89,6 +91,7 @@ class Cart extends Component {
             idOrder: this.props.idOrder
         });
     }
+
 
 
     render() {

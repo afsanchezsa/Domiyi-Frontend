@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-
+import Host from '../Utilities/ServerUtilities'
 
 class FormUser extends Component {
     state = {
@@ -45,7 +45,7 @@ class FormUser extends Component {
     }
     Register = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://localhost:3000/users/register', {
+        const res = await axios.post(Host+'/users/register', {
             name: this.state.name,
             username:this.state.username,
             email: this.state.email,

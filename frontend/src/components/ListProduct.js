@@ -4,7 +4,7 @@ import Search from './Search';
 import Resultado from './Resultado';
 import axios from 'axios';
 import ls from 'local-storage'
-
+import Host from '../Utilities/ServerUtilities'
 //import './App.css';
 
 
@@ -24,10 +24,13 @@ class ListProduct extends React.Component {
         //const busq = this.state.termino;
         //alert(ls.get('token'));
         var res;
-        try {
-            res = await axios.get(`http://localhost:3000/products`, {
+
+            try{
+                 res = await axios.get(Host+'/products',{
+                  
                 headers: {
                     authorization: ls.get('token')
+
                 }
             });
             this.setState({
