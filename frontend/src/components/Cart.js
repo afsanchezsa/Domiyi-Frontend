@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import ls from 'local-storage'
 import Imagen from './Imagen'
+import Host from '../../resources/ServerUtilities'
 class Cart extends Component {
     constructor(props){
         super(props);
@@ -21,7 +22,7 @@ class Cart extends Component {
     componentDidMount() {
         
                 
-                const idsProductOffer=axios.post(`http://localhost:3000/detail/idsbyIdOrder`,{
+                const idsProductOffer=axios.post('http://'+Host+'/detail/idsbyIdOrder',{
                         idOrder:3
                     }).then(()=>{
                         console.log(idsProductOffer);
@@ -32,7 +33,7 @@ class Cart extends Component {
 
                     }).then(()=>{
                         console.log(this.state.idsProductOffer);
-                        const idsproducts=axios.post('http://localhost:3000/productOffer/IdsProductById',{
+                        const idsproducts=axios.post('http://'+Host+'/productOffer/IdsProductById',{
                             ids:this.state.idsProductOffer
                         });
                         this.setState({
@@ -43,7 +44,7 @@ class Cart extends Component {
                         var i;
                         var dict=[];
                         for(i=0;i<this.state.idsProducts.length;i++){
-                        var pr=axios.post('http://localhost:3000/products/id',
+                        var pr=axios.post('http://'+Host+'/products/id',
                         {
                             id:this.state.idsProducts[i].idProduct
                         }).then(()=>{
