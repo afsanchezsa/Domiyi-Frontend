@@ -30,8 +30,17 @@ const Navbar = () => {
                         <Link className="nav-link" to='/ProductRegister'>Registro Producto</Link>
 
                     </li>
+
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
+                    <a className="navbar-brand" href="#">
+                        <Link className="nav-link" to='/Cart'>
+
+                            <img src="https://previews.123rf.com/images/val2014/val20141603/val2014160300005/54302312-shopping-cart-icon.jpg" width="30"
+                                 height="30" className="d-inline-block align-top" alt="">
+                            </img>
+                        </Link>
+                    </a>
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     </input>
                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

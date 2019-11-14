@@ -9,7 +9,7 @@ import Host from '../Utilities/ServerUtilities'
 
 
 class ListProduct extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
     }
@@ -19,34 +19,34 @@ class ListProduct extends React.Component {
 
         products: []
     }
+
     async componentDidMount() {
         //const busq = this.state.termino;
         //alert(ls.get('token'));
         var res;
+
             try{
                  res = await axios.get(Host+'/products',{
-                     headers:{
-                         authorization:ls.get('token')
-                     }
-                 });
-                 this.setState({
-                    products: res.data
-                });
-                } catch(e){
-                /*if(e.response.status==401){
-                    
-                this.props.Login();
-                }*/
-                alert(e);
-                }
-            
+                  
+                headers: {
+                    authorization: ls.get('token')
 
-                //console.log(url);
-        
-        
-            
-        
-        
+                }
+            });
+            this.setState({
+                products: res.data
+            });
+        } catch (e) {
+            if (e.response.status == 401) {
+
+                this.props.Login();
+            }
+        }
+
+
+        //console.log(url);
+
+
         /*fetch(url)
             .then(respuesta => respuesta.json())
             .then(resultado => this.setState({ imagenes: resultado.image }))
@@ -66,7 +66,7 @@ class ListProduct extends React.Component {
     render() {
         return (
             <div className="app container">
-    
+
                 <div className="jumbotron">
 
                     <p className="lead text-center">Productos</p>
@@ -75,6 +75,7 @@ class ListProduct extends React.Component {
                 < Resultado
                     products={this.state.products}
                     goToAddProduct={this.props.goToAddProduct}
+                    idOrder={this.props.idOrder}
                 />
             </div>
         );
