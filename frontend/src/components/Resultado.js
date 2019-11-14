@@ -25,6 +25,7 @@ class Resultado extends Component {
                             key={product.id}
                             product={product}
                             goToAddProduct = {this.props.goToAddProduct}
+                            idOrder={this.props.idOrder}
                         />
                     ))}
 

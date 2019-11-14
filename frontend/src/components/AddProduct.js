@@ -28,6 +28,8 @@ class AddProduct extends React.Component {
                 </div>
                 < ShoppingProduct
                     product={this.props.product}
+                    idOrder={this.props.idOrder}
+                    addDetail={this.props.addDetail}
                 />
 
             </div>

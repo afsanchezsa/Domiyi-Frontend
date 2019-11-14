@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+
 //this shows a card with every product
 
 
@@ -13,6 +14,7 @@ class Imagen extends React.Component {
 
         //alert(this.props.product.id);
         this.props.goToAddProduct(this.props.product);
+
 //        alert("Hola Estoy aca")
     }
 
