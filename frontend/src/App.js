@@ -10,7 +10,7 @@ import FormCompany from './components/FormCompany'
 import Cart from './components/Cart'
 
 import AddProduct from "./components/AddProduct";
-
+import Host from './Utilities/ServerUtilities'
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     state = {
@@ -31,7 +31,7 @@ class App extends React.Component {//We render a component  depending of the act
      */
     addDetail = async (id) => {
         if (this.state.idOrder == null) {
-            const res = await axios.post('http://localhost:3000/order/register', {
+            const res = await axios.post(Host+'/order/register', {
                 idCompany: 1,
                 idUser: 1,
                 address: "Avenida siempre vivas 123"
@@ -54,7 +54,7 @@ class App extends React.Component {//We render a component  depending of the act
     }
     goToAddProduct = (product) => {
         this.setState({
-            url: 'http://localhost:3001/addProduct',
+            url: Host+'/addProduct',
             product: product,
         })
         //alert(id);
