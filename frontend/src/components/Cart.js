@@ -40,13 +40,13 @@ class Cart extends Component {
 
 
         try {
-            res2 = await axios.post(`http://localhost:3000/detail/updateIdOrder`, {
+            res2 = await axios.post(Host+'/detail/updateIdOrder', {
                 arrayIds: this.props.idsDetails,
                 idOrder: this.props.idOrder
             });
 
             console.log("res2");
-            res = await axios.post(`http://localhost:3000/detail/byIdOrder`, {
+            res = await axios.post(Host+'/detail/byIdOrder', {
                 idOrder: this.props.idOrder
             });
             this.setState({
@@ -86,7 +86,7 @@ class Cart extends Component {
     }
 
     init = () => {
-        return axios.post(`http://localhost:3000/detail/updateIdOrder`, {
+        return axios.post(Host+'/detail/updateIdOrder', {
             arrayIds: this.props.idsDetails,
             idOrder: this.props.idOrder
         });
