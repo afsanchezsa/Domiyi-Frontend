@@ -45,7 +45,7 @@ class FormUser extends Component {
     }
     Register = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://'+Host+'/users/register', {
+        const res = await axios.post(Host+'/users/register', {
             name: this.state.name,
             username:this.state.username,
             email: this.state.email,

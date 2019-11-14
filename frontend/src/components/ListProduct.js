@@ -24,7 +24,7 @@ class ListProduct extends React.Component {
         //alert(ls.get('token'));
         var res;
             try{
-                 res = await axios.get('http://'+Host+'/products',{
+                 res = await axios.get(Host+'/products',{
                      headers:{
                          authorization:ls.get('token')
                      }
@@ -37,7 +37,7 @@ class ListProduct extends React.Component {
                     
                 this.props.Login();
                 }*/
-                alert(e.message);
+                alert(e);
                 }
             
 

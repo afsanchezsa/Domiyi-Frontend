@@ -22,7 +22,7 @@ class Cart extends Component {
     componentDidMount() {
         
                 
-                const idsProductOffer=axios.post('http://'+Host+'/detail/idsbyIdOrder',{
+                const idsProductOffer=axios.post(Host+'/detail/idsbyIdOrder',{
                         idOrder:3
                     }).then(()=>{
                         console.log(idsProductOffer);

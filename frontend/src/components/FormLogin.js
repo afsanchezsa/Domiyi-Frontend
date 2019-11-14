@@ -36,7 +36,7 @@ class FormLogin extends Component {
     Login = async (e) => {//with axios send the request to the route with the body 
         try{
             e.preventDefault();
-        const res = await axios.post('http://'+Host+'/login', {
+        const res = await axios.post(Host+'/login', {
            username:this.state.username,
            password:this.state.password
         });

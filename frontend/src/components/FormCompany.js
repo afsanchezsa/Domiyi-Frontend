@@ -18,7 +18,7 @@ class FormCompany extends Component {
     }
 
     async componentDidMount(){
-        const st = await axios.get('http://'+Host+'/companiesStatus');
+        const st = await axios.get(Host+'/companiesStatus');
    
         this.setState({
             states: st.data
@@ -57,7 +57,7 @@ class FormCompany extends Component {
     }
     Register = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://'+Host+'/company/register', {
+        const res = await axios.post(Host+'/company/register', {
             idStatus:this.state.status,
             idAdmin: this.state.idAdmin,
             name: this.state.name,
