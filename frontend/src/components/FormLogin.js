@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import ls from 'local-storage'
 import Host from '../Utilities/ServerUtilities'
+import {Link} from 'react-router-dom';
 class FormLogin extends Component {
     state = {
        username:"",
@@ -43,7 +44,7 @@ class FormLogin extends Component {
         
         console.log(res.data);
         ls.set('token',res.data.token);
-        alert(ls.get('token'));
+        alert("logueado correctamente");
         
         }catch(e){
             if(e.response.status==401){
@@ -72,7 +73,7 @@ class FormLogin extends Component {
                     
                     <button type="submit" className="btn btn-primary" onSubmit={this.Login}>Iniciar Sesion</button>
                 <div>
-                    <a href="http://localhost:3001/UserRegister">No tienes una cuenta ? Registrate</a>
+                <Link className="" to='/UserRegister'>No tienes cuenta ? Registrate</Link>
                 </div>
                 </form>
 
