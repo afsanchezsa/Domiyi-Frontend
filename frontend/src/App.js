@@ -11,6 +11,7 @@ import Cart from './components/Cart'
 
 import AddProduct from "./components/AddProduct";
 import Host from './Utilities/ServerUtilities'
+import FormLogin from './components/FormLogin';
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     state = {
@@ -74,6 +75,7 @@ class App extends React.Component {//We render a component  depending of the act
                 <Route path="/Products"
                        render={(props) => <ListProduct {...props} goToAddProduct={this.goToAddProduct}
                                                        idOrder={this.state.idOrder}/>}/>
+                <Route path="" component={FormLogin}></Route>
             </Router>
         )
 
