@@ -30,7 +30,10 @@ const Navbar = () => {
                         <Link className="nav-link" to='/ProductRegister'>Registro Producto</Link>
 
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/Orders'>Ordenes Pendientes</Link>
 
+                    </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     <a className="navbar-brand" href="#">
