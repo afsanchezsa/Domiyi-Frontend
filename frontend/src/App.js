@@ -12,6 +12,7 @@ import ls from 'local-storage'
 import AddProduct from "./components/AddProduct";
 import Host from './Utilities/ServerUtilities'
 import FormLogin from './components/FormLogin';
+import Orders from "./components/Orders";
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     state = {
@@ -70,6 +71,8 @@ class App extends React.Component {//We render a component  depending of the act
         return (
             <Router>
                 <Navbar/>
+
+                <Route path="/Orders" render={(props) => <Orders {...props}/>}/>
                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder} idsDetails={this.state.idsDetails}/>}/>
                 <Route path="/CompanyRegister" render={(props) => <FormCompany {...props} numero={1}/>}/>
                 <Route path="/addProduct" render={(props) => <AddProduct {...props} product={this.state.product}
