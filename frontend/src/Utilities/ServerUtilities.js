@@ -1,2 +1,2 @@
-const ServerHost='https://domiyibackend.herokuapp.com'
+const ServerHost='http://localhost:3000'
 export default ServerHost;

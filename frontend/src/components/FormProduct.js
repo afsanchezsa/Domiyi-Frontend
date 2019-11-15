@@ -109,6 +109,11 @@ class FormProduct extends Component {
             image: "No disponible",//no available until this functionality be implemented
             idStatus:this.state.idStatus,
             idCategory: this.state.category
+        },{
+            headers: {
+                authorization: ls.get('token')
+
+            }
         });
         
         alert("registro exitoso");

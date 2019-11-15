@@ -63,6 +63,11 @@ class FormCompany extends Component {
             name: this.state.name,
             image: "No disponible",//no available until this functionality be implemented
             deliveryCost: this.state.deliveryCost
+        },{
+            headers: {
+                authorization: ls.get('token')
+
+            }
         });
 
         alert("registro exitoso");
