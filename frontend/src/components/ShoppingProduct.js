@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 import Host from '../Utilities/ServerUtilities'
+import ls from 'local-storage'
 //this shows a card with every product
 
 class ShoppingProduct extends React.Component {
@@ -13,11 +14,12 @@ class ShoppingProduct extends React.Component {
     state = {
         states: [],
         idOrder: 1,//this.props.idOrder
-        idProductOffer: 1,//the json object,
+        idProductOffer: '',//no es necesario el back lo encuentra
         quantity: "",
         observation: "",
         unitPrice: this.props.product.price,
-        idsDetailscreated: []
+        idsDetailscreated: [],
+        idProduct:this.props.product.id
     }
     onChangeQuantity = (e) => {
         this.setState({
@@ -38,7 +40,13 @@ class ShoppingProduct extends React.Component {
                 idProductOffer: this.state.idProductOffer,
                 quantity: this.state.quantity,
                 observation: this.state.observation,
-                unitPrice: this.state.unitPrice
+                unitPrice: this.state.unitPrice,
+                idProduct:this.props.product.id
+            },{
+                headers: {
+                    authorization: ls.get('token')
+    
+                }
             });
             //var ids;
             //ids=this.state.idsDetailscreated;

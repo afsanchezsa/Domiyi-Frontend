@@ -8,7 +8,7 @@ import axios from 'axios'
 import ListProduct from './components/ListProduct'
 import FormCompany from './components/FormCompany'
 import Cart from './components/Cart'
-
+import ls from 'local-storage'
 import AddProduct from "./components/AddProduct";
 import Host from './Utilities/ServerUtilities'
 import FormLogin from './components/FormLogin';
@@ -36,6 +36,11 @@ class App extends React.Component {//We render a component  depending of the act
                 idCompany: 1,
                 idUser: 1,
                 address: "Avenida siempre vivas 123"
+            },{
+                headers: {
+                    authorization: ls.get('token')
+
+                }
             });
             this.setState({
                 idOrder: res.data.id
