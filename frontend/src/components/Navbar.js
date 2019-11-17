@@ -17,6 +17,9 @@ const Navbar = () => {
                     </img>
                 </a>
                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li className="nav-item">
+                        <Link className="nav-link" to='/Login'>Login</Link>
+                    </li>
                     <li className="nav-item">
                         <Link className="nav-link" to='/Products'>Productos</Link>
                     </li>

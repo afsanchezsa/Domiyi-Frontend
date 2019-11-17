@@ -98,6 +98,11 @@ class FormProduct extends Component {
         
         
     }
+    onChangeTextImage = (e) => {
+        this.setState({
+            image: e.target.value
+        });
+    }
     Register = async (e) => {
         e.preventDefault();
         const res = await axios.post(Host+'/product/register', {
@@ -106,7 +111,7 @@ class FormProduct extends Component {
             name: this.state.name,
             description: this.state.description,
             price: this.state.price,
-            image: "No disponible",//no available until this functionality be implemented
+            image: this.state.image,//no available until this functionality be implemented
             idStatus:this.state.idStatus,
             idCategory: this.state.category
         },{
@@ -145,6 +150,11 @@ class FormProduct extends Component {
                         <label for="description">Description</label>
                         <input type="text" className="form-control" id="description" placeholder="Description"
                                onChange={this.onChangeDescription}></input>
+                    </div>
+                    <div className="form-group">
+                        <label for="url">URL Image</label>
+                        <input type="text" className="form-control" id="url" placeholder="Url Image"
+                               onChange={this.onChangeTextImage}></input>
                     </div>
                     <div className="form-group">
                         <label for="price">Price</label>
