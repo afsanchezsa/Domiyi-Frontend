@@ -41,12 +41,8 @@ class ShoppingProduct extends React.Component {
                 quantity: this.state.quantity,
                 observation: this.state.observation,
                 unitPrice: this.state.unitPrice,
-                idProduct:this.props.product.id
-            },{
-                headers: {
-                    authorization: ls.get('token')
-    
-                }
+                idProduct:this.props.product.id,
+                token: ls.get('token')
             });
             //var ids;
             //ids=this.state.idsDetailscreated;

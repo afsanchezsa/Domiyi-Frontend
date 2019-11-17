@@ -19,11 +19,7 @@ class Orders extends Component {
         console.log(res);
         try {
             res = await axios.post(Host + '/order/byAdmin', {
-            }, {
-                headers: {
-                    authorization: ls.get('token')
-
-                }
+                token: ls.get('token')
             });
             this.setState({
                 orders: res.data

@@ -42,22 +42,14 @@ class Cart extends Component {
         try {
             res2 = await axios.post(Host+'/detail/updateIdOrder', {
                 arrayIds: this.props.idsDetails,
-                idOrder: this.props.idOrder
-            },{
-                headers: {
-                    authorization: ls.get('token')
-
-                }
+                idOrder: this.props.idOrder,
+                token: ls.get('token')
             });
 
             console.log("res2");
             res = await axios.post(Host+'/detail/byIdOrder', {
-                idOrder: this.props.idOrder
-            },{
-                headers: {
-                    authorization: ls.get('token')
-
-                }
+                idOrder: this.props.idOrder,
+                token: ls.get('token')
             });
             this.setState({
                 orderDetails: res.data

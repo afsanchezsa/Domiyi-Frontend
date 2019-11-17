@@ -113,12 +113,8 @@ class FormProduct extends Component {
             price: this.state.price,
             image: this.state.image,//no available until this functionality be implemented
             idStatus:this.state.idStatus,
-            idCategory: this.state.category
-        },{
-            headers: {
-                authorization: ls.get('token')
-
-            }
+            idCategory: this.state.category,
+            token: ls.get('token')
         });
         
         alert("registro exitoso");
