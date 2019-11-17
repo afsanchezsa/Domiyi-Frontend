@@ -54,3 +54,6 @@ const Navbar = () => {
     )
 }
 export default Navbar;
+/*<li className="nav-item">
+    <Link className="nav-link" to='/Companies'>Empresas</Link>
+</li>*/

@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import FormProduct from './components/FormProduct'
 import FormUser from './components/FormUser'
 import axios from 'axios'
-//import './App.css';
 import ListProduct from './components/ListProduct'
 import FormCompany from './components/FormCompany'
 import Cart from './components/Cart'
@@ -83,11 +82,10 @@ class App extends React.Component {//We render a component  depending of the act
                 <Route path="/Products"
                        render={(props) => <ListProduct {...props} goToAddProduct={this.goToAddProduct}
                                                        idOrder={this.state.idOrder}/>}/>
-                <Route path="" component={FormLogin}></Route>
+
+                <Route path="/" exact component={FormLogin}/>
             </Router>
         )
-
     }
 }
-
 export default App;
