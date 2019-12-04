@@ -34,6 +34,15 @@ const Navbar = () => {
                     <li className="nav-item">
                         <Link className="nav-link" to='/Orders'>Ordenes Pendientes</Link>
                     </li>
+                    <a className="navbar-brand" href="#">
+                        <Link className="nav-link" to='/Cart'>
+
+                            <img src="https://previews.123rf.com/images/val2014/val20141603/val2014160300005/54302312-shopping-cart-icon.jpg" width="30"
+                                 height="30" className="d-inline-block align-top" alt="">
+                            </img>
+                        </Link>
+                    </a>
+                  
                 </ul>
             </div>
         </div>
