@@ -15,7 +15,7 @@ import Host from './Utilities/ServerUtilities'
 import FormLogin from './components/FormLogin';
 import Orders from "./components/Orders";
 import Sidebar from './components/Sidebar';
-
+import CompanyOptions from './components/CompanyOptions'
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     state = {
         idOrder: null,
@@ -96,7 +96,7 @@ class App extends React.Component {//We render a component  depending of the act
                        render={(props) => <ListProduct {...props} goToAddProduct={this.goToAddProduct}
                                                        idOrder={this.state.idOrder}/>}/>
                 <Route path="/Login" component={FormLogin}></Route>
-        
+                <Route path="/Options" component={CompanyOptions}></Route>
 
 
 
