@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navbar from "./components/Navbar";
+
 import FormProduct from './components/FormProduct'
 import FormUser from './components/FormUser'
 import axios from 'axios'
@@ -13,6 +14,7 @@ import AddProduct from "./components/AddProduct";
 import Host from './Utilities/ServerUtilities'
 import FormLogin from './components/FormLogin';
 import Orders from "./components/Orders";
+import Sidebar from './components/Sidebar';
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     state = {
@@ -71,58 +73,16 @@ class App extends React.Component {//We render a component  depending of the act
         return (
 <div >
 <div className ="wrapper">
-<nav id ="sidebar">
-<div className="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
-        </div>
-        <ul className="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li className="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Home</a>
-                <ul className="collapse list-unstyled" id="homeSubmenu">
-                   
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-                </li>
-                <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Pages</a>
-                <ul className="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-    </nav>
+<Router>
+<Sidebar/>
 <div id="content">
 
 
 <div className="container-fluid">
-<Router>
-                <Navbar/>
+
+<Navbar/>
+
+               
 
                 <Route path="/Orders" render={(props) => <Orders {...props}/>}/>
                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder} idsDetails={this.state.idsDetails}/>}/>
@@ -136,13 +96,14 @@ class App extends React.Component {//We render a component  depending of the act
                        render={(props) => <ListProduct {...props} goToAddProduct={this.goToAddProduct}
                                                        idOrder={this.state.idOrder}/>}/>
                 <Route path="/Login" component={FormLogin}></Route>
-            </Router>
+        
 
 
 
 </div>
     
 </div>
+</Router>
 </div>
 
 </div>

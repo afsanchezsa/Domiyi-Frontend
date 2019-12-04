@@ -3,7 +3,50 @@ import {Link} from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-ligth bg-ligth">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+
+            <button type="button" id="sidebarCollapse" className="btn btn-info">
+                <i className="fas fa-align-left"></i>
+                <span>Toggle Sidebar</span>
+            </button>
+            <button className="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-align-justify"></i>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="nav navbar-nav ml-auto">
+                    <li className="nav-item active">
+                    <Link className="nav-link" to='/Login'>Login</Link>
+                    </li>
+                    <li className="nav-item">
+                    <Link className="nav-link" to='/Products'>Productos</Link>
+                    </li>
+                    <li className="nav-item">
+                    <Link className="nav-link" to='/CompanyRegister'>Registro Compañia</Link>
+                    </li>
+                    <li className="nav-item">
+                    <Link className="nav-link" to='/UserRegister'>Registro Usuario</Link>
+                    </li>
+                    <li className="nav-item">
+                    <Link className="nav-link" to='/ProductRegister'>Registro Producto</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/Orders'>Ordenes Pendientes</Link>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+     
+    )
+}
+export default Navbar;
+
+
+/*
+    
+    <nav className="navbar navbar-expand-lg navbar-ligth bg-ligth">
             <div className="cotainer-fluid">
 
             
@@ -20,10 +63,7 @@ const Navbar = () => {
 
                     </img>
                 </a>
-                <button type="button" id="sidebarCollapse" className="btn btn-outline-primary">
-                <i className="fas fa-align-left"></i>
-                <span>Administrar</span>
-            </button>
+            
                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li className="nav-item">
                         <Link className="nav-link" to='/Login'>Login</Link>
@@ -52,6 +92,14 @@ const Navbar = () => {
             </div>
         </nav>
         
-    )
-}
-export default Navbar;
+    */ 
+
+/*
+     <button type="button" id="sidebarCollapse" className="btn btn-outline-primary">
+                <i className="fas fa-align-left"></i>
+                <span>Administrar</span>
+            </button>
+       
+
+
+*/
