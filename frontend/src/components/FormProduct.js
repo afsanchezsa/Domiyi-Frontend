@@ -128,7 +128,7 @@ class FormProduct extends Component {
     render() {
         return (
             <div className="container p-4 col-md-7 col-sm-10">
-                <form onSubmit={this.Register} className="text-center border border-light p-5">
+                <form onSubmit={this.Register} className="text-center border border-light ">
                 <p class="h4 mb-4">Registra un Producto</p>
                     
                     <div className="form-group ">
