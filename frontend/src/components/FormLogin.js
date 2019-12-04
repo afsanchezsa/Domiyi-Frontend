@@ -57,21 +57,23 @@ class FormLogin extends Component {
 
     render() {
         return (
-            <div className="container p-4">
-                <form onSubmit={this.Login}>
+            <div className="container p-4 col-md-7 col-sm-10">
+                <form onSubmit={this.Login} className="text-center border border-light ">
                    
+                <p class="h4 mb-4">Iniciar Sesión</p>
+                  
                     <div className="form-group">
                         <label for="Name">Username</label>
-                        <input type="text" className="form-control" id="name" placeholder="Type your Username"
+                        <input type="text" className="form-control mb-4" id="name" placeholder="Type your Username"
                                onChange={this.onChangeUsername} required></input>
                     </div>
                     <div className="form-group">
                         <label for="password">Password</label>
-                        <input type="password" className="form-control" id="password" placeholder="Enter your password"
+                        <input type="password" className="form-control mb-4" id="password" placeholder="Enter your password"
                                onChange={this.onChangePassword}></input>
                     </div>
                     
-                    <button type="submit" className="btn btn-primary" onSubmit={this.Login}>Iniciar Sesion</button>
+                    <button type="submit" className="btn btn-info btn-block my-4" onSubmit={this.Login}>Iniciar Sesion</button>
                 <div>
                 <Link className="" to='/UserRegister'>No tienes cuenta ? Registrate</Link>
                 </div>
