@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navbar from "./components/Navbar";
+
 import FormProduct from './components/FormProduct'
 import FormUser from './components/FormUser'
 import axios from 'axios'
@@ -13,7 +14,8 @@ import AddProduct from "./components/AddProduct";
 import Host from './Utilities/ServerUtilities'
 import FormLogin from './components/FormLogin';
 import Orders from "./components/Orders";
-
+import Sidebar from './components/Sidebar';
+import CompanyOptions from './components/CompanyOptions'
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
     state = {
         idOrder: null,
@@ -69,8 +71,18 @@ class App extends React.Component {//We render a component  depending of the act
 
     render() {
         return (
-            <Router>
-                <Navbar/>
+<div >
+<div className ="wrapper">
+<Router>
+<Sidebar/>
+<div id="content">
+
+
+<div className="container-fluid">
+
+<Navbar/>
+
+               
 
                 <Route path="/Orders" render={(props) => <Orders {...props}/>}/>
                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder} idsDetails={this.state.idsDetails}/>}/>
@@ -84,7 +96,17 @@ class App extends React.Component {//We render a component  depending of the act
                        render={(props) => <ListProduct {...props} goToAddProduct={this.goToAddProduct}
                                                        idOrder={this.state.idOrder}/>}/>
                 <Route path="/Login" component={FormLogin}></Route>
-            </Router>
+                <Route path="/Options" component={CompanyOptions}></Route>
+
+
+
+</div>
+    
+</div>
+</Router>
+</div>
+
+</div>
         )
 
     }

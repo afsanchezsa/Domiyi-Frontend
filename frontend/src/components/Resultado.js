@@ -19,7 +19,7 @@ class Resultado extends Component {
 
         return (//shows results of Images in the screem
             <React.Fragment>
-                <div className="col-12 p-5 row">
+                <div className="col-12  row">
                     {products.map(product => (
                         <Imagen
                             key={product.id}

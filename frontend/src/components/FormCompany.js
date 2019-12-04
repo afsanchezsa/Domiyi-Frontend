@@ -76,12 +76,12 @@ class FormCompany extends Component {
 
     render() {
         return (
-            <div className="container p-4">
-                <form onSubmit={this.Register}>
-
+            <div className="container p-4 col-md-7 col-sm-10">
+                <form onSubmit={this.Register} className="text-center border border-light ">
+                <p class="h4 mb-4">Registra tu Compañia</p>
                     <div className="form-group">
                         <label htmlFor="Status">Status</label>
-                        <select className="form-control" onChange={this.onChangeIdStatus}>
+                        <select className="form-control mb-4" onChange={this.onChangeIdStatus}>
                             <option value="" disabled selected>-- Seleccione un status --</option>
                             {this.state.states.map(st =>
                                 <option key={st.id} value={st.status}>{st.status}</option>
@@ -90,7 +90,7 @@ class FormCompany extends Component {
                     </div>
                     <div className="form-group">
                         <label for="name">Name</label>
-                        <input type="text" className="form-control" id="name" placeholder="Name of Company"
+                        <input type="text" className="form-control mb-4" id="name" placeholder="Name of Company"
                                onChange={this.onChangeName}></input>
                     </div>
                     <div className="form-group">
@@ -99,7 +99,7 @@ class FormCompany extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="name">DeliveryCost</label>
-                        <input type="text" className="form-control" id="name" placeholder="Delivery Cost of Company"
+                        <input type="text" className="form-control mb-4" id="name" placeholder="Delivery Cost of Company"
                                onChange={this.onChangeDeliveryCost}></input>
                     </div>
 
