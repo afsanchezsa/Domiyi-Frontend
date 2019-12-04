@@ -43,7 +43,7 @@ const Sidebar = () => {
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Portfolio</a>
+                    <Link className="nav-link" to='/ListProductToEdit'>edicion de Productos</Link>
                     </li>
                     <li>
                         <a href="#">Contáctanos</a>
