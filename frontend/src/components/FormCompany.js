@@ -50,6 +50,11 @@ class FormCompany extends Component {
             name: e.target.value
         });
     }
+    onChangeUrl = (e) => {
+        this.setState({
+            image: e.target.value
+        });
+    }
     onChangeDeliveryCost = (e) => {
         this.setState({
             deliveryCost: e.target.value
@@ -61,7 +66,7 @@ class FormCompany extends Component {
             idStatus:this.state.status,
             idAdmin: this.state.idAdmin,
             name: this.state.name,
-            image: "No disponible",//no available until this functionality be implemented
+            image: this.state.image,//no available until this functionality be implemented
             deliveryCost: this.state.deliveryCost
         },{
             headers: {
@@ -92,6 +97,11 @@ class FormCompany extends Component {
                         <label for="name">Name</label>
                         <input type="text" className="form-control mb-4" id="name" placeholder="Name of Company"
                                onChange={this.onChangeName}></input>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="Image URL">Image</label>
+                        <input type="text" className="form-control mb-4" id="image" placeholder="Company Image"
+                               onChange={this.onChangeUrl}></input>
                     </div>
                     <div className="form-group">
                         <label for="Image">Image</label>

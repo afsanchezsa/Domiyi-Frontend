@@ -19,7 +19,9 @@ import CompanyOptions from './components/CompanyOptions'
 import EditProduct from './components/EditProduct';
 import ListProductToEdit from './components/ListProductToEdit';
 import AdminProduct from './components/AdminProduct';
-class App extends React.Component {//We render a component  depending of the action of the user in the navbar 
+import CompaniesByIdAdmin from "./components/CompaniesByIdAdmin";
+
+class App extends React.Component {//We render a component  depending of the action of the user in the navbar
     state = {
         idOrder: null,
         url: 'http://localhost:3001',
@@ -29,11 +31,11 @@ class App extends React.Component {//We render a component  depending of the act
 
     addDetail = async (id) => {
         if (this.state.idOrder == null) {
-            const res = await axios.post(Host+'/order/register', {
+            const res = await axios.post(Host + '/order/register', {
                 idCompany: 1,
                 idUser: 1,
                 address: "Avenida siempre vivas 123"
-            },{
+            }, {
                 headers: {
                     authorization: ls.get('token')
 
@@ -57,7 +59,7 @@ class App extends React.Component {//We render a component  depending of the act
     }
     goToAddProduct = (product) => {
         this.setState({
-            url: Host+'/addProduct',
+            url: Host + '/addProduct',
             product: product,
         })
         //alert(id);
@@ -65,45 +67,52 @@ class App extends React.Component {//We render a component  depending of the act
 
     render() {
         return (
-<div >
-<div className ="wrapper">
-<Router>
-<Sidebar/>
-<div id="content">
+            <div>
+                <div className="wrapper">
+                    <Router>
+                        <Sidebar/>
+                        <div id="content">
 
 
-<div className="container-fluid">
+                            <div className="container-fluid">
 
-<Navbar/>
+                                <Navbar/>
 
-               
 
-                <Route path="/Orders" render={(props) => <Orders {...props}/>}/>
-                <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder} idsDetails={this.state.idsDetails}/>}/>
-                <Route path="/CompanyRegister" render={(props) => <FormCompany {...props} numero={1}/>}/>
-                <Route path="/addProduct" render={(props) => <AddProduct {...props} product={this.state.product}
-                                                                         idOrder={this.state.idOrder}
-                                                                         addDetail={this.addDetail}/>}/>
-                <Route path="/UserRegister" component={FormUser}/>
-                <Route path="/ProductRegister" component={FormProduct}/>
-                <Route path="/Products"
-                       render={(props) => <ListProduct {...props} idCompany={1}goToAddProduct={this.goToAddProduct}
-                                                       idOrder={this.state.idOrder}/>}/>
-                <Route path="/Login" component={FormLogin}></Route>
-                <Route path="/Options" component={CompanyOptions}></Route>
-                <Route path="/EditProduct" component={EditProduct}></Route>
-              <Route path="/AdminProduct" component={AdminProduct}></Route>
-              <Route path="/ListProductToEdit"
-                       render={(props) => <ListProductToEdit {...props} idCompany={1}goToAddProduct={this.goToAddProduct}
-                                                       idOrder={this.state.idOrder}/>}/>
-                
-</div>
-    
-</div>
-</Router>
-</div>
+                                <Route path="/Orders" render={(props) => <Orders {...props}/>}/>
+                                <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder}
+                                                                             idsDetails={this.state.idsDetails}/>}/>
+                                <Route path="/CompanyRegister"
+                                       render={(props) => <FormCompany {...props} numero={1}/>}/>
+                                <Route path="/addProduct"
+                                       render={(props) => <AddProduct {...props} product={this.state.product}
+                                                                      idOrder={this.state.idOrder}
+                                                                      addDetail={this.addDetail}/>}/>
+                                <Route path="/UserRegister" component={FormUser}/>
+                                <Route path="/ProductRegister" component={FormProduct}/>
+                                <Route path="/Products"
+                                       render={(props) => <ListProduct {...props} idCompany={1}
+                                                                       goToAddProduct={this.goToAddProduct}
+                                                                       idOrder={this.state.idOrder}/>}/>
+                                <Route path="/Login" component={FormLogin}></Route>
+                                <Route path="/Options" component={CompanyOptions}></Route>
+                                <Route path="/EditProduct" component={EditProduct}></Route>
+                                <Route path="/AdminProduct" component={AdminProduct}></Route>
+                                <Route path="/MyCompanies" component={CompaniesByIdAdmin}></Route>
+                                <Route path="/ListProductToEdit"
+                                       render={(props) => <ListProductToEdit {...props} idCompany={1}
+                                                                             goToAddProduct={this.goToAddProduct}
+                                                                             idOrder={this.state.idOrder}/>}/>
 
-</div>
+
+
+                            </div>
+
+                        </div>
+                    </Router>
+                </div>
+
+            </div>
         )
 
     }
