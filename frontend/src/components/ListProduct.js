@@ -22,12 +22,12 @@ class ListProduct extends React.Component {
 
     async componentDidMount() {
        
-
+        console.log("hola" );
         var res;
 
             try{
                  res = await axios.post(Host+'/productOffer/ByIdCompany',{
-                idCompany:this.props.idCompany
+                idCompany:this.props.location.state.idCompany
                     
                  },{
                   
@@ -36,14 +36,13 @@ class ListProduct extends React.Component {
 
                 }
             });
+                 console.log(res.data);
             this.setState({
                 products: res.data
             });
         } catch (e) {
-            if (e.response.status == 401) {
+                console.log(e);
 
-                this.props.Login();
-            }
         }
 
 
