@@ -36,10 +36,10 @@ const Navbar = () => {
                         <Link className="nav-link" to='/Orders'>Ordenes Pendientes</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to={{pathname:'/CompaniesByCategory',state:{idCategory: 1}}}>Alimentos</Link>
+                        <Link className="nav-link" to={{pathname:'/CompaniesByCategory/1',state:{idCategory: 1}}}>Alimentos</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to={{pathname:'/CompaniesByCategory',state:{idCategory: 2}}}>Licores</Link>
+                        <Link className="nav-link" to={{pathname:'/CompaniesByCategory/2',state:{idCategory: 2}}}>Licores</Link>
                     </li>
                     <a className="navbar-brand" href="#">
                         <Link className="nav-link" to='/Cart'>

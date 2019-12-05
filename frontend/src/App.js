@@ -81,7 +81,8 @@ class App extends React.Component {//We render a component  depending of the act
 
 
                                 <Route path="/Orders" render={(props) => <Orders {...props}/>}/>
-                                <Route path="/CompaniesByCategory" render={(props) => <CompaniesByCategory {...props}/>}/>
+                                <Route path="/CompaniesByCategory/1" render={(props) => <CompaniesByCategory {...props}/>}/>
+                                <Route path="/CompaniesByCategory/2" render={(props) => <CompaniesByCategory {...props}/>}/>
                                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder}
                                                                              idsDetails={this.state.idsDetails}/>}/>
                                 <Route path="/CompanyRegister"
