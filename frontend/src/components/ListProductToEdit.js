@@ -23,7 +23,7 @@ class ListProductToEdit extends React.Component {
 
             try{
                  res = await axios.post(Host+'/productOffer/ByIdCompany',{
-                idCompany:this.props.idCompany
+                idCompany:this.props.location.state.idCompany
                     
                  },{
                   
