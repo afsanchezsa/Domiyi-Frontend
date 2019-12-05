@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
-
+// to={{pathname:'/ListProductToEdit',state:{idCompany:this.props.company.id}}}
+//to={{pathname:'/CompaniesByCategory',state:{idCategory: 1}}}
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,6 +34,12 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to='/Orders'>Ordenes Pendientes</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={{pathname:'/CompaniesByCategory',state:{idCategory: 1}}}>Alimentos</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to={{pathname:'/CompaniesByCategory',state:{idCategory: 2}}}>Licores</Link>
                     </li>
                     <a className="navbar-brand" href="#">
                         <Link className="nav-link" to='/Cart'>
