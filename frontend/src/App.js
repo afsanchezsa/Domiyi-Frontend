@@ -6,8 +6,9 @@ import FormProduct from './components/FormProduct'
 import FormUser from './components/FormUser'
 import axios from 'axios'
 //import './App.css';
-import ListProduct from './components/ListProduct'
-import FormCompany from './components/FormCompany'
+import ListProduct from './components/ListProduct';
+import FormCompany from './components/FormCompany';
+import CompaniesByCategory from './components/CompaniesByCategory'
 import Cart from './components/Cart'
 import ls from 'local-storage'
 import AddProduct from "./components/AddProduct";
@@ -80,6 +81,7 @@ class App extends React.Component {//We render a component  depending of the act
 
 
                                 <Route path="/Orders" render={(props) => <Orders {...props}/>}/>
+                                <Route path="/CompaniesByCategory" render={(props) => <CompaniesByCategory {...props}/>}/>
                                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder}
                                                                              idsDetails={this.state.idsDetails}/>}/>
                                 <Route path="/CompanyRegister"
