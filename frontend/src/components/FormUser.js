@@ -45,16 +45,26 @@ class FormUser extends Component {
     }
     Register = async (e) => {
         e.preventDefault();
-        const res = await axios.post(Host+'/users/register', {
-            name: this.state.name,
-            username:this.state.username,
-            email: this.state.email,
-            password: this.state.password,
-            phone: this.state.phone,
-            address:this.state.address
-        });
+        try{
+            const res = await axios.post(Host+'/users/register', {
+                name: this.state.name,
+                username:this.state.username,
+                email: this.state.email,
+                password: this.state.password,
+                phone: this.state.phone,
+                address:this.state.address
+            });
+            
+                alert("registro exitoso");
+            
+    
+        }catch(e){
+            if(e.response.status==400){
+                alert("correo o nombre de usuario duplicado");
+            }
 
-        alert("registro exitoso");
+        }
+        
 //evita que al presionar el boton el formulario se limpie
     }
 
