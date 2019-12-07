@@ -56,7 +56,7 @@ class SearchProduct extends Component {
 
                         <div className="jumbotron">
 
-                            <p className="lead text-center">Compañias</p>
+                            <p className="lead text-center">Productos</p>
 
                         </div>
                         < Resultado
