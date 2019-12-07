@@ -9,19 +9,55 @@ import Host from '../Utilities/ServerUtilities'
 
 
 class EditProduct extends React.Component {
+    
+    
     constructor(props) {
         super(props);
-    }
-
-    state = {
-        states: [],
-        categories: [],
-        product:this.props.location.state.product,
-        state:''
-
-    }
-
+        }
+        state = {
+            states: [],
+            categories: [],
+            product:{},
+            state:'',
+            id: '',
+            idCompany: '',
+            name: '',
+            description:'',
+            price: '',
+            image: '',//no available until this functionality be implemented
+            idStatus:'',
+            idCategory: ''
+            
+        }
+    
+    
     async componentDidMount() {
+        var res;
+
+    
+             res = await axios.post(Host+'/productOffer/ByIdProduct',{
+            idProduct:this.props.location.state.product.id
+                
+             },{
+              
+            headers: {
+                authorization: ls.get('token')
+
+            }
+        });
+        
+        this.setState({
+            
+           id: res.data[0].id,
+           idCompany: res.data[0].idCompany,
+           name: res.data[0].name,
+           description: res.data[0].description,
+           price: res.data[0].price,
+           image: res.data[0].image,//no available until this functionality be implemented
+           idStatus:res.data[0].idStatus
+
+        });
+    
         const st = await axios.get(Host + '/productsStatus');
         //console.log(url);
         this.setState({
@@ -34,7 +70,7 @@ class EditProduct extends React.Component {
         });
         var i;
         for(i =0;i<this.state.states.length;i++){
-            if(this.state.states[i].id==this.state.product.idStatus){
+            if(this.state.states[i].id==this.state.idStatus){
                 this.setState({
                     state:this.state.states[i]
                 })
@@ -42,38 +78,34 @@ class EditProduct extends React.Component {
         }
     }
     onChangeName=(e)=>{
-        var p=this.state.product;
-        p.name=e.target.value;
         this.setState({
-            product:p
+
+            name:e.target.value
         });
     }
     onChangeDescription=(e)=>{
-        var p=this.state.product;
-        p.description=e.target.value;
+       
         this.setState({
-            product:p
+       
+            description:e.target.value
         });
         
     }
     onChangeTextImage=(e)=>{
-        var p=this.state.product;
-        p.image=e.target.value;
         this.setState({
-            product:p
+
+            image:e.target.value
         });
         
     }
     onChangePrice=(e)=>{
-        var p=this.state.product;
-        p.price=e.target.value;
         this.setState({
-            product:p
+
+            price:e.target.value
         });
         
     }
     onChangeIdStatus=(e)=>{
-        var p=this.state.product;
         var i=0;
         var newStatus=this.state.state;
         for (i=0;i<this.state.states.length;i++){
@@ -82,12 +114,41 @@ class EditProduct extends React.Component {
                 break;
             }
         }
-        p.idStatus=newStatus.id;
         this.setState({
-            product:p,
-            state:newStatus.status
+            state:newStatus.status,
+            idStatus:newStatus.id
         });
     
+    }
+     Edit=async(e)=>{
+        e.preventDefault();
+      try{
+        const res = await axios.post(Host+'/product/update', 
+        {   
+           id: this.state.id,
+            idCompany: this.state.idCompany,
+            name: this.state.name,
+            description: this.state.description,
+            price: this.state.price,
+            image: this.state.image,//no available until this functionality be implemented
+            idStatus:this.state.idStatus
+                    }
+        
+        ,{
+            headers: {
+                authorization: ls.get('token')
+
+            }
+        });
+        
+        alert("registro exitoso");
+
+      }catch(e){
+          console.log(e);
+        alert("Hubo un problema intentalo de nuevo");
+    
+    }
+
     }
 
     render() {
@@ -95,7 +156,7 @@ class EditProduct extends React.Component {
             <div className="container p-4 col-md-7 col-sm-10">
                 <form onSubmit={this.Register} className="text-center border border-light ">
                     <p class="h4 mb-4">Edita el Producto</p>
-                    <img src={this.state.product.image} alt="sin Imagen" className="col-sm-10 col-md-6"/>
+                    <img src={this.state.image} alt="sin Imagen" className="col-sm-10 col-md-6"/>
                     <div className="form-group ">
                         <label for="IdStatus">Status</label>
                         <select className="form-control mb-4" onChange={this.onChangeIdStatus} value={this.state.state.status}>
@@ -109,41 +170,29 @@ class EditProduct extends React.Component {
                     <div className="form-group">
                         <label for="name">Name</label>
                         <input type="text" className="form-control mb-4" id="name" placeholder="Name of Product"
-                               onChange={this.onChangeName} value={this.state.product.name}></input>
+                               onChange={this.onChangeName} value={this.state.name}></input>
                     </div>
                     <div className="form-group">
                         <label for="description">Description</label>
                         <input type="text" className="form-control mb-4" id="description" placeholder="Description"
                                onChange={this.onChangeDescription}
-                               value={this.state.product.description}></input>
+                               value={this.state.description}></input>
                     </div>
                     <div className="form-group">
                         <label for="url">URL Image</label>
                         <input type="text" className="form-control mb-4" id="url" placeholder="Url Image"
                                onChange={this.onChangeTextImage}
-                               value={this.state.product.image}></input>
+                               value={this.state.image}></input>
                     </div>
                     <div className="form-group">
                         <label for="price">Price</label>
                         <input type="number" className="form-control mb-4" id="price" placeholder="Price"
-                               onChange={this.onChangePrice} value={this.state.product.price}></input>
+                               onChange={this.onChangePrice} value={this.state.price}></input>
                     </div>
-                    <div className="form-group">
-                        <label for="Image">Image</label>
-                        <input type="file" className="form-control-file" id="Image"></input>
-                    </div>
-                    <div className="form-group">
-                        <label for="Category">Category</label>
-                        <select className="form-control mb-4" onChange={this.onChangeCategory}>
-                            <option value="" disabled selected>-- Seleccione una categoria --</option>
-                            {this.state.categories.map(ct =>
-                                <option key={ct.id} value={ct.category}>{ct.category}</option>
-                            )}
-                        </select>
-                    </div>
+                   
+                    
 
-
-                    <button type="submit" className="btn btn-info btn-block my-4" onSubmit={this.Register}>Editar
+                    <button type="submit" className="btn btn-info btn-block my-4" onClick={this.Edit}>Editar
                     </button>
                 </form>
 
