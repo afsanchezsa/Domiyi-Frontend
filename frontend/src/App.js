@@ -84,8 +84,6 @@ class App extends React.Component {//We render a component  depending of the act
                                 <Route path="/Orders" render={(props) => <Orders {...props}/>}/>
                                 <Route path="/CompaniesByCategory/1" render={(props) => <CompaniesByCategory {...props}/>}/>
                                 <Route path="/CompaniesByCategory/2" render={(props) => <CompaniesByCategory {...props}/>}/>
-                                <Route path="/SearchProduct" render={(props) => <SearchProduct {...props}/>}/>
-
                                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder}
                                                                              idsDetails={this.state.idsDetails}/>}/>
                                 <Route path="/CompanyRegister"
@@ -109,8 +107,10 @@ class App extends React.Component {//We render a component  depending of the act
                                        render={(props) => <ListProductToEdit {...props} idCompany={1}
                                                                              goToAddProduct={this.goToAddProduct}
                                                                              idOrder={this.state.idOrder}/>}/>
-
-
+                                <Route path="/SearchProduct"
+                                       render={(props) => <SearchProduct {...props} idCompany={1}
+                                                                             goToAddProduct={this.goToAddProduct}
+                                                                             idOrder={this.state.idOrder}/>}/>
 
                             </div>
 

@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
+import Resultado from "./Resultado";
 import axios from 'axios'
 import ls from 'local-storage'
 import Host from '../Utilities/ServerUtilities'
+
+
 class SearchProduct extends Component {
     constructor(props){
         super(props);
@@ -9,19 +12,31 @@ class SearchProduct extends Component {
     }
     state = {
         states:[],
-        idStatus:"",
-        idAdmin: 1,
-        name: "",//the json object,
-        image: "",
-        deliveryCost:"",
-        search: "Hello"
-
+        products : [],
+        search: ""
     }
-    updateSearch(event){
+    async updateSearch(event){
         this.setState({search : event.target.value})
+        var res;
+        try {
+            res = await axios.post(Host + '/product/getByWord', {
+                name : this.state.search
+            }, {
+
+                headers: {
+                    authorization: ls.get('token')
+
+                }
+            });
+            this.setState({
+                products: res.data
+            });
+        } catch (e) {
+            if (e.response.status == 401) {
+                this.props.Login();
+            }
+        }
     }
-
-
     render() {
         return (
             <div className="container p-4 col-md-7 col-sm-10">
@@ -35,8 +50,22 @@ class SearchProduct extends Component {
                     >
                     </input>
                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar Producto</button>
-
                 </form>
+                <ul>
+                    <div className="app container">
+
+                        <div className="jumbotron">
+
+                            <p className="lead text-center">Compañias</p>
+
+                        </div>
+                        < Resultado
+                            products={this.state.products}
+                            goToAddProduct={this.props.goToAddProduct}
+                            idOrder={this.props.idOrder}
+                        />
+                    </div>
+                </ul>
             </div>
 
         );
@@ -45,66 +74,38 @@ class SearchProduct extends Component {
 
 export default SearchProduct;
 /*
+import React, {Component} from 'react';
 
-    async componentDidMount(){
-        const st = await axios.get(Host+'/companiesStatus');
+class Search extends Component {
 
-        this.setState({
-            states: st.data
-        });
-    }
-
-    onChangeIdStatus = (e) => {
-        var i;
-        var selected=e.target.value;
-        for(i=0;i<this.state.states.length;i++){
-            if(this.state.states[i].status==selected){
-                this.setState({
-                    status:this.state.states[i].id
-
-                });
-                break;
-            }
-        }
+    searchRef = React.createRef();
+getDatas = (e) => {
+    e.preventDefault();
 
 
-    }
-    onChangeIdAdmin=(e)=>{
-        this.setState({
-            idAdmin:e.target.value
-        });
-    }
-    onChangeName = (e) => {
-        this.setState({
-            name: e.target.value
-        });
-    }
-    onChangeUrl = (e) => {
-        this.setState({
-            image: e.target.value
-        });
-    }
-    onChangeDeliveryCost = (e) => {
-        this.setState({
-            deliveryCost: e.target.value
-        });
-    }
-    Register = async (e) => {
-        e.preventDefault();
-        const res = await axios.post(Host+'/company/register', {
-            idStatus:this.state.status,
-            idAdmin: this.state.idAdmin,
-            name: this.state.name,
-            image: this.state.image,//no available until this functionality be implemented
-            deliveryCost: this.state.deliveryCost
-        },{
-            headers: {
-                authorization: ls.get('token')
+    this.props.dataSearch(this.searchRef.current.value);
+}
 
-            }
-        });
+render() {
+    return (
+        <form onSubmit={this.getDatas}>
+            <div className="row">
 
-        alert("registro exitoso");
-//evita que al presionar el boton el formulario se limpie
-    }
+                <div className="form-group col-md-8">
+                    <input ref={this.searchRef} type="text" className="form-control from-control-lg"
+                           placeholder="Buscar producto"/>
+                </div>
+
+                <div className="form-group col-md-4">
+                    <input type="submit" className="btn btn-lg btn-block" value="Buscar"/>
+                </div>
+            </div>
+        </form>
+    );
+}
+
+}
+
+
+export default Search;
  */
