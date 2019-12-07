@@ -117,7 +117,7 @@ class Cart extends Component {
                         details={this.state.orderDetails}
                     />
                 </div>
-                <Link className="btn btn-primary btn-block" to='/Products'>Finalizar compra</Link>
+                <Link className="btn btn-primary btn-block" to='/Pay'>Finalizar compra</Link>
             </div>
         );
     }

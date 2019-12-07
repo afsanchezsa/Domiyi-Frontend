@@ -21,6 +21,8 @@ import EditProduct from './components/EditProduct';
 import ListProductToEdit from './components/ListProductToEdit';
 import AdminProduct from './components/AdminProduct';
 import CompaniesByIdAdmin from "./components/CompaniesByIdAdmin";
+import Pay from './components/Pay';
+import PayPal from './components/PayPal';
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar
     state = {
@@ -106,6 +108,10 @@ class App extends React.Component {//We render a component  depending of the act
                                        render={(props) => <ListProductToEdit {...props} idCompany={1}
                                                                              goToAddProduct={this.goToAddProduct}
                                                                              idOrder={this.state.idOrder}/>}/>
+                                <Route path="/Pay"
+                                       render={(props) => <Pay {...props} numero={1}/>}/>
+                                <Route path="/PayPal"
+                                       render={(props) => <PayPal {...props} numero={1}/>}/>
 
 
 
