@@ -84,11 +84,19 @@ class EditProduct extends React.Component {
         */
         
         firsRequest.then((offer)=>{
-            console.log(offer);
+            
+            var newIdOffer;
+            if(!offer.data.id){
+                newIdOffer=offer.data[0].id;//si ya existia la oferta me retorna un arreglo
+            }else{
+                newIdOffer=offer.data.id;
+            }
+            
+            console.log("id is "+newIdOffer);
             const inserted=axios.post(Host+'/productOffer/register', 
             {   
                idProduct:this.state.product.id,
-               idOffer:offer.data.id
+               idOffer:newIdOffer
                         }
             
             ,{
