@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navbar from "./components/Navbar";
-
+import AddPromoToProduct from "./components/AddPromoToProduct"
 import FormProduct from './components/FormProduct'
 import FormUser from './components/FormUser'
 import axios from 'axios'
@@ -107,10 +107,14 @@ class App extends React.Component {//We render a component  depending of the act
                                        render={(props) => <ListProductToEdit {...props} idCompany={1}
                                                                              goToAddProduct={this.goToAddProduct}
                                                                              idOrder={this.state.idOrder}/>}/>
+                                <Route path="/AddPromo" component={AddPromoToProduct}></Route>
+
+
                                 <Route path="/SearchProduct"
                                        render={(props) => <SearchProduct {...props} idCompany={1}
                                                                              goToAddProduct={this.goToAddProduct}
                                                                              idOrder={this.state.idOrder}/>}/>
+
 
                             </div>
 
