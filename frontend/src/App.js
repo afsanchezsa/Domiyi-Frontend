@@ -21,6 +21,7 @@ import EditProduct from './components/EditProduct';
 import ListProductToEdit from './components/ListProductToEdit';
 import AdminProduct from './components/AdminProduct';
 import CompaniesByIdAdmin from "./components/CompaniesByIdAdmin";
+import SearchProduct from "./components/SearchProduct";
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar
     state = {
@@ -107,6 +108,12 @@ class App extends React.Component {//We render a component  depending of the act
                                                                              goToAddProduct={this.goToAddProduct}
                                                                              idOrder={this.state.idOrder}/>}/>
                                 <Route path="/AddPromo" component={AddPromoToProduct}></Route>
+
+
+                                <Route path="/SearchProduct"
+                                       render={(props) => <SearchProduct {...props} idCompany={1}
+                                                                             goToAddProduct={this.goToAddProduct}
+                                                                             idOrder={this.state.idOrder}/>}/>
 
 
                             </div>
