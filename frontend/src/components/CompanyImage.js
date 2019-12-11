@@ -20,6 +20,8 @@ class CompanyImage extends React.Component {
                         <p className="card-text">{this.props.company.name}</p>
                         <Link className="btn btn-primary btn-block" onClick={this.onclick}
                               to={{pathname:'/ListProductToEdit',state:{idCompany:this.props.company.id}}}>Ver Productos</Link>
+                        <Link className="btn btn-primary btn-block" onClick={this.onclick}
+                              to={{pathname:'/ProductRegister',state:{idCompany:this.props.company.id}}}>Añadir Productos</Link>
                     </div>
 
                 </div>
