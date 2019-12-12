@@ -10,15 +10,13 @@ class Imagen extends React.Component {
         super(props);
     }
 
-    onclick = (detail) => {
+    onclick = () => {
 
         //alert(this.props.product.id);
-        //this.props.goToAddProduct(this.props.product);
+        this.props.goToAddProduct(this.props.product);
 
 //        alert("Hola Estoy aca")
-//this.props.addDetail(detail);
-alert("jejj")   
-}
+    }
 
 
     render() {
@@ -29,8 +27,8 @@ alert("jejj")
                     <div className="card-body">
                         <p className="card-text">{this.props.product.name}</p>
                         <p className="card-text">{this.props.product.description}</p>
-                        <Link className="btn btn-primary btn-block" 
-                             to={{pathname:'/addProduct',state:{product:this.props.product}}}>Comprar</Link>
+                        <Link className="btn btn-primary btn-block" onClick={this.onclick}
+                              to='/addProduct'>Comprar</Link>
                     </div>
 
                 </div>
