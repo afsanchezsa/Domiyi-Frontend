@@ -28,11 +28,11 @@ class App extends React.Component {//We render a component  depending of the act
         idOrder: null,
         url: 'http://localhost:3001',
         product: {},
-        idsDetails: []
+        Details: []
     }
 
-    addDetail = async (id) => {
-        if (this.state.idOrder == null) {
+    addDetail = async (detail) => {
+       /* if (this.state.idOrder == null) {
             const res = await axios.post(Host + '/order/register', {
                 idCompany: 1,
                 idUser: 1,
@@ -58,6 +58,16 @@ class App extends React.Component {//We render a component  depending of the act
         );
         console.log(this.state.idsDetails);
         console.log("idorder" + this.state.idOrder);
+        */
+       if(this.state.Details.length>0&&this.state.Details[0].idCompany==detail.idCompany){
+        this.state.Details.push(detail);
+       }else{
+           this.state.Details=[]
+           this.state.Details.push(detail);
+       }
+       
+    
+    
     }
     goToAddProduct = (product) => {
         this.setState({
@@ -85,7 +95,7 @@ class App extends React.Component {//We render a component  depending of the act
                                 <Route path="/CompaniesByCategory/1" render={(props) => <CompaniesByCategory {...props}/>}/>
                                 <Route path="/CompaniesByCategory/2" render={(props) => <CompaniesByCategory {...props}/>}/>
                                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder}
-                                                                             idsDetails={this.state.idsDetails}/>}/>
+                                                                             details={this.state.Details}/>}/>
                                 <Route path="/CompanyRegister"
                                        render={(props) => <FormCompany {...props} numero={1}/>}/>
                                 <Route path="/addProduct"
