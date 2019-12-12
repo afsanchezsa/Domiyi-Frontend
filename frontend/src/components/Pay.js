@@ -41,9 +41,9 @@ class Pay extends Component {
 
                 <p>PAGO</p>
 
-
                 {this.state.methods.map(mt =>
-                    <a key={mt.id} value={mt.paymentMethod} href={mt.paymentMethod} >{mt.paymentMethod}
+                    <a key={mt.id} value={mt.paymentMethod}
+                       href={mt.paymentMethod.replace(/ /g, "")} >{mt.paymentMethod}
                     <p>-----</p>
                     </a>
                 )}
