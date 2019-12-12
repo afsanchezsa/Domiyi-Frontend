@@ -19,7 +19,28 @@ class ShoppingProduct extends React.Component {
         observation: "",
         unitPrice: this.props.product.price,
         idsDetailscreated: [],
-        idProduct:this.props.product.id
+        idProduct:this.props.product.id,
+        productOffer:{}
+    }
+    async componentDidMount(){
+       try{
+        res = await axios.post(Host+'/productOffer/ByIdProduct',{
+            idProduct:this.state.idProduct
+                
+             },{
+              
+            headers: {
+                authorization: ls.get('token')
+
+            }
+        });
+        this.setState({
+         productOffer: res.data[0]
+        });
+       }catch(e){
+
+       }
+        
     }
     onChangeQuantity = (e) => {
         this.setState({
@@ -79,7 +100,7 @@ class ShoppingProduct extends React.Component {
         return (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div className="card">
-                    <img src={this.props.product.image} alt="sin Imagen" className="card-img-top"/>
+                    <img src={this.stat} alt="sin Imagen" className="card-img-top"/>
                     <div className="card-body">
                         <p className="card-text">{this.props.product.name}</p>
                         <p className="card-text">{this.props.product.description}</p>

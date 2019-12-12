@@ -28,11 +28,11 @@ class App extends React.Component {//We render a component  depending of the act
         idOrder: null,
         url: 'http://localhost:3001',
         product: {},
-        idsDetails: []
+        Details: []
     }
 
-    addDetail = async (id) => {
-        if (this.state.idOrder == null) {
+    addDetail = async (detail) => {
+       /* if (this.state.idOrder == null) {
             const res = await axios.post(Host + '/order/register', {
                 idCompany: 1,
                 idUser: 1,
@@ -58,6 +58,13 @@ class App extends React.Component {//We render a component  depending of the act
         );
         console.log(this.state.idsDetails);
         console.log("idorder" + this.state.idOrder);
+        */
+       if(this.state.Details.length>0&&this.state.Details[0].){
+
+       }
+       this.state.Details.push(newDetail);
+    
+    
     }
     goToAddProduct = (product) => {
         this.setState({
