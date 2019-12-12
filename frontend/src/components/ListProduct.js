@@ -17,12 +17,7 @@ class ListProduct extends React.Component {
 
     state = {
         idCompany:'',
-        products: [],
-        details:[]
-   }
-    addDetail=(detail)=>{
-        //this.state.details.push(detail);
-    console.log("this is add detail");
+        products: []
     }
 
     async componentDidMount() {
@@ -80,7 +75,6 @@ class ListProduct extends React.Component {
 
                 </div>
                 < Resultado
-                    addDetail={this.addDetail}
                     products={this.state.products}
                     goToAddProduct={this.props.goToAddProduct}
                     idOrder={this.props.idOrder}

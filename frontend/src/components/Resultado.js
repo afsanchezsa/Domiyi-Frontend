@@ -6,13 +6,10 @@ class Resultado extends Component {
     constructor(props){
         super(props);
     }
-    state={
-        details:[]
-    }
     onclick = (id) =>{
         this.props.goToAddProduct(id)
     }
-    
+
     mostrarImagenes = () => {
 
         const products = this.props.products;
@@ -25,7 +22,6 @@ class Resultado extends Component {
                 <div className="col-12  row">
                     {products.map(product => (
                         <Imagen
-                            addDetail={this.props.addDetail}
                             key={product.id}
                             product={product}
                             goToAddProduct = {this.props.goToAddProduct}
