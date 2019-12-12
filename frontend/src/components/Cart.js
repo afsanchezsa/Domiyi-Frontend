@@ -20,7 +20,7 @@ class Cart extends Component {
     state = {
         idOrder: "",
         products: [],
-        orderDetails: [],
+        orderDetails: this.props.details,
         idsProductOffer: [],
         idsProducts: []
     }
@@ -34,6 +34,9 @@ class Cart extends Component {
           // rechazo
         });
          */
+
+
+         /*
         var res;
         var res2 = null;
         console.log("rec" + this.props.idOrder);
@@ -70,7 +73,7 @@ class Cart extends Component {
             }
         }
 
-
+*/
         /*      axios.post(`http://localhost:3000/detail/updateIdOrder`, {
                   arrayIds: this.props.idsDetails,
                   idOrder: 19//this.props.idOrder
@@ -94,7 +97,50 @@ class Cart extends Component {
 //        console.log(this.state.orderDetails);
         //      console.log(this.props.idOrder);
     }
+onClick=()=>{
+    
 
+    const resultorder=axios.post(Host+'/order/register',{
+        idCompany:this.state.orderDetails[0].idCompany,
+        address:'insert your address'
+    },{
+        headers: {
+            authorization: ls.get('token')
+
+        }
+    });
+    
+    resultorder.then((order)=>{
+        var i;
+        var newDetails=[]
+        var temp={}
+        ;    
+        alert("ent");   
+        this.state.orderDetails.map(od=>{
+            temp.idOrder=order.data.id;
+            temp.idProductOffer=od.idProductOffer;
+            temp.quantity=od.quantity;
+            temp.observation=od.observation;
+            temp.price=od.price;
+            newDetails.push(temp);
+        });
+            
+            
+         
+        const registeredDetails=axios.post(Host+'/detail/registerMany',{
+            details:newDetails
+        },{
+            headers: {
+                authorization: ls.get('token')
+
+            }
+        });
+console.log("register:"+registeredDetails);
+alert("registro exitoso");
+    });
+
+    
+}
     init = () => {
         return axios.post(Host+'/detail/updateIdOrder', {
             arrayIds: this.props.idsDetails,
@@ -117,7 +163,7 @@ class Cart extends Component {
                         details={this.state.orderDetails}
                     />
                 </div>
-                <Link className="btn btn-primary btn-block" to='/Products'>Finalizar compra</Link>
+                <button onClick={this.onClick}>Finalizar compra</button>
             </div>
         );
     }

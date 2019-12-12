@@ -23,7 +23,8 @@ class ShoppingProduct extends React.Component {
         productOffer:{}
     }
     async componentDidMount(){
-       try{
+       var res;
+        try{
         res = await axios.post(Host+'/productOffer/ByIdProduct',{
             idProduct:this.state.idProduct
                 
@@ -43,14 +44,13 @@ class ShoppingProduct extends React.Component {
         
     }
     onChangeQuantity = (e) => {
-        this.setState({
-            quantity: e.target.value
-        });
+               this.state.productOffer.quantity= e.target.value
+    
     }
     onChangeObservation = (e) => {
-        this.setState({
-            observation: e.target.value
-        });
+        
+            this.state.productOffer.observation= e.target.value
+        
     }
 
     Register = async (e) => {
@@ -80,14 +80,15 @@ class ShoppingProduct extends React.Component {
         } catch (e) {
             console.log(e);
     }*/
-    var newDetail={
+    /*var newDetail={
         
         quantity: this.state.quantity,
         observation: this.state.observation,
         unitPrice: this.state.unitPrice,
         idProduct:this.props.product.id
-    }
-    this.props.addDetail(newDetail);
+    }*/
+    this.props.addDetail(this.state.productOffer);
+    alert("añadido a carrito");
     }
 //<Link className="nav-link" to='/Products'>Productos</Link>
     onclick() {
@@ -100,11 +101,11 @@ class ShoppingProduct extends React.Component {
         return (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div className="card">
-                    <img src={this.stat} alt="sin Imagen" className="card-img-top"/>
+                    <img src={this.state.productOffer.image} alt="sin Imagen" className="card-img-top"/>
                     <div className="card-body">
-                        <p className="card-text">{this.props.product.name}</p>
-                        <p className="card-text">{this.props.product.description}</p>
-                        <p className="card-text">Valor {this.props.product.price}</p>
+                        <p className="card-text">{this.state.productOffer.name}</p>
+                        <p className="card-text">{this.state.productOffer.description}</p>
+                        <p className="card-text">Valor {this.state.productOffer.price}</p>
 
                     </div>
                     <div className="container p-4">
