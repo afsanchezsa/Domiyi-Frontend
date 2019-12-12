@@ -27,9 +27,9 @@ class AddProduct extends React.Component {
 
                 </div>
                 < ShoppingProduct
-                    product={this.props.product}
-                    idOrder={this.props.idOrder}
-                    addDetail={this.props.addDetail}
+                    product={this.props.location.state.product}
+                    /*idOrder={this.props.idOrder}*/
+                    addDetail={this.props.location.state.addDetail}
                 />
 
             </div>

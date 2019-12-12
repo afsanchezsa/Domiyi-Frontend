@@ -89,15 +89,15 @@ class App extends React.Component {//We render a component  depending of the act
                                 <Route path="/CompanyRegister"
                                        render={(props) => <FormCompany {...props} numero={1}/>}/>
                                 <Route path="/addProduct"
-                                       render={(props) => <AddProduct {...props} product={this.state.product}
+                                       render={(props) => <AddProduct {...props} /*product={this.state.product}
                                                                       idOrder={this.state.idOrder}
-                                                                      addDetail={this.addDetail}/>}/>
+                                                                      addDetail={this.addDetail}*//>}/>
                                 <Route path="/UserRegister" component={FormUser}/>
                                 <Route path="/ProductRegister" component={FormProduct}/>
                                 <Route path="/Products"
-                                       render={(props) => <ListProduct {...props} idCompany={1}
+                                       render={(props) => <ListProduct {...props} /*idCompany={1}
                                                                        goToAddProduct={this.goToAddProduct}
-                                                                       idOrder={this.state.idOrder}/>}/>
+                                                                       idOrder={this.state.idOrder}*//>}/>
                                 <Route path="/Login" component={FormLogin}></Route>
                                 <Route path="/Options" component={CompanyOptions}></Route>
                                 <Route path="/EditProduct" component={EditProduct}></Route>
