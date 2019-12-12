@@ -34,7 +34,7 @@ class ShoppingProduct extends React.Component {
 
     Register = async (e) => {
         e.preventDefault();
-        try {
+      /*  try {
             const res = await axios.post(Host+'/detail/register', {
                 idOrder: this.state.idOrder,
                 idProductOffer: this.state.idProductOffer,
@@ -58,10 +58,16 @@ class ShoppingProduct extends React.Component {
 
         } catch (e) {
             console.log(e);
-        }
-        //evita que al presionar el boton el formulario se limpie
+    }*/
+    var newDetail={
+        
+        quantity: this.state.quantity,
+        observation: this.state.observation,
+        unitPrice: this.state.unitPrice,
+        idProduct:this.props.product.id
     }
-
+    this.props.addDetail(newDetail);
+    }
 //<Link className="nav-link" to='/Products'>Productos</Link>
     onclick() {
         return (
