@@ -33,10 +33,12 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to='/UserRegister'>Registro Usuario</Link>
                         </li>
-                        <li className="nav-item">
+                        {/*<li className="nav-item">
                             <Link className="nav-link" to='/ProductRegister'>Registro Producto</Link>
                         </li>
-                        <li className="nav-item">
+                        */ 
+
+                        }<li className="nav-item">
                             <Link className="nav-link" to='/Orders'>Ordenes Pendientes</Link>
                         </li>
 
