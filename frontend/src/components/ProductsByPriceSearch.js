@@ -14,7 +14,7 @@ class ProductsByPriceSearch extends React.Component {
         products: []
     }
     async componentDidMount() {
-        alert(this.state.minValue + "    " + this.state.maxValue);
+
         var res;
         try {
 
@@ -29,7 +29,7 @@ class ProductsByPriceSearch extends React.Component {
             this.setState({
                 products: res.data
             });
-            alert(this.state.products);
+
         } catch (e) {
             if (e.response.status == 401) {
                 this.props.Login();
