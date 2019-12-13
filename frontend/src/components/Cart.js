@@ -115,7 +115,7 @@ onClick=()=>{
         var newDetails=[]
         var temp={}
         ;    
-        alert("ent");   
+
         this.state.orderDetails.map(od=>{
             temp.idOrder=order.data.id;
             temp.idProductOffer=od.idProductOffer;
@@ -135,7 +135,7 @@ onClick=()=>{
 
             }
         });
-console.log("register:"+registeredDetails);
+
 alert("registro exitoso");
     });
 
