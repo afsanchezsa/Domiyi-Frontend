@@ -41,7 +41,7 @@ class SearchProduct extends Component {
         return (
             <div className="container  col-md-11 col-sm-8">
                <div className="form-group row">
-               <input className="form-control offset-sm-0 offset-md-3 col-sm-4" type="search"
+               <input className="form-control offset-sm-0 offset-md-3 col-sm-9 col-md-4" type="search"
                            value = {this.state.search}
                            onChange = {this.updateSearch.bind(this)}
                            placeholder="Buscar"
