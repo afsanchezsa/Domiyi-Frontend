@@ -7,6 +7,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
 
+
                 <button type="button" id="sidebarCollapse" className="btn btn-info">
                     <i className="fas fa-align-left"></i>
                     <span>Admin</span>
@@ -16,6 +17,7 @@ const Navbar = () => {
                         aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-align-justify"></i>
                 </button>
+
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="nav navbar-nav ml-auto">

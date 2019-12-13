@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import OrderDetail from './OrderDetail';
+import './OrdenPendiente.css'
 
 class ResultOrder extends Component {
 
@@ -14,12 +15,29 @@ class ResultOrder extends Component {
         return (//shows results of Images in the screem
             <React.Fragment>
                 <div className="col-12 p-5 row">
-                    {orders.map(order => (
-                        <OrderDetail
-                            key={order.id}
-                            order={order}
-                        />
-                    ))}
+                    <table id='students'>
+                        <tr className="colorTitleTable">
+                            <td className="titleTable"><strong>Numero orden:</strong></td>
+                            <td className="titleTable"><strong>Producto:</strong></td>
+                            <td className="titleTable"><strong>Cantidad:</strong></td>
+                            <td className="titleTable"><strong>Observacion:</strong></td>
+                            <td className="titleTable"><strong>Precio Unidad:</strong></td>
+                            <td className="titleTable"><strong>Direccion:</strong></td>
+                            <td className="titleTable"><strong>Fecha pedido:</strong></td>
+                            <td className="titleTable"><strong>Status pedido:</strong></td>
+                        </tr>
+
+
+                            {orders.map(order => (
+                                <OrderDetail
+                                    key={order.id}
+                                    order={order}
+                                />
+                            ))}
+
+                    </table>
+
+
                 </div>
             </React.Fragment>
         );

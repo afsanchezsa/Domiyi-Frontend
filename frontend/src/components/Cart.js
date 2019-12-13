@@ -163,7 +163,11 @@ alert("registro exitoso");
                         details={this.state.orderDetails}
                     />
                 </div>
+
+                <Link className="btn btn-primary btn-block" to='/Pay'>Pagar</Link>
+
                 <button onClick={this.onClick}>Finalizar compra</button>
+
             </div>
         );
     }
