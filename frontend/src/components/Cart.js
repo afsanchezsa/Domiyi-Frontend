@@ -56,10 +56,11 @@ if(this.state.Address==''){
     resultorder.then((order)=>{
         var i;
         var newDetails=[]
-        var temp={}
+        
         ;    
 
         this.state.orderDetails.map(od=>{
+            var temp={};
             temp.idOrder=order.data.id;
             temp.idProductOffer=od.idProductOffer;
             temp.quantity=od.quantity;
