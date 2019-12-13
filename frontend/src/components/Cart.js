@@ -40,6 +40,7 @@ class Cart extends Component {
 onClick=()=>{
 if(this.state.Address==''){
     alert("debes insertar una direccion");
+    
 }else{
 
     const resultorder=axios.post(Host+'/order/register',{
@@ -63,7 +64,9 @@ if(this.state.Address==''){
             temp.idProductOffer=od.idProductOffer;
             temp.quantity=od.quantity;
             temp.observation=od.observation;
-            temp.price=od.price;
+            temp.unitPrice=od.price;
+            temp.value=od.value;
+            temp.type=od.type;
             newDetails.push(temp);
         });
             
