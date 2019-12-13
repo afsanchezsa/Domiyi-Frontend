@@ -96,7 +96,6 @@ alert("registro exitoso");
                         details={this.state.orderDetails}
                     />
                 </div>
-                <form className="text-center border border-light">
                 <div>
                 <label for="address">Dirección</label>
                         <input type="text" className="form-control mb-4" id="address" placeholder="Inserta la direccion"
@@ -107,7 +106,7 @@ alert("registro exitoso");
                 <button className="btn btn-primary btn-block" onClick={this.onClick}>Finalizar compra</button>
                 </div>
 
-                </form>
+               
             </div>
         );
     }
