@@ -50,6 +50,10 @@ const Navbar = () => {
                             <Link className="nav-link"
                                   to={{pathname: '/SearchProduct'}}>Buscar Producto</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link"
+                                  to={{pathname: '/SelectionByPrice'}}>Selección por Precio</Link>
+                        </li>
                         <a className="navbar-brand" href="#">
                             <Link className="nav-link" to='/Cart'>
 
