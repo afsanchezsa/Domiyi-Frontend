@@ -39,9 +39,9 @@ class SearchProduct extends Component {
     }
     render() {
         return (
-            <div className="container p-4 col-md-7 col-sm-10">
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="search"
+            <div className="container  col-md-11 col-sm-8">
+               <div className="form-group row">
+               <input className="form-control offset-sm-0 offset-md-3 col-sm-4" type="search"
                            value = {this.state.search}
                            onChange = {this.updateSearch.bind(this)}
                            placeholder="Buscar"
@@ -49,14 +49,16 @@ class SearchProduct extends Component {
 
                     >
                     </input>
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar Producto</button>
-                </form>
-                <ul>
-                    <div className="app container">
+                     <button className="btn btn-outline-success " onClick={()=>{}}>Buscar Producto</button>
+               
+                
+               </div>
+                    
+                    <div className="container mt-4">
 
-                        <div className="jumbotron">
+                    
 
-                            <p className="lead text-center">Productos</p>
+                    
 
                         </div>
                         < Resultado
@@ -64,8 +66,8 @@ class SearchProduct extends Component {
                             goToAddProduct={this.props.goToAddProduct}
                             idOrder={this.props.idOrder}
                         />
-                    </div>
-                </ul>
+                    
+                
             </div>
 
         );

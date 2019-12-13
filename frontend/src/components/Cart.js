@@ -30,12 +30,21 @@ class Cart extends Component {
     async componentDidMount() {
         
     }
+    onChangeAddress=(e)=>{
+        this.setState(
+            {
+                Address:e.target.value
+            }
+        )
+    }
 onClick=()=>{
-    
+if(this.state.Address==''){
+    alert("debes insertar una direccion");
+}else{
 
     const resultorder=axios.post(Host+'/order/register',{
         idCompany:this.state.orderDetails[0].idCompany,
-        address:'insert your address'
+        address:this.state.Address
     },{
         headers: {
             authorization: ls.get('token')
@@ -73,6 +82,9 @@ alert("registro exitoso");
     });
 
     
+
+}    
+
 }
     init = () => {
         return axios.post(Host+'/detail/updateIdOrder', {
@@ -99,7 +111,7 @@ alert("registro exitoso");
                 <div>
                 <label for="address">Dirección</label>
                         <input type="text" className="form-control mb-4" id="address" placeholder="Inserta la direccion"
-                               onChange={this.onChangeAddress} value={this.state.Address}></input>
+                           required    onChange={this.onChangeAddress} value={this.state.Address}></input>
                    
                 <Link className="btn btn-primary btn-block" to='/Pay'>Pagar</Link>
 
