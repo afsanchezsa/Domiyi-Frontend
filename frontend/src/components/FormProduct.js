@@ -11,7 +11,7 @@ class FormProduct extends Component {
         states:[],
         categories:[],
         id: "",
-        idCompany: 1,
+        idCompany: this.props.location.state.idCompany,
         idStatus:"",
         name: "",//the json object 
         description: "",

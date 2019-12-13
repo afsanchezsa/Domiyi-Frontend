@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navbar from "./components/Navbar";
-
+import AddPromoToProduct from "./components/AddPromoToProduct"
 import FormProduct from './components/FormProduct'
 import FormUser from './components/FormUser'
 import axios from 'axios'
@@ -21,19 +21,23 @@ import EditProduct from './components/EditProduct';
 import ListProductToEdit from './components/ListProductToEdit';
 import AdminProduct from './components/AdminProduct';
 import CompaniesByIdAdmin from "./components/CompaniesByIdAdmin";
+
 import Pay from './components/Pay';
 import PayPal from './components/PayPal';
+
+import SearchProduct from "./components/SearchProduct";
+
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar
     state = {
         idOrder: null,
         url: 'http://localhost:3001',
         product: {},
-        idsDetails: []
+        Details: []
     }
 
-    addDetail = async (id) => {
-        if (this.state.idOrder == null) {
+    addDetail = async (detail) => {
+       /* if (this.state.idOrder == null) {
             const res = await axios.post(Host + '/order/register', {
                 idCompany: 1,
                 idUser: 1,
@@ -59,6 +63,16 @@ class App extends React.Component {//We render a component  depending of the act
         );
         console.log(this.state.idsDetails);
         console.log("idorder" + this.state.idOrder);
+        */
+       if(this.state.Details.length>0&&this.state.Details[0].idCompany==detail.idCompany){
+        this.state.Details.push(detail);
+       }else{
+           this.state.Details=[]
+           this.state.Details.push(detail);
+       }
+       
+    
+    
     }
     goToAddProduct = (product) => {
         this.setState({
@@ -86,7 +100,7 @@ class App extends React.Component {//We render a component  depending of the act
                                 <Route path="/CompaniesByCategory/1" render={(props) => <CompaniesByCategory {...props}/>}/>
                                 <Route path="/CompaniesByCategory/2" render={(props) => <CompaniesByCategory {...props}/>}/>
                                 <Route path="/Cart" render={(props) => <Cart {...props} idOrder={this.state.idOrder}
-                                                                             idsDetails={this.state.idsDetails}/>}/>
+                                                                             details={this.state.Details}/>}/>
                                 <Route path="/CompanyRegister"
                                        render={(props) => <FormCompany {...props} numero={1}/>}/>
                                 <Route path="/addProduct"
@@ -108,11 +122,20 @@ class App extends React.Component {//We render a component  depending of the act
                                        render={(props) => <ListProductToEdit {...props} idCompany={1}
                                                                              goToAddProduct={this.goToAddProduct}
                                                                              idOrder={this.state.idOrder}/>}/>
+
                                 <Route path="/Pay"
                                        render={(props) => <Pay {...props} numero={1}/>}/>
                                 <Route path="/PayPal"
                                        render={(props) => <PayPal {...props} numero={1}/>}/>
 
+                                <Route path="/AddPromo" component={AddPromoToProduct}></Route>
+
+
+
+                                <Route path="/SearchProduct"
+                                       render={(props) => <SearchProduct {...props} idCompany={1}
+                                                                             goToAddProduct={this.goToAddProduct}
+                                                                             idOrder={this.state.idOrder}/>}/>
 
 
                             </div>

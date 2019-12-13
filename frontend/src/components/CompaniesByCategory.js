@@ -1,7 +1,6 @@
 //post('/companies/idAdmin
 
 import React from 'react';
-
 import Search from './Search';
 import axios from 'axios';
 import ls from 'local-storage'
