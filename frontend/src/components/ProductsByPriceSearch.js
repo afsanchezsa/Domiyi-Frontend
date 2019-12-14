@@ -1,46 +1,40 @@
 import React from 'react';
-
+import Resultado from './Resultado';
 import axios from 'axios';
 import ls from 'local-storage'
 import Host from '../Utilities/ServerUtilities'
-import AdminProduct from './AdminProduct';
-import ResultEditProduct from './ResultEditProduct';
 
-
-class ListProductToEdit extends React.Component {
+class ProductsByPriceSearch extends React.Component {
     constructor(props) {
         super(props);
     }
-
-
     state = {
-        idCompany:'',
+        minValue: this.props.location.state.minValue,
+        maxValue: this.props.location.state.maxValue,
         products: []
     }
-
     async componentDidMount() {
-        var res;
 
-            try{
-                 res = await axios.post(Host+'/productOffer/ByIdCompany',{
-                idCompany:this.props.location.state.idCompany
-                    
-                 },{
-                  
+        var res;
+        try {
+
+            res = await axios.post(Host + '/products/price', {
+                price: this.props.location.state.minValue,
+                price2: this.props.location.state.maxValue
+            }, {
                 headers: {
                     authorization: ls.get('token')
-
                 }
             });
             this.setState({
                 products: res.data
             });
+
         } catch (e) {
             if (e.response.status == 401) {
                 alert("Realizar log-in");
             }
         }
-
 
     }
 
@@ -53,13 +47,15 @@ class ListProductToEdit extends React.Component {
                     <p className="lead text-center">Productos</p>
 
                 </div>
-                < ResultEditProduct
+                < Resultado
                     products={this.state.products}
-                    />
+                    goToAddProduct={this.props.goToAddProduct}
+                    idOrder={this.props.idOrder}
+                />
             </div>
         );
     }
 
 }
 
-export default ListProductToEdit;
+export default ProductsByPriceSearch;

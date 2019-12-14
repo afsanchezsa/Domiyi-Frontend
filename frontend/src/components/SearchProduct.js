@@ -33,7 +33,7 @@ class SearchProduct extends Component {
             });
         } catch (e) {
             if (e.response.status == 401) {
-                this.props.Login();
+                alert("Realizar log-in");
             }
         }
     }
