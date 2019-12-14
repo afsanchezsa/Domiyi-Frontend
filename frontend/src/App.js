@@ -28,6 +28,8 @@ import PayPal from './components/PayPal';
 import SearchProduct from "./components/SearchProduct";
 
 import OrderHistory from "./components/OrderHistory";
+import CreditCard from "./components/CreditCard";
+import Efectivo from "./components/Efectivo";
 
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar
@@ -139,6 +141,11 @@ class App extends React.Component {//We render a component  depending of the act
                                                                              goToAddProduct={this.goToAddProduct}
                                                                              idOrder={this.state.idOrder}/>}/>
                                 <Route path="/OrderHistory" render={(props) => <OrderHistory {...props}/>}/>
+
+                                <Route path="/CreditCard"
+                                       render={(props) => <CreditCard {...props} numero={1}/>}/>
+                                <Route path="/Efectivo"
+                                       render={(props) => <Efectivo {...props} numero={1}/>}/>
 
                             </div>
 
