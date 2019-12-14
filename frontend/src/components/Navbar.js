@@ -24,23 +24,13 @@ const Navbar = () => {
                         <li className="nav-item active">
                             <Link className="nav-link" to='/Login'>Login</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/Products'>Productos</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/CompanyRegister'>Registro Compañia</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/UserRegister'>Registro Usuario</Link>
-                        </li>
+
                         {/*<li className="nav-item">
                             <Link className="nav-link" to='/ProductRegister'>Registro Producto</Link>
                         </li>
                         */ 
 
-                        }<li className="nav-item">
-                            <Link className="nav-link" to='/Orders'>Ordenes Pendientes</Link>
-                        </li>
+                        }
 
                         <li className="nav-item">
                             <Link className="nav-link"
@@ -49,6 +39,14 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link className="nav-link"
                                   to={{pathname: '/CompaniesByCategory/2', state: {idCategory: 2}}}>Licores</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link"
+                                  to={{pathname: '/CompaniesByCategory/3', state: {idCategory: 3}}}>Mexicana</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link"
+                                  to={{pathname: '/CompaniesByCategory/4', state: {idCategory: 4}}}>Farmacia</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link"
