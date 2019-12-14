@@ -43,6 +43,10 @@ const Navbar = () => {
                         </li>
 
                         <li className="nav-item">
+                            <Link className="nav-link" to='/OrderHistory'>Historial de Compras</Link>
+                        </li>
+
+                        <li className="nav-item">
                             <Link className="nav-link"
                                   to={{pathname: '/CompaniesByCategory/1', state: {idCategory: 1}}}>Alimentos</Link>
                         </li>
