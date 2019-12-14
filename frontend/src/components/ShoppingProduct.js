@@ -19,22 +19,43 @@ class ShoppingProduct extends React.Component {
         observation: "",
         unitPrice: this.props.product.price,
         idsDetailscreated: [],
-        idProduct:this.props.product.id
+        idProduct:this.props.product.id,
+        productOffer:{}
+    }
+    async componentDidMount(){
+       var res;
+        try{
+        res = await axios.post(Host+'/productOffer/ByIdProduct',{
+            idProduct:this.state.idProduct
+                
+             },{
+              
+            headers: {
+                authorization: ls.get('token')
+
+            }
+        });
+        this.setState({
+         productOffer: res.data[0]
+        });
+       }catch(e){
+
+       }
+        
     }
     onChangeQuantity = (e) => {
-        this.setState({
-            quantity: e.target.value
-        });
+               this.state.productOffer.quantity= e.target.value
+    
     }
     onChangeObservation = (e) => {
-        this.setState({
-            observation: e.target.value
-        });
+        
+            this.state.productOffer.observation= e.target.value
+        
     }
 
     Register = async (e) => {
         e.preventDefault();
-        try {
+      /*  try {
             const res = await axios.post(Host+'/detail/register', {
                 idOrder: this.state.idOrder,
                 idProductOffer: this.state.idProductOffer,
@@ -58,10 +79,17 @@ class ShoppingProduct extends React.Component {
 
         } catch (e) {
             console.log(e);
-        }
-        //evita que al presionar el boton el formulario se limpie
+    }*/
+    /*var newDetail={
+        
+        quantity: this.state.quantity,
+        observation: this.state.observation,
+        unitPrice: this.state.unitPrice,
+        idProduct:this.props.product.id
+    }*/
+    this.props.addDetail(this.state.productOffer);
+    alert("añadido a carrito");
     }
-
 //<Link className="nav-link" to='/Products'>Productos</Link>
     onclick() {
         return (
@@ -73,11 +101,11 @@ class ShoppingProduct extends React.Component {
         return (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div className="card">
-                    <img src={this.props.product.image} alt="sin Imagen" className="card-img-top"/>
+                    <img src={this.state.productOffer.image} alt="sin Imagen" className="card-img-top"/>
                     <div className="card-body">
-                        <p className="card-text">{this.props.product.name}</p>
-                        <p className="card-text">{this.props.product.description}</p>
-                        <p className="card-text">Valor {this.props.product.price}</p>
+                        <p className="card-text">{this.state.productOffer.name}</p>
+                        <p className="card-text">{this.state.productOffer.description}</p>
+                        <p className="card-text">Valor {this.state.productOffer.price}</p>
 
                     </div>
                     <div className="container p-4">
