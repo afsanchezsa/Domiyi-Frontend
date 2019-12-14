@@ -31,7 +31,8 @@ class Orders extends Component {
         } catch (e) {
             if (e.response.status == 401) {
                 // this.props.Login();
-                console.log("hubo error ")
+                //console.log("Realizar log-in");
+                alert("Realizar log-in");
             }
         }
     }
@@ -47,7 +48,7 @@ class Orders extends Component {
                         orders={this.state.orders}
                     />
                 </div>
-                <Link className="btn btn-primary btn-block" to='/Products'>Volver</Link>
+                <Link className="btn btn-primary btn-block" to='/MyCompanies'>Volver</Link>
             </div>
         );
     }
