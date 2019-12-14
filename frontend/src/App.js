@@ -27,8 +27,12 @@ import PayPal from './components/PayPal';
 
 import SearchProduct from "./components/SearchProduct";
 
+
+import OrderHistory from "./components/OrderHistory";
+
 import PriceRange from "./components/PriceRange";
 import ProductsByPriceSearch from "./components/ProductsByPriceSearch";
+
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar
     state = {
@@ -140,7 +144,7 @@ class App extends React.Component {//We render a component  depending of the act
                                        render={(props) => <SearchProduct {...props} idCompany={1}
                                                                              goToAddProduct={this.goToAddProduct}
                                                                              idOrder={this.state.idOrder}/>}/>
-
+                                <Route path="/OrderHistory" render={(props) => <OrderHistory {...props}/>}/>
 
                             </div>
 
