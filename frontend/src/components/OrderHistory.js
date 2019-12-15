@@ -6,7 +6,7 @@ import ls from 'local-storage'
 import ResultOrder from "./ResultOrder";
 import Host from '../Utilities/ServerUtilities'
 
-class Orders extends Component {
+class OrderHistory extends Component {
     constructor(props) {
         super(props);
     }
@@ -18,7 +18,7 @@ class Orders extends Component {
         var res;
         console.log(res);
         try {
-            res = await axios.post(Host + '/order/byAdmin', {
+            res = await axios.post(Host + '/order/byUser', {
             }, {
                 headers: {
                     authorization: ls.get('token')
@@ -31,8 +31,7 @@ class Orders extends Component {
         } catch (e) {
             if (e.response.status == 401) {
                 // this.props.Login();
-                //console.log("Realizar log-in");
-                alert("Realizar log-in");
+                console.log("hubo error ")
             }
         }
     }
@@ -48,13 +47,13 @@ class Orders extends Component {
                         orders={this.state.orders}
                     />
                 </div>
-                <Link className="btn btn-primary btn-block" to='/MyCompanies'>Volver</Link>
+                <Link className="btn btn-primary btn-block" to='/Products'>Volver</Link>
             </div>
         );
     }
 
 }
 
-export default Orders;
+export default OrderHistory;
 
 

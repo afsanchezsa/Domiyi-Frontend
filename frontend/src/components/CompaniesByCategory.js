@@ -1,60 +1,65 @@
-import React, {Component} from 'react';
+//post('/companies/idAdmin
 
+import React from 'react';
+import Search from './Search';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 import ls from 'local-storage'
-import ResultOrder from "./ResultOrder";
 import Host from '../Utilities/ServerUtilities'
+import CompanyCategoryResult from "./CompanyCategoryResult";
 
-class Orders extends Component {
+//import './App.css';
+
+
+class CompaniesByCategory extends React.Component {
     constructor(props) {
         super(props);
+
     }
 
+
     state = {
-        orders: []
+        states :[],
+        companies: [],
     }
+
     async componentDidMount() {
         var res;
-        console.log(res);
         try {
-            res = await axios.post(Host + '/order/byAdmin', {
+            res = await axios.post(Host + '/companiesBy/category', {
+                idCategory : this.props.location.state.idCategory
             }, {
+
                 headers: {
                     authorization: ls.get('token')
 
                 }
             });
             this.setState({
-                orders: res.data
+                companies: res.data
             });
         } catch (e) {
             if (e.response.status == 401) {
-                // this.props.Login();
-                //console.log("Realizar log-in");
                 alert("Realizar log-in");
+                //this.props.Login();
             }
         }
     }
     render() {
         return (
             <div className="app container">
+
                 <div className="jumbotron">
 
-                    <p className="lead text-center">Ordenes Pendientes</p>
+                    <p className="lead text-center">Compañias</p>
+
                 </div>
-                <div>
-                    < ResultOrder
-                        orders={this.state.orders}
-                    />
-                </div>
-                <Link className="btn btn-primary btn-block" to='/MyCompanies'>Volver</Link>
+                < CompanyCategoryResult
+                    companies = {this.state.companies}
+                />
             </div>
         );
     }
 
 }
 
-export default Orders;
-
-
+export default CompaniesByCategory;

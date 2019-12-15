@@ -1,17 +1,15 @@
 import React from 'react';
 
-import Search from './Search';
-import Resultado from './Resultado';
 import axios from 'axios';
 import ls from 'local-storage'
 import Host from '../Utilities/ServerUtilities'
-//import './App.css';
+import AdminProduct from './AdminProduct';
+import ResultEditProduct from './ResultEditProduct';
 
 
-class ListProduct extends React.Component {
+class ListProductToEdit extends React.Component {
     constructor(props) {
         super(props);
-       
     }
 
 
@@ -21,8 +19,6 @@ class ListProduct extends React.Component {
     }
 
     async componentDidMount() {
-       
-        console.log("hola" );
         var res;
 
             try{
@@ -36,35 +32,18 @@ class ListProduct extends React.Component {
 
                 }
             });
-                 console.log(res.data);
             this.setState({
                 products: res.data
             });
         } catch (e) {
-                console.log(e);
-
+            if (e.response.status == 401) {
+                alert("Realizar log-in");
+            }
         }
 
 
-        //console.log(url);
-
-
-        /*fetch(url)
-            .then(respuesta => respuesta.json())
-            .then(resultado => this.setState({ imagenes: resultado.image }))
-            */
     }
 
-    /*dataSearch = (termino) => {
-        this.setState({
-            termino
-        }, () => {
-            this.consultarApi();
-        })
-
-    }*/
-//render all products 
-    //<Search dataSearch={this.dataSearch} />
     render() {
         return (
             <div className="app container">
@@ -74,15 +53,13 @@ class ListProduct extends React.Component {
                     <p className="lead text-center">Productos</p>
 
                 </div>
-                < Resultado
+                < ResultEditProduct
                     products={this.state.products}
-                    goToAddProduct={this.props.goToAddProduct}
-                    idOrder={this.props.idOrder}
-                />
+                    />
             </div>
         );
     }
 
 }
 
-export default ListProduct;
+export default ListProductToEdit;

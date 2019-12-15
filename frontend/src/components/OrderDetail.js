@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './OrdenPendiente.css'
 
 //this shows a card with every product
 
@@ -8,28 +9,37 @@ import {Link} from 'react-router-dom';
 class OrderDetail extends React.Component {
     constructor(props) {
         super(props);
+        this.state = this.props.order
+
+
+    }
+
+
+
+    renderTableData() {
+        //this.props.order.
+        return (() => {
+            return (
+                console.log(this.state)
+            )
+        })
     }
 
     render() {
         return (
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div className="card">
-                    <div className="card-body">
-                        <p className="card-text">Numero orden: {this.props.order.idOrder}</p>
-                        <p className="card-text">Producto: {this.props.order.name}</p>
-                        <p className="card-text">Cantidad: {this.props.order.quantity}</p>
-                        <p className="card-text">Observacion: {this.props.order.observation}</p>
-                        <p className="card-text">Precio Unidad: {this.props.order.unitPrice}</p>
-                        <p className="card-text">Direccion: {this.props.order.address}</p>
-                        <p className="card-text">Fecha pedido: {this.props.order.date}</p>
-                        <p className="card-text">Status pedido: {this.props.order.status}</p>
-                    </div>
-
-                </div>
-            </div>
+                <tr>
+                <td>{this.props.order.idOrder}</td>
+                <td>{this.props.order.name}</td>
+                <td>{this.props.order.quantity}</td>
+                <td>{this.props.order.observation}</td>
+                <td>{this.props.order.unitPrice}</td>
+                <td>{this.props.order.address}</td>
+                <td>{this.props.order.date}</td>
+                <td>{this.props.order.status}</td>
+                </tr>
         );
     }
 }
 
-export default OrderDetail ;
+export default OrderDetail;
 

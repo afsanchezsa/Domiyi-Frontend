@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import Imagen from './Imagen';
+import AdminProduct from './AdminProduct';
 
-class Resultado extends Component {
+class ResultadoEditProduct extends Component {
 
     constructor(props){
         super(props);
     }
-    onclick = (id) =>{
-        this.props.goToAddProduct(id)
-    }
+    
 
     mostrarImagenes = () => {
 
@@ -21,11 +20,11 @@ class Resultado extends Component {
             <React.Fragment>
                 <div className="col-12  row">
                     {products.map(product => (
-                        <Imagen
-                            key={product.id}
+                        <AdminProduct
+                           
                             product={product}
-                            goToAddProduct = {this.props.goToAddProduct}
-                            idOrder={this.props.idOrder}
+                            
+                            
                         />
                     ))}
 
@@ -44,4 +43,4 @@ class Resultado extends Component {
 
 }
 
-export default Resultado;
+export default ResultadoEditProduct;

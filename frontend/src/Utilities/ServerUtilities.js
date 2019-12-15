@@ -1,2 +1,2 @@
-const ServerHost='http://localhost:3000'
+const ServerHost='https://domiyibackend.appspot.com'
 export default ServerHost;

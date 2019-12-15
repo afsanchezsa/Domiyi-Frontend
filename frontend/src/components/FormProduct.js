@@ -11,7 +11,7 @@ class FormProduct extends Component {
         states:[],
         categories:[],
         id: "",
-        idCompany: 1,
+        idCompany: this.props.location.state.idCompany,
         idStatus:"",
         name: "",//the json object 
         description: "",
@@ -127,13 +127,13 @@ class FormProduct extends Component {
 
     render() {
         return (
-            <div className="container p-4">
-                <form onSubmit={this.Register}>
-                    
+            <div className="container p-4 col-md-7 col-sm-10">
+                <form onSubmit={this.Register} className="text-center border border-light ">
+                <p class="h4 mb-4">Registra un Producto</p>
                     
                     <div className="form-group ">
                         <label for="IdStatus">Status</label>
-                        <select className="form-control" onChange={this.onChangeIdStatus}>
+                        <select className="form-control mb-4" onChange={this.onChangeIdStatus}>
                         <option value="" disabled selected>-- Seleccione un estado --</option>
                             {this.state.states.map(st=>
                                 <option key={st.id} value={st.status}>{st.status}
@@ -143,22 +143,22 @@ class FormProduct extends Component {
                     </div>
                     <div className="form-group">
                         <label for="name">Name</label>
-                        <input type="text" className="form-control" id="name" placeholder="Name of Product"
+                        <input type="text" className="form-control mb-4" id="name" placeholder="Name of Product"
                                onChange={this.onChangeName}></input>
                     </div>
                     <div className="form-group">
                         <label for="description">Description</label>
-                        <input type="text" className="form-control" id="description" placeholder="Description"
+                        <input type="text" className="form-control mb-4" id="description" placeholder="Description"
                                onChange={this.onChangeDescription}></input>
                     </div>
                     <div className="form-group">
                         <label for="url">URL Image</label>
-                        <input type="text" className="form-control" id="url" placeholder="Url Image"
+                        <input type="text" className="form-control mb-4" id="url" placeholder="Url Image"
                                onChange={this.onChangeTextImage}></input>
                     </div>
                     <div className="form-group">
                         <label for="price">Price</label>
-                        <input type="number" className="form-control" id="price" placeholder="Price"
+                        <input type="number" className="form-control mb-4" id="price" placeholder="Price"
                                onChange={this.onChangePrice}></input>
                     </div>
                     <div className="form-group">
@@ -167,7 +167,7 @@ class FormProduct extends Component {
                     </div>
                     <div className="form-group">
                         <label for="Category">Category</label>
-                        <select className="form-control"  onChange={this.onChangeCategory} >
+                        <select className="form-control mb-4"  onChange={this.onChangeCategory} >
                         <option value="" disabled selected >-- Seleccione una categoria --</option>
                             {this.state.categories.map(ct=>
                                 <option key={ct.id} value={ct.category}>{ct.category}</option>
@@ -176,7 +176,7 @@ class FormProduct extends Component {
                     </div>
                     
 
-                    <button type="submit" className="btn btn-primary" onSubmit={this.Register}>Registrar</button>
+                    <button type="submit" className="btn btn-info btn-block my-4" onSubmit={this.Register}>Registrar</button>
                 </form>
 
             </div>
