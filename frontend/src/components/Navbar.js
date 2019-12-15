@@ -1,7 +1,16 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import ls from "local-storage";
+import TypeUser from "./TypeUser";
+
 // to={{pathname:'/ListProductToEdit',state:{idCompany:this.props.company.id}}}
 //to={{pathname:'/CompaniesByCategory',state:{idCategory: 1}}}
+function logout() {
+        ls.set('token',null)
+        alert("Sesion cerrada")
+        window.location.reload()
+}
+
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -10,7 +19,11 @@ const Navbar = () => {
 
                 <button type="button" id="sidebarCollapse" className="btn btn-info">
                     <i className="fas fa-align-left"></i>
-                    <span>Admin</span>
+                    <img
+                        src="https://icon-library.net/images/sandwich-menu-icon/sandwich-menu-icon-13.jpg"
+                        width="30"
+                        height="30" className="d-inline-block align-top" alt="">
+                    </img>
                 </button>
                 <button className="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -35,23 +48,6 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to='/OrderHistory'>Historial de Compras</Link>
                         </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link"
-                                  to={{pathname: '/CompaniesByCategory/1', state: {idCategory: 1}}}>Alimentos</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link"
-                                  to={{pathname: '/CompaniesByCategory/2', state: {idCategory: 2}}}>Licores</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link"
-                                  to={{pathname: '/CompaniesByCategory/3', state: {idCategory: 3}}}>Mexicana</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link"
-                                  to={{pathname: '/CompaniesByCategory/4', state: {idCategory: 4}}}>Farmacia</Link>
-                        </li>
                         <li className="nav-item">
                             <Link className="nav-link"
                                   to={{pathname: '/SearchProduct'}}>Buscar Producto</Link>
@@ -62,7 +58,6 @@ const Navbar = () => {
                         </li>
                         <a className="navbar-brand" href="#">
                             <Link className="nav-link" to='/Cart'>
-
                                 <img
                                     src="https://previews.123rf.com/images/val2014/val20141603/val2014160300005/54302312-shopping-cart-icon.jpg"
                                     width="30"
@@ -70,6 +65,16 @@ const Navbar = () => {
                                 </img>
                             </Link>
                         </a>
+
+                        <li className="nav-item">
+                            <button type="submit" className="btn btn-info btn-block my-4" onClick={logout}>
+                                <img
+                                    src="https://cdn.iconscout.com/icon/premium/png-256-thumb/logout-1570566-1330129.png"
+                                    width="30"
+                                    height="30" className="d-inline-block align-top" alt="">
+                                </img>
+                            </button>
+                        </li>
 
                     </ul>
                 </div>
@@ -85,4 +90,5 @@ const Navbar = () => {
     )
 
 }
+
 export default Navbar;

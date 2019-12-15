@@ -76,6 +76,7 @@ class FormCompany extends Component {
         });
 
         alert("registro exitoso");
+        this.props.history.push("./MyCompanies")
 //evita que al presionar el boton el formulario se limpie
     }
 

@@ -34,6 +34,7 @@ import Efectivo from "./components/Efectivo";
 
 import PriceRange from "./components/PriceRange";
 import ProductsByPriceSearch from "./components/ProductsByPriceSearch";
+import TypeUser from "./components/TypeUser";
 
 
 class App extends React.Component {//We render a component  depending of the action of the user in the navbar
@@ -103,7 +104,10 @@ class App extends React.Component {//We render a component  depending of the act
 
                                 <Navbar/>
 
-
+                                <Route path="/" exact
+                                       render={(props) => <SearchProduct {...props} idCompany={1}
+                                                                         goToAddProduct={this.goToAddProduct}
+                                                                         idOrder={this.state.idOrder}/>}/>
                                 <Route path="/Orders" render={(props) => <Orders {...props}/>}/>
                                 <Route path="/CompaniesByCategory/1" render={(props) => <CompaniesByCategory {...props}/>}/>
                                 <Route path="/CompaniesByCategory/2" render={(props) => <CompaniesByCategory {...props}/>}/>
@@ -152,7 +156,7 @@ class App extends React.Component {//We render a component  depending of the act
                                        render={(props) => <CreditCard {...props} numero={1}/>}/>
                                 <Route path="/Efectivo"
                                        render={(props) => <Efectivo {...props} numero={1}/>}/>
-
+                                <Route path="/TypeUser" component={TypeUser}></Route>
                             </div>
 
                         </div>

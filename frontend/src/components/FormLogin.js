@@ -31,9 +31,7 @@ class FormLogin extends Component {
         });
 //console.log(this.state.idCompany+' '+this.state.id);
     }
-    
-    
-  
+
     Login = async (e) => {//with axios send the request to the route with the body 
         try{
             e.preventDefault();
@@ -45,10 +43,14 @@ class FormLogin extends Component {
         console.log(res.data);
         ls.set('token',res.data.token);
         alert("logueado correctamente");
+        this.props.history.push("./SearchProduct")
+
         
         }catch(e){
             if(e.response.status==401){
-                alert("contraseña incorrecta");
+                alert("Usuario o contraseña incorrecta");
+            }else{
+                alert("Usuario no encontrado");
             }
             
         }
