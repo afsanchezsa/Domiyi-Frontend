@@ -45,55 +45,67 @@ class FormUser extends Component {
     }
     Register = async (e) => {
         e.preventDefault();
-        const res = await axios.post(Host+'/users/register', {
-            name: this.state.name,
-            username:this.state.username,
-            email: this.state.email,
-            password: this.state.password,
-            phone: this.state.phone,
-            address:this.state.address
-        });
+        try{
+            const res = await axios.post(Host+'/users/register', {
+                name: this.state.name,
+                username:this.state.username,
+                email: this.state.email,
+                password: this.state.password,
+                phone: this.state.phone,
+                address:this.state.address
+            });
+            
+                alert("registro exitoso");
+            this.props.history.push("./Login")
+            
+    
+        }catch(e){
+            if(e.response.status==400){
+                alert("correo o nombre de usuario duplicado");
+            }
 
-        alert("registro exitoso");
+        }
+        
 //evita que al presionar el boton el formulario se limpie
     }
 
     render() {
         return (
-            <div className="container p-4">
-                <form onSubmit={this.Register}>
+            <div className="container p-4 col-md-7 col-sm-10">
+                <form onSubmit={this.Register} className="text-center border border-light ">
+                <p class="h4 mb-4">Registro</p>
                     <div className="form-group">
                         <label for="name">Name</label>
-                        <input type="text" className="form-control" id="name" placeholder="Name of user"
+                        <input type="text" className="form-control mb-4" id="name" placeholder="Name of user"
                                onChange={this.onChangeName}></input>
                     </div>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <input type="text" className="form-control" id="username" placeholder="Username of user"
+                        <input type="text" className="form-control mb-4" id="username" placeholder="Username of user"
                                onChange={this.onChangeUserName}></input>
                     </div>
                     <div className="form-group">
                         <label htmlFor="name">Email</label>
-                        <input type="text" className="form-control" id="email" placeholder="Email of user"
+                        <input type="text" className="form-control mb-4" id="email" placeholder="Email of user"
                                onChange={this.onChangeEmail}></input>
                     </div>
                     <div className="form-group">
                         <label htmlFor="name">Password</label>
-                        <input type="text" className="form-control" id="password" placeholder="Password of Company"
+                        <input type="text" className="form-control mb-4" id="password" placeholder="Password of user"
                                onChange={this.onChangePassword}></input>
                     </div>
                     <div className="form-group">
                         <label htmlFor="name">Phone</label>
-                        <input type="text" className="form-control" id="phone" placeholder="Phone of user"
+                        <input type="text" className="form-control mb-4" id="phone" placeholder="Phone of user"
                                onChange={this.onChangePhone}></input>
                     </div>
                     <div className="form-group">
                         <label htmlFor="name">Address</label>
-                        <input type="text" className="form-control" id="address" placeholder="Address of user"
+                        <input type="text" className="form-control mb-4" id="address" placeholder="Address of user"
                                onChange={this.onChangeAddress}></input>
                     </div>
 
-                    <button type="submit" className="btn btn-primary" onSubmit={this.Register}>Registrar</button>
+                    <button type="submit" className="btn btn-info btn-block my-4" onSubmit={this.Register}>Registrar</button>
                 </form>
 
             </div>

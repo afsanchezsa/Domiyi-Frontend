@@ -1,70 +1,43 @@
 import React from 'react';
-
-import Search from './Search';
 import Resultado from './Resultado';
 import axios from 'axios';
 import ls from 'local-storage'
 import Host from '../Utilities/ServerUtilities'
-//import './App.css';
 
-
-class ListProduct extends React.Component {
+class ProductsByPriceSearch extends React.Component {
     constructor(props) {
         super(props);
-       
     }
-
-
     state = {
-        idCompany:'',
+        minValue: this.props.location.state.minValue,
+        maxValue: this.props.location.state.maxValue,
         products: []
     }
-
     async componentDidMount() {
-       
-        console.log("hola" );
-        var res;
 
-            try{
-                 res = await axios.post(Host+'/productOffer/ByIdCompany',{
-                idCompany:this.props.location.state.idCompany
-                    
-                 },{
-                  
+        var res;
+        try {
+
+            res = await axios.post(Host + '/products/price', {
+                price: this.props.location.state.minValue,
+                price2: this.props.location.state.maxValue
+            }, {
                 headers: {
                     authorization: ls.get('token')
-
                 }
             });
-                 console.log(res.data);
             this.setState({
                 products: res.data
             });
-        } catch (e) {
-                console.log(e);
 
+        } catch (e) {
+            if (e.response.status == 401) {
+                alert("Realizar log-in");
+            }
         }
 
-
-        //console.log(url);
-
-
-        /*fetch(url)
-            .then(respuesta => respuesta.json())
-            .then(resultado => this.setState({ imagenes: resultado.image }))
-            */
     }
 
-    /*dataSearch = (termino) => {
-        this.setState({
-            termino
-        }, () => {
-            this.consultarApi();
-        })
-
-    }*/
-//render all products 
-    //<Search dataSearch={this.dataSearch} />
     render() {
         return (
             <div className="app container">
@@ -85,4 +58,4 @@ class ListProduct extends React.Component {
 
 }
 
-export default ListProduct;
+export default ProductsByPriceSearch;

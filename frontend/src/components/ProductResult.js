@@ -7,31 +7,7 @@ class ProductResult extends Component {
     constructor(props) {
         super(props);
     }
-/*
-    state = {
-        product: []
-    }
 
- */
-    /*
-       async componentDidMount(){
-
-
-           try{
-
-               const res = await axios.post('http://localhost:3000/products/id', {
-                   id : 1
-               });
-               console.log(res.data);
-               this.setState({
-                   product:res.data
-               });
-
-           }catch(e){
-               alert(e);
-           }
-       }
-    */
     mostrarImagenes = () => {
 
         const product = this.props.product;

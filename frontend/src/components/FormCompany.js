@@ -50,6 +50,11 @@ class FormCompany extends Component {
             name: e.target.value
         });
     }
+    onChangeUrl = (e) => {
+        this.setState({
+            image: e.target.value
+        });
+    }
     onChangeDeliveryCost = (e) => {
         this.setState({
             deliveryCost: e.target.value
@@ -61,7 +66,7 @@ class FormCompany extends Component {
             idStatus:this.state.status,
             idAdmin: this.state.idAdmin,
             name: this.state.name,
-            image: "No disponible",//no available until this functionality be implemented
+            image: this.state.image,//no available until this functionality be implemented
             deliveryCost: this.state.deliveryCost
         },{
             headers: {
@@ -71,17 +76,18 @@ class FormCompany extends Component {
         });
 
         alert("registro exitoso");
+        this.props.history.push("./MyCompanies")
 //evita que al presionar el boton el formulario se limpie
     }
 
     render() {
         return (
-            <div className="container p-4">
-                <form onSubmit={this.Register}>
-
+            <div className="container p-4 col-md-7 col-sm-10">
+                <form onSubmit={this.Register} className="text-center border border-light ">
+                <p class="h4 mb-4">Registra tu Compañia</p>
                     <div className="form-group">
                         <label htmlFor="Status">Status</label>
-                        <select className="form-control" onChange={this.onChangeIdStatus}>
+                        <select className="form-control mb-4" onChange={this.onChangeIdStatus}>
                             <option value="" disabled selected>-- Seleccione un status --</option>
                             {this.state.states.map(st =>
                                 <option key={st.id} value={st.status}>{st.status}</option>
@@ -90,8 +96,13 @@ class FormCompany extends Component {
                     </div>
                     <div className="form-group">
                         <label for="name">Name</label>
-                        <input type="text" className="form-control" id="name" placeholder="Name of Company"
+                        <input type="text" className="form-control mb-4" id="name" placeholder="Name of Company"
                                onChange={this.onChangeName}></input>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="Image URL">Image</label>
+                        <input type="text" className="form-control mb-4" id="image" placeholder="Company Image"
+                               onChange={this.onChangeUrl}></input>
                     </div>
                     <div className="form-group">
                         <label for="Image">Image</label>
@@ -99,7 +110,7 @@ class FormCompany extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="name">DeliveryCost</label>
-                        <input type="text" className="form-control" id="name" placeholder="Delivery Cost of Company"
+                        <input type="text" className="form-control mb-4" id="name" placeholder="Delivery Cost of Company"
                                onChange={this.onChangeDeliveryCost}></input>
                     </div>
 
