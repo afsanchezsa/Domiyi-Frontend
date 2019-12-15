@@ -39,8 +39,8 @@ class CompaniesByIdAdmin extends React.Component {
             });
         } catch (e) {
             if (e.response.status == 401) {
-
                 alert("Realizar log-in");
+                this.props.history.push("./Login")
             }
         }
 
@@ -54,7 +54,7 @@ class CompaniesByIdAdmin extends React.Component {
 
                 <div className="jumbotron">
 
-                    <p className="lead text-center">Productos</p>
+                    <p className="lead text-center">Compañias</p>
 
                 </div>
                 < CompanyResult

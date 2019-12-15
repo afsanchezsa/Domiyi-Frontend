@@ -56,6 +56,7 @@ class FormUser extends Component {
             });
             
                 alert("registro exitoso");
+            this.props.history.push("./Login")
             
     
         }catch(e){
